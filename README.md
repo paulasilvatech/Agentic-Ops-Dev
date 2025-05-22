@@ -8,7 +8,7 @@ Welcome to the **Agentic Ops Dev** Azure Observability Workshop! This hands-on w
 
 ## Agentic DevOps Workflow - Observability Implementation
 
-![Azure Observability](https://aka.ms/azureobservabilityworkshop)
+![Azure Observability Banner](./images/azure-observability-banner.svg)
 
 ## 🌐 Official Workshop Website: [agentic-ops.dev](https://agentic-ops.dev)
 
@@ -43,6 +43,8 @@ Advanced observability enables the progression through four maturity stages:
 3. **Predictive**: Anomaly detection and forecasting
 4. **Autonomous**: Self-healing and optimization
 
+![Agentic DevOps Workflow](./images/agentic-devops-workflow.svg)
+
 ## 📋 Workshop Structure
 
 The workshop is organized into progressive modules, allowing you to choose the depth of coverage based on your time and experience:
@@ -54,6 +56,8 @@ The workshop is organized into progressive modules, allowing you to choose the d
 | **Advanced** | 8+ hours | Enterprise-scale solutions | Experienced practitioners, deep dives |
 
 ## 🗺️ Learning Path
+
+![Learning Path](./images/learning-path.svg)
 
 ### 1️⃣ [Introduction to Observability](./observability_introduction.md)
 - Foundation concepts and technologies

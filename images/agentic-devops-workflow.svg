@@ -1,0 +1,234 @@
+<svg width="1000" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F8F9FA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E9ECEF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0078D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#005A9E;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#107C10;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0B5A0B;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D73502;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="600" fill="url(#bgGradient)"/>
+  
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="bold" fill="#323130">
+    Agentic DevOps Workflow - Observability Implementation
+  </text>
+  
+  <!-- Phase 1: Traditional Monitoring -->
+  <g transform="translate(50, 100)">
+    <rect x="0" y="0" width="200" height="120" rx="10" fill="#E1E1E1" filter="url(#shadow)"/>
+    <text x="100" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" fill="#605E5C">
+      Traditional Monitoring
+    </text>
+    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#605E5C">
+      • Static thresholds
+    </text>
+    <text x="20" y="70" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#605E5C">
+      • Reactive alerts
+    </text>
+    <text x="20" y="90" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#605E5C">
+      • Manual investigation
+    </text>
+    <text x="20" y="110" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#605E5C">
+      • Limited context
+    </text>
+  </g>
+  
+  <!-- Arrow 1 -->
+  <path d="M270 160 L320 160" stroke="#323130" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Phase 2: Three Pillars -->
+  <g transform="translate(340, 100)">
+    <rect x="0" y="0" width="200" height="120" rx="10" fill="url(#blueGradient)" filter="url(#shadow)"/>
+    <text x="100" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">
+      Three Pillars Setup
+    </text>
+    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#FFFFFF">
+      📊 Metrics Collection
+    </text>
+    <text x="20" y="70" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#FFFFFF">
+      📝 Centralized Logs
+    </text>
+    <text x="20" y="90" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#FFFFFF">
+      🔗 Distributed Traces
+    </text>
+    <text x="20" y="110" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#FFFFFF">
+      📈 Real-time Dashboards
+    </text>
+  </g>
+  
+  <!-- Arrow 2 -->
+  <path d="M560 160 L610 160" stroke="#323130" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Phase 3: AI Enhancement -->
+  <g transform="translate(630, 100)">
+    <rect x="0" y="0" width="200" height="120" rx="10" fill="url(#orangeGradient)" filter="url(#shadow)"/>
+    <text x="100" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">
+      AI Enhancement
+    </text>
+    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#FFFFFF">
+      🤖 Azure SRE Agent
+    </text>
+    <text x="20" y="70" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#FFFFFF">
+      🧠 Anomaly Detection
+    </text>
+    <text x="20" y="90" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#FFFFFF">
+      ⚡ Auto Remediation
+    </text>
+    <text x="20" y="110" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#FFFFFF">
+      🔮 Predictive Analytics
+    </text>
+  </g>
+  
+  <!-- Azure Services Layer -->
+  <text x="500" y="280" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="bold" fill="#323130">
+    Azure Observability Platform
+  </text>
+  
+  <!-- Azure Monitor -->
+  <g transform="translate(100, 300)">
+    <rect x="0" y="0" width="150" height="80" rx="8" fill="url(#blueGradient)" filter="url(#shadow)"/>
+    <text x="75" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">
+      Azure Monitor
+    </text>
+    <text x="75" y="45" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      Central Platform
+    </text>
+    <text x="75" y="60" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      Metrics & Alerts
+    </text>
+  </g>
+  
+  <!-- Application Insights -->
+  <g transform="translate(280, 300)">
+    <rect x="0" y="0" width="150" height="80" rx="8" fill="url(#blueGradient)" filter="url(#shadow)"/>
+    <text x="75" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">
+      Application Insights
+    </text>
+    <text x="75" y="45" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      APM & Traces
+    </text>
+    <text x="75" y="60" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      Custom Telemetry
+    </text>
+  </g>
+  
+  <!-- Log Analytics -->
+  <g transform="translate(460, 300)">
+    <rect x="0" y="0" width="150" height="80" rx="8" fill="url(#blueGradient)" filter="url(#shadow)"/>
+    <text x="75" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">
+      Log Analytics
+    </text>
+    <text x="75" y="45" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      KQL Queries
+    </text>
+    <text x="75" y="60" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      Log Correlation
+    </text>
+  </g>
+  
+  <!-- Azure SRE Agent -->
+  <g transform="translate(640, 300)">
+    <rect x="0" y="0" width="150" height="80" rx="8" fill="url(#orangeGradient)" filter="url(#shadow)"/>
+    <text x="75" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">
+      Azure SRE Agent
+    </text>
+    <text x="75" y="45" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      AI-Powered SRE
+    </text>
+    <text x="75" y="60" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      Intelligent Automation
+    </text>
+  </g>
+  
+  <!-- Multi-Cloud Integration -->
+  <text x="500" y="440" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="bold" fill="#323130">
+    Multi-Cloud Integration
+  </text>
+  
+  <!-- Azure -->
+  <g transform="translate(200, 460)">
+    <rect x="0" y="0" width="120" height="60" rx="8" fill="url(#blueGradient)" filter="url(#shadow)"/>
+    <text x="60" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">
+      Azure
+    </text>
+    <text x="60" y="45" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      Native Integration
+    </text>
+  </g>
+  
+  <!-- AWS -->
+  <g transform="translate(340, 460)">
+    <rect x="0" y="0" width="120" height="60" rx="8" fill="#FF9900" filter="url(#shadow)"/>
+    <text x="60" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">
+      AWS
+    </text>
+    <text x="60" y="45" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      CloudWatch Export
+    </text>
+  </g>
+  
+  <!-- GCP -->
+  <g transform="translate(480, 460)">
+    <rect x="0" y="0" width="120" height="60" rx="8" fill="#4285F4" filter="url(#shadow)"/>
+    <text x="60" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">
+      GCP
+    </text>
+    <text x="60" y="45" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      Operations Export
+    </text>
+  </g>
+  
+  <!-- Business Impact -->
+  <g transform="translate(750, 460)">
+    <rect x="0" y="0" width="200" height="100" rx="10" fill="url(#greenGradient)" filter="url(#shadow)"/>
+    <text x="100" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">
+      Business Impact
+    </text>
+    <text x="20" y="45" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      📈 80% Faster MTTR
+    </text>
+    <text x="20" y="60" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      🎯 60% Less False Alerts
+    </text>
+    <text x="20" y="75" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      💰 40% Cost Reduction
+    </text>
+    <text x="20" y="90" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
+      🚀 Proactive Optimization
+    </text>
+  </g>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#323130"/>
+    </marker>
+  </defs>
+  
+  <!-- Connecting lines -->
+  <path d="M175 390 L175 430 L400 430 L400 470" stroke="#323130" stroke-width="2" fill="none"/>
+  <path d="M355 390 L355 430 L400 430" stroke="#323130" stroke-width="2" fill="none"/>
+  <path d="M535 390 L535 430 L400 430" stroke="#323130" stroke-width="2" fill="none"/>
+  <path d="M715 390 L715 430 L400 430" stroke="#323130" stroke-width="2" fill="none"/>
+  
+  <!-- Website URL -->
+  <text x="500" y="580" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#605E5C">
+    Learn more at 🌐 agentic-ops.dev
+  </text>
+</svg> 
