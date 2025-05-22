@@ -19,6 +19,9 @@
     <filter id="shadow">
       <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
     </filter>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#323130"/>
+    </marker>
   </defs>
   
   <!-- Background -->
@@ -110,7 +113,7 @@
       Central Platform
     </text>
     <text x="75" y="60" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
-      Metrics & Alerts
+      Metrics &amp; Alerts
     </text>
   </g>
   
@@ -121,7 +124,7 @@
       Application Insights
     </text>
     <text x="75" y="45" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
-      APM & Traces
+      APM &amp; Traces
     </text>
     <text x="75" y="60" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#FFFFFF">
       Custom Telemetry
@@ -195,7 +198,7 @@
   </g>
   
   <!-- Business Impact -->
-  <g transform="translate(750, 460)">
+  <g transform="translate(720, 460)">
     <rect x="0" y="0" width="200" height="100" rx="10" fill="url(#greenGradient)" filter="url(#shadow)"/>
     <text x="100" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">
       Business Impact
@@ -213,13 +216,6 @@
       🚀 Proactive Optimization
     </text>
   </g>
-  
-  <!-- Arrow marker definition -->
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#323130"/>
-    </marker>
-  </defs>
   
   <!-- Connecting lines -->
   <path d="M175 390 L175 430 L400 430 L400 470" stroke="#323130" stroke-width="2" fill="none"/>
