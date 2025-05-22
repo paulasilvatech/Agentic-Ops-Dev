@@ -29,7 +29,7 @@
   
   <!-- Title -->
   <rect x="100" y="20" width="800" height="40" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1" filter="url(#shadow)"/>
-  <text x="500" y="40" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="bold" fill="#323130">
+  <text x="500" y="45" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="bold" fill="#323130">
     Agentic DevOps Workflow - Observability Implementation
   </text>
   
@@ -101,7 +101,7 @@
   
   <!-- Azure Services Layer -->
   <rect x="280" y="265" width="440" height="30" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1" filter="url(#shadow)"/>
-  <text x="500" y="280" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="bold" fill="#323130">
+  <text x="500" y="285" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="bold" fill="#323130">
     Azure Observability Platform
   </text>
   
@@ -183,7 +183,7 @@
   
   <!-- Multi-Cloud Integration -->
   <rect x="310" y="485" width="380" height="30" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1" filter="url(#shadow)"/>
-  <text x="500" y="500" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="bold" fill="#323130">
+  <text x="500" y="505" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="bold" fill="#323130">
     Multi-Cloud Integration
   </text>
   
