@@ -160,7 +160,7 @@
   </g>
   
   <!-- Business Impact -->
-  <g transform="translate(720, 300)">
+  <g transform="translate(750, 450)">
     <rect x="0" y="0" width="200" height="120" rx="10" fill="url(#greenGradient)" filter="url(#shadow)"/>
     <text x="100" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">
       Business Impact
@@ -221,7 +221,9 @@
   <path d="M175 390 L175 480 L260 480 L260 520" stroke="#323130" stroke-width="2" fill="none"/>
   <path d="M355 390 L355 480 L400 480 L400 520" stroke="#323130" stroke-width="2" fill="none"/>
   <path d="M535 390 L535 480 L540 480 L540 520" stroke="#323130" stroke-width="2" fill="none"/>
-  <path d="M715 390 L715 480 L400 480" stroke="#323130" stroke-width="2" fill="none"/>
+  
+  <!-- Connection to Business Impact -->
+  <path d="M715 390 L715 430 L850 430 L850 450" stroke="#323130" stroke-width="2" fill="none"/>
   
   <!-- Website URL -->
   <text x="500" y="650" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#605E5C">
