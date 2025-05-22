@@ -100,8 +100,8 @@
   </g>
   
   <!-- Azure Services Layer -->
-  <rect x="280" y="265" width="440" height="30" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1" filter="url(#shadow)"/>
-  <text x="500" y="286" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="bold" fill="#323130">
+  <rect x="280" y="250" width="440" height="30" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1" filter="url(#shadow)"/>
+  <text x="500" y="271" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="bold" fill="#323130">
     Azure Observability Platform
   </text>
   
