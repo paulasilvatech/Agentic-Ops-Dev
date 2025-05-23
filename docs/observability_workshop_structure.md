@@ -1,6 +1,6 @@
-# Azure Observability Workshop - Structure Guide
+# 🏗️ Azure Observability Workshop - Structure Guide
 
-## 📚 Complete Workshop Organization and Learning Path
+## 🗺️ Complete Workshop Organization and Learning Path
 
 This document provides a comprehensive overview of the Azure Observability Workshop structure, learning objectives, and recommended paths for different skill levels and time constraints.
 

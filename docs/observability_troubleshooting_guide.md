@@ -1,6 +1,6 @@
-# Azure Observability Workshop - Troubleshooting Guide
+# 🔧 Azure Observability Workshop - Troubleshooting Guide
 
-## 🔧 Quick Reference for Common Issues
+## 🆘 Quick Reference for Common Issues
 
 This comprehensive troubleshooting guide helps you resolve common issues encountered during the Azure Observability Workshop. Use this as your first resource when encountering problems.
 
@@ -8,14 +8,14 @@ This comprehensive troubleshooting guide helps you resolve common issues encount
 
 ## 📋 Table of Contents
 
-1. [Prerequisites and Setup Issues](#prerequisites-and-setup-issues)
-2. [Azure Resource Deployment Problems](#azure-resource-deployment-problems)
-3. [Kubernetes and Container Issues](#kubernetes-and-container-issues)
-4. [Service Mesh (Istio) Problems](#service-mesh-istio-problems)
-5. [Monitoring Stack Issues](#monitoring-stack-issues)
-6. [Application and Connectivity Problems](#application-and-connectivity-problems)
-7. [Performance and Resource Issues](#performance-and-resource-issues)
-8. [Multi-Cloud Integration Problems](#multi-cloud-integration-problems)
+1. [⚙️ Prerequisites and Setup Issues](#prerequisites-and-setup-issues)
+2. [☁️ Azure Resource Deployment Problems](#azure-resource-deployment-problems)
+3. [🚀 Kubernetes and Container Issues](#kubernetes-and-container-issues)
+4. [🌐 Service Mesh (Istio) Problems](#service-mesh-istio-problems)
+5. [📊 Monitoring Stack Issues](#monitoring-stack-issues)
+6. [📱 Application and Connectivity Problems](#application-and-connectivity-problems)
+7. [⚡ Performance and Resource Issues](#performance-and-resource-issues)
+8. [🌐 Multi-Cloud Integration Problems](#multi-cloud-integration-problems)
 9. [Security and Compliance Issues](#security-and-compliance-issues)
 10. [Emergency Recovery Procedures](#emergency-recovery-procedures)
 
@@ -34,19 +34,39 @@ This comprehensive troubleshooting guide helps you resolve common issues encount
 
 **Solutions**:
 ```bash
-# Clear Azure CLI cache
-az account clear
-az cache purge
+# 🧹 Azure CLI Authentication Recovery
+# Purpose: Fix authentication issues and restore Azure CLI access
 
-# Re-login with device code (useful in restricted environments)
-az login --use-device-code
+# Step 1: Clear corrupted authentication cache
+echo "🧹 Clearing Azure CLI cache..."
+az account clear                    # Remove all account information
+az cache purge                      # Clear internal CLI cache
 
-# Verify subscription access
-az account list --output table
-az account set --subscription "YOUR_SUBSCRIPTION_ID"
+# Step 2: Re-authenticate with device code (works with proxies/firewalls)
+echo "🔐 Starting device code authentication..."
+az login --use-device-code         # Follow the URL and enter the code displayed
 
-# Check current context
-az account show
+# Step 3: Verify subscription access and permissions
+echo "📋 Verifying subscription access..."
+az account list --output table     # List all accessible subscriptions
+
+# Step 4: Set the correct subscription context
+echo "🎯 Setting subscription context..."
+az account set --subscription "YOUR_SUBSCRIPTION_ID"  # Replace with your subscription ID
+
+# Step 5: Validate authentication status
+echo "✅ Validating authentication..."
+az account show --output table     # Display current account context
+
+# 💡 Expected Output:
+# - Account list shows your subscription(s)
+# - Current account shows correct user and subscription
+# - No authentication errors in subsequent commands
+
+# 🔍 If still failing, check:
+# - Subscription permissions (Owner/Contributor required)
+# - Corporate proxy settings
+# - Azure service outages at status.azure.com
 ```
 
 **Alternative Authentication**:
