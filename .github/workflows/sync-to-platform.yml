@@ -1,0 +1,56 @@
+# This file should be placed in Agentic-Ops-Dev repository as .github/workflows/sync-to-platform.yml
+
+name: Trigger Content Sync to Agentic DevOps Platform
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'operations/**'
+      - 'automation/**'
+      - 'monitoring/**'
+      - 'docs/**'
+      - 'README.md'
+  
+  workflow_dispatch:
+
+jobs:
+  trigger-sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Trigger sync in Agentic DevOps Platform
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PLATFORM_SYNC_TOKEN }}
+          script: |
+            console.log('🚀 Triggering content sync for Agentic-Ops-Dev...');
+            
+            const response = await github.rest.repos.createDispatchEvent({
+              owner: 'paulasilvatech',
+              repo: 'Agentic-DevOps-Platform',
+              event_type: 'content-update',
+              client_payload: {
+                repository: 'Agentic-Ops-Dev',
+                branch: '${{ github.ref_name }}',
+                commit: '${{ github.sha }}',
+                timestamp: new Date().toISOString(),
+                actor: '${{ github.actor }}',
+                changed_files: '${{ toJson(github.event.head_commit.modified) }}',
+                commit_message: '${{ github.event.head_commit.message }}'
+              }
+            });
+            
+            console.log('✅ Content sync triggered successfully');
+            console.log(`Status: ${response.status}`);
+
+      - name: Summary
+        run: |
+          echo "## 🔄 Content Sync Triggered" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Repository:** Agentic-Ops-Dev" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Triggered by:** ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The Agentic DevOps Platform will automatically sync this content." >> $GITHUB_STEP_SUMMARY
