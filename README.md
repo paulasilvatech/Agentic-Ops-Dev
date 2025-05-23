@@ -55,7 +55,7 @@ The workshop is organized into progressive modules, allowing you to choose the d
 | **Standard** | 4 hours | Complete implementation | Intermediate users, standard workshops |
 | **Advanced** | 8+ hours | Enterprise-scale solutions | Experienced practitioners, deep dives |
 
-## Learning Path
+## 🗺️ Learning Path
 
 ### Module 1: [Introduction to Observability](./docs/observability_introduction.md)
 - Foundation concepts and technologies
