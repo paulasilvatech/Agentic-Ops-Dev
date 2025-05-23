@@ -2066,3 +2066,9 @@ You're ready for the **Advanced Workshop (Parts 4-5)** if you can:
 ---
 
 **Continue to Parts 4-5** for the Advanced Workshop covering enterprise-scale architecture, AI-enhanced SRE capabilities, and advanced challenge labs.
+
+---
+
+## 🔙 Navigation
+
+**[⬅️ Back to Main README](../README.md)**

@@ -57,25 +57,25 @@ The workshop is organized into progressive modules, allowing you to choose the d
 
 ## 🗺️ Learning Path
 
-### 1️⃣ [Introduction to Observability](./docs/observability_introduction.md)
-- Foundation concepts and technologies
-- The three pillars: Metrics, Logs, and Traces
-- Azure observability ecosystem overview
+### 1️⃣ [Introduction to Observability](./docs/observability_introduction.md#-what-is-observability)
+- [Foundation concepts and technologies](./docs/observability_introduction.md#-what-is-observability)
+- [The three pillars: Metrics, Logs, and Traces](./docs/observability_introduction.md#️-the-three-pillars-of-observability)
+- [Azure observability ecosystem overview](./docs/observability_introduction.md#️-azure-observability-ecosystem)
 
-### 2️⃣ [Beginning Your Observability Journey](./docs/observability_workshop_part-01.md)
-- Workshop preparation and account setup
-- Creating your first monitoring solution
-- Exploring Azure Monitor fundamentals
+### 2️⃣ [Beginning Your Observability Journey](./docs/observability_workshop_part-01.md#-pre-workshop-preparation)
+- [Workshop preparation and account setup](./docs/observability_workshop_part-01.md#-step-1-create-required-accounts)
+- [Creating your first monitoring solution](./docs/observability_workshop_part-01.md#-module-1-setting-up-your-first-monitoring-solution-30-minutes)
+- [Exploring Azure Monitor fundamentals](./docs/observability_workshop_part-01.md#-beginner-workshop-2-hours)
 
-### 3️⃣ [Building Dashboards and Alerts](./docs/observability_workshop_part-02.md)
-- Creating custom dashboards
-- Setting up intelligent alerts
-- Using GitHub Copilot for monitoring queries
+### 3️⃣ [Building Dashboards and Alerts](./docs/observability_workshop_part-02.md#-module-2-creating-your-first-dashboard-and-alerts-25-minutes)
+- [Creating custom dashboards](./docs/observability_workshop_part-02.md#-21-build-custom-dashboard-in-azure-portal)
+- [Setting up intelligent alerts](./docs/observability_workshop_part-02.md#-module-2-creating-your-first-dashboard-and-alerts-25-minutes)
+- [Using GitHub Copilot for monitoring queries](./docs/observability_workshop_part-02.md#-module-2-creating-your-first-dashboard-and-alerts-25-minutes)
 
-### 4️⃣ [Advanced Application Insights](./docs/observability_workshop_part-03.md)
-- Distributed tracing across microservices
-- Custom telemetry and business metrics
-- Advanced performance monitoring
+### 4️⃣ [Advanced Application Insights](./docs/observability_workshop_part-03.md#-module-1-advanced-application-insights-and-distributed-tracing-60-minutes)
+- [Distributed tracing across microservices](./docs/observability_workshop_part-03.md#️-11-microservices-architecture-setup)
+- [Custom telemetry and business metrics](./docs/observability_workshop_part-03.md#-module-1-advanced-application-insights-and-distributed-tracing-60-minutes)
+- [Advanced performance monitoring](./docs/observability_workshop_part-03.md#-module-1-advanced-application-insights-and-distributed-tracing-60-minutes)
 
 ### 5️⃣ [Multi-Cloud Integration](./docs/observability_workshop_part-04.md)
 - Monitoring across Azure, AWS, and GCP
@@ -97,10 +97,10 @@ The workshop is organized into progressive modules, allowing you to choose the d
 - End-to-end implementation exercises
 - Performance optimization tasks
 
-### 🧩 [Troubleshooting Guide](./docs/observability_troubleshooting_guide.md)
-- Common issues and solutions
-- Advanced debugging techniques
-- Performance optimization strategies
+### 🧩 [Troubleshooting Guide](./docs/observability_troubleshooting_guide.md#️-prerequisites-and-setup-issues)
+- [Common issues and solutions](./docs/observability_troubleshooting_guide.md#-issue-azure-cli-authentication-failures)
+- [Advanced debugging techniques](./docs/observability_troubleshooting_guide.md#️-prerequisites-and-setup-issues)
+- [Performance optimization strategies](./docs/observability_troubleshooting_guide.md#️-prerequisites-and-setup-issues)
 
 ## 🔑 Prerequisites
 

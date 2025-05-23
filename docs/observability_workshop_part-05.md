@@ -752,3 +752,10 @@ kubectl logs -n observability daemonset/azure-monitor-agent --tail=50
 ```
 
 All services should be running successfully before continuing to Part 6.
+
+
+---
+
+## 🔙 Navigation
+
+**[⬅️ Back to Main README](../README.md)**

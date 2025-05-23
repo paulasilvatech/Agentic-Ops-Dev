@@ -1270,3 +1270,10 @@ curl "http://localhost:9090/api/v1/alerts" | jq '.data.alerts[] | select(.labels
 ```
 
 All troubleshooting scenarios should be active and generating alerts.
+
+
+---
+
+## 🔙 Navigation
+
+**[⬅️ Back to Main README](../README.md)**

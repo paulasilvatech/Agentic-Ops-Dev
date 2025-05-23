@@ -1195,3 +1195,10 @@ curl http://localhost:9090/api/v1/alerts | jq '.data.alerts[] | .labels.alertnam
 ```
 
 All components should be healthy and generating observability data before continuing.
+
+
+---
+
+## 🔙 Navigation
+
+**[⬅️ Back to Main README](../README.md)**

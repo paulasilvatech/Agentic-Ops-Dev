@@ -57,6 +57,48 @@ Unlike traditional monitoring, which tells you *what* is wrong, observability he
 
 Modern observability is built on three fundamental data types, often called the "three pillars":
 
+```mermaid
+graph TB
+    A[🔍 Complete Observability] --> B[📊 Metrics]
+    A --> C[📝 Logs] 
+    A --> D[🔗 Traces]
+    
+    B --> B1[Time-series Data]
+    B --> B2[Performance KPIs]
+    B --> B3[Resource Utilization]
+    B --> B4[Business Metrics]
+    
+    C --> C1[Event Records]
+    C --> C2[Error Details]
+    C --> C3[Audit Trails]
+    C --> C4[Debug Information]
+    
+    D --> D1[Request Flows]
+    D --> D2[Service Dependencies]
+    D --> D3[Latency Analysis]
+    D --> D4[Error Attribution]
+    
+    B1 --> E[📈 Dashboards & Alerts]
+    C1 --> E
+    D1 --> E
+    
+    B2 --> F[🔍 Root Cause Analysis]
+    C2 --> F
+    D2 --> F
+    
+    B3 --> G[🎯 Performance Optimization]
+    C3 --> G
+    D3 --> G
+    
+    style A fill:#e1f5fe
+    style B fill:#fff3e0
+    style C fill:#f3e5f5
+    style D fill:#e8f5e8
+    style E fill:#fce4ec
+    style F fill:#fff8e1
+    style G fill:#e0f2f1
+```
+
 ### 1. 📊 Metrics (What happened?)
 
 **Definition**: Numerical measurements of your system's behavior over time.
