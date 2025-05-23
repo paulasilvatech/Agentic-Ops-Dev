@@ -1,0 +1,256 @@
+# Application Alert Rules
+# These alerts monitor application-level metrics and behaviors
+
+groups:
+  - name: application_alerts
+    interval: 30s
+    rules:
+      # High Error Rate Alert
+      - alert: HighErrorRate
+        expr: |
+          (
+            sum(rate(http_requests_total{status=~"5.."}[5m])) by (service, namespace)
+            /
+            sum(rate(http_requests_total[5m])) by (service, namespace)
+          ) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+          team: backend
+        annotations:
+          summary: "High error rate detected for {{ $labels.service }}"
+          description: "Service {{ $labels.service }} in namespace {{ $labels.namespace }} has error rate of {{ $value | humanizePercentage }} (threshold: 5%)"
+          runbook_url: "https://wiki.example.com/runbooks/high-error-rate"
+          dashboard_url: "http://grafana.example.com/d/service-overview?var-service={{ $labels.service }}"
+          
+      # Slow Response Time Alert
+      - alert: SlowResponseTime
+        expr: |
+          histogram_quantile(0.95,
+            sum(rate(http_request_duration_seconds_bucket[5m])) by (service, namespace, le)
+          ) > 1
+        for: 10m
+        labels:
+          severity: warning
+          team: backend
+        annotations:
+          summary: "Slow response time for {{ $labels.service }}"
+          description: "95th percentile response time for {{ $labels.service }} is {{ $value | humanizeDuration }} (threshold: 1s)"
+          runbook_url: "https://wiki.example.com/runbooks/slow-response-time"
+          
+      # Service Down Alert
+      - alert: ServiceDown
+        expr: up{job=~".*-service"} == 0
+        for: 2m
+        labels:
+          severity: critical
+          team: sre
+        annotations:
+          summary: "Service {{ $labels.job }} is down"
+          description: "Service {{ $labels.job }} on instance {{ $labels.instance }} has been down for more than 2 minutes"
+          runbook_url: "https://wiki.example.com/runbooks/service-down"
+          
+      # High Memory Usage Alert
+      - alert: HighMemoryUsage
+        expr: |
+          (
+            container_memory_working_set_bytes{pod!="", container!="POD"}
+            /
+            container_spec_memory_limit_bytes{pod!="", container!="POD"}
+          ) > 0.8
+        for: 5m
+        labels:
+          severity: warning
+          team: backend
+        annotations:
+          summary: "High memory usage for {{ $labels.pod }}"
+          description: "Pod {{ $labels.pod }} container {{ $labels.container }} memory usage is {{ $value | humanizePercentage }} of limit"
+          runbook_url: "https://wiki.example.com/runbooks/high-memory-usage"
+          
+      # High CPU Usage Alert
+      - alert: HighCPUUsage
+        expr: |
+          (
+            sum(rate(container_cpu_usage_seconds_total{pod!="", container!="POD"}[5m])) by (pod, container)
+            /
+            sum(container_spec_cpu_quota{pod!="", container!="POD"}/container_spec_cpu_period{pod!="", container!="POD"}) by (pod, container)
+          ) > 0.8
+        for: 5m
+        labels:
+          severity: warning
+          team: backend
+        annotations:
+          summary: "High CPU usage for {{ $labels.pod }}"
+          description: "Pod {{ $labels.pod }} container {{ $labels.container }} CPU usage is {{ $value | humanizePercentage }} of limit"
+          runbook_url: "https://wiki.example.com/runbooks/high-cpu-usage"
+          
+      # Pod Restart Alert
+      - alert: PodRestartingTooOften
+        expr: |
+          increase(kube_pod_container_status_restarts_total[1h]) > 5
+        labels:
+          severity: warning
+          team: sre
+        annotations:
+          summary: "Pod {{ $labels.pod }} is restarting frequently"
+          description: "Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} has restarted {{ $value }} times in the last hour"
+          runbook_url: "https://wiki.example.com/runbooks/pod-restarts"
+          
+      # Failed Deployments Alert
+      - alert: DeploymentReplicasMismatch
+        expr: |
+          kube_deployment_spec_replicas{job="kube-state-metrics"}
+          !=
+          kube_deployment_status_replicas_available{job="kube-state-metrics"}
+        for: 15m
+        labels:
+          severity: warning
+          team: sre
+        annotations:
+          summary: "Deployment {{ $labels.deployment }} has replica mismatch"
+          description: "Deployment {{ $labels.deployment }} in namespace {{ $labels.namespace }} has {{ $value }} replicas available but expects {{ $labels.spec_replicas }}"
+          
+      # Database Connection Pool Alert
+      - alert: DatabaseConnectionPoolExhausted
+        expr: |
+          (
+            database_connections_active / database_connections_max
+          ) > 0.9
+        for: 5m
+        labels:
+          severity: critical
+          team: backend
+        annotations:
+          summary: "Database connection pool nearly exhausted"
+          description: "Database {{ $labels.database }} connection pool is {{ $value | humanizePercentage }} full"
+          runbook_url: "https://wiki.example.com/runbooks/db-connection-pool"
+          
+      # Queue Backlog Alert
+      - alert: QueueBacklogHigh
+        expr: |
+          queue_messages_pending > 1000
+        for: 10m
+        labels:
+          severity: warning
+          team: backend
+        annotations:
+          summary: "High message backlog in queue {{ $labels.queue }}"
+          description: "Queue {{ $labels.queue }} has {{ $value }} pending messages (threshold: 1000)"
+          
+      # Disk Space Alert
+      - alert: DiskSpaceRunningLow
+        expr: |
+          (
+            node_filesystem_avail_bytes{fstype!~"tmpfs|fuse.lxcfs|squashfs|vfat"}
+            /
+            node_filesystem_size_bytes{fstype!~"tmpfs|fuse.lxcfs|squashfs|vfat"}
+          ) < 0.15
+        for: 5m
+        labels:
+          severity: warning
+          team: sre
+        annotations:
+          summary: "Low disk space on {{ $labels.instance }}"
+          description: "Disk {{ $labels.device }} on {{ $labels.instance }} has only {{ $value | humanizePercentage }} free space"
+          
+  - name: slo_alerts
+    interval: 30s
+    rules:
+      # SLO Violation - Availability
+      - alert: SLOAvailabilityViolation
+        expr: |
+          (
+            sum(rate(http_requests_total{status!~"5.."}[5m])) by (service)
+            /
+            sum(rate(http_requests_total[5m])) by (service)
+          ) < 0.995
+        for: 5m
+        labels:
+          severity: critical
+          team: sre
+          slo: availability
+        annotations:
+          summary: "SLO violation: Availability below 99.5% for {{ $labels.service }}"
+          description: "Service {{ $labels.service }} availability is {{ $value | humanizePercentage }} (SLO: 99.5%)"
+          dashboard_url: "http://grafana.example.com/d/slo-dashboard?var-service={{ $labels.service }}"
+          
+      # SLO Violation - Latency
+      - alert: SLOLatencyViolation
+        expr: |
+          histogram_quantile(0.99,
+            sum(rate(http_request_duration_seconds_bucket[5m])) by (service, le)
+          ) > 0.5
+        for: 5m
+        labels:
+          severity: critical
+          team: sre
+          slo: latency
+        annotations:
+          summary: "SLO violation: 99th percentile latency above 500ms for {{ $labels.service }}"
+          description: "Service {{ $labels.service }} P99 latency is {{ $value | humanizeDuration }} (SLO: 500ms)"
+          
+      # Error Budget Burn Rate Alert
+      - alert: ErrorBudgetBurnRateHigh
+        expr: |
+          (
+            1 - (
+              sum(rate(http_requests_total{status!~"5.."}[1h])) by (service)
+              /
+              sum(rate(http_requests_total[1h])) by (service)
+            )
+          ) > (1 - 0.995) * 6
+        labels:
+          severity: warning
+          team: sre
+        annotations:
+          summary: "High error budget burn rate for {{ $labels.service }}"
+          description: "Service {{ $labels.service }} is burning error budget 6x faster than normal"
+          
+  - name: business_alerts
+    interval: 30s
+    rules:
+      # Low Order Processing Rate
+      - alert: LowOrderProcessingRate
+        expr: |
+          sum(rate(orders_processed_total[5m])) < 10
+        for: 15m
+        labels:
+          severity: warning
+          team: business
+        annotations:
+          summary: "Low order processing rate"
+          description: "Order processing rate is {{ $value }} orders/second (expected: >10)"
+          impact: "Potential revenue loss"
+          
+      # Payment Failures High
+      - alert: HighPaymentFailureRate
+        expr: |
+          (
+            sum(rate(payments_failed_total[5m]))
+            /
+            sum(rate(payments_attempted_total[5m]))
+          ) > 0.05
+        for: 10m
+        labels:
+          severity: critical
+          team: payments
+        annotations:
+          summary: "High payment failure rate"
+          description: "Payment failure rate is {{ $value | humanizePercentage }} (threshold: 5%)"
+          impact: "Direct revenue impact"
+          
+      # User Registration Drop
+      - alert: UserRegistrationDrop
+        expr: |
+          (
+            sum(rate(user_registrations_total[1h]))
+            <
+            sum(rate(user_registrations_total[1h] offset 1d)) * 0.7
+          )
+        for: 30m
+        labels:
+          severity: warning
+          team: growth
+        annotations:
+          summary: "User registration rate dropped significantly"
+          description: "Current registration rate is 30% lower than same time yesterday" 

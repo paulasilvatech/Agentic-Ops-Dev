@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ObservabilityWorkshop.Sample")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+37cf6d6a375d1271065d1e41c288f8b403646cb8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32fb5a4611397bcb077134090c2e7e95c25a9538")]
 [assembly: System.Reflection.AssemblyProductAttribute("ObservabilityWorkshop.Sample")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ObservabilityWorkshop.Sample")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

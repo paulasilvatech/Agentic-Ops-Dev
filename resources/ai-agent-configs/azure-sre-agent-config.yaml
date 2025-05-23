@@ -1,0 +1,298 @@
+# Azure SRE Agent Configuration
+# This configuration enables AI-powered observability features
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: azure-sre-agent-config
+  namespace: monitoring
+data:
+  config.yaml: |
+    # Azure SRE Agent Settings
+    agent:
+      version: "1.0.0"
+      environment: "production"
+      
+    # Azure Integration
+    azure:
+      subscriptionId: "${AZURE_SUBSCRIPTION_ID}"
+      resourceGroup: "${RESOURCE_GROUP}"
+      workspaceId: "${LOG_ANALYTICS_WORKSPACE_ID}"
+      applicationInsightsKey: "${APP_INSIGHTS_KEY}"
+      
+    # AI Features Configuration
+    ai:
+      # Anomaly Detection Settings
+      anomalyDetection:
+        enabled: true
+        sensitivity: "medium"  # low, medium, high
+        algorithms:
+          - name: "isolation-forest"
+            enabled: true
+            parameters:
+              contamination: 0.1
+              n_estimators: 100
+          - name: "prophet"
+            enabled: true
+            parameters:
+              seasonality_mode: "multiplicative"
+          - name: "lstm-autoencoder"
+            enabled: true
+            parameters:
+              threshold_percentile: 95
+              
+      # Predictive Analytics
+      predictiveAnalytics:
+        enabled: true
+        forecasting:
+          enabled: true
+          horizon: "24h"
+          confidence_interval: 0.95
+        capacityPlanning:
+          enabled: true
+          thresholds:
+            cpu: 80
+            memory: 85
+            disk: 90
+            
+      # Root Cause Analysis
+      rootCauseAnalysis:
+        enabled: true
+        correlationWindow: "5m"
+        minCorrelation: 0.7
+        includeServices:
+          - "user-service"
+          - "order-service"
+          - "dotnet-sample"
+          
+      # Intelligent Alerting
+      intelligentAlerting:
+        enabled: true
+        suppressDuplicates: true
+        groupingWindow: "5m"
+        severityMapping:
+          anomaly_score_high: "critical"
+          anomaly_score_medium: "warning"
+          anomaly_score_low: "info"
+          
+    # Data Sources
+    dataSources:
+      prometheus:
+        enabled: true
+        endpoint: "http://prometheus:9090"
+        queries:
+          - name: "service_latency"
+            query: 'histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))'
+          - name: "error_rate"
+            query: 'sum(rate(http_requests_total{status=~"5.."}[5m])) by (service)'
+          - name: "cpu_usage"
+            query: 'avg(rate(container_cpu_usage_seconds_total[5m])) by (pod)'
+            
+      applicationInsights:
+        enabled: true
+        queries:
+          - name: "dependency_failures"
+            query: |
+              dependencies
+              | where timestamp > ago(5m)
+              | where success == false
+              | summarize count() by target, type
+              
+      logAnalytics:
+        enabled: true
+        queries:
+          - name: "error_logs"
+            query: |
+              ContainerLog
+              | where TimeGenerated > ago(5m)
+              | where LogEntry contains "ERROR" or LogEntry contains "Exception"
+              | project TimeGenerated, ContainerID, LogEntry
+              
+    # ML Model Configuration
+    mlModels:
+      updateFrequency: "daily"
+      trainingDataRetention: "30d"
+      models:
+        - name: "latency-predictor"
+          type: "timeseries"
+          retrain: true
+          features:
+            - "time_of_day"
+            - "day_of_week"
+            - "request_count"
+            - "error_rate"
+            
+        - name: "capacity-forecaster"
+          type: "regression"
+          retrain: true
+          features:
+            - "cpu_usage"
+            - "memory_usage"
+            - "request_rate"
+            - "response_time"
+            
+    # Incident Management Integration
+    incidentManagement:
+      enabled: true
+      autoCreateIncidents: true
+      platforms:
+        - type: "servicenow"
+          enabled: false
+          endpoint: "${SERVICENOW_ENDPOINT}"
+          
+        - type: "pagerduty"
+          enabled: false
+          endpoint: "${PAGERDUTY_ENDPOINT}"
+          
+        - type: "azure-devops"
+          enabled: true
+          organization: "${AZURE_DEVOPS_ORG}"
+          project: "${AZURE_DEVOPS_PROJECT}"
+          
+    # Automation Actions
+    automation:
+      enabled: true
+      requireApproval: true
+      actions:
+        - name: "scale-out"
+          trigger: "cpu_usage > 80"
+          action: "increase_replicas"
+          parameters:
+            increment: 2
+            max_replicas: 10
+            
+        - name: "restart-unhealthy"
+          trigger: "health_check_failed"
+          action: "restart_pod"
+          parameters:
+            max_restarts: 3
+            cooldown: "5m"
+            
+    # Reporting
+    reporting:
+      enabled: true
+      schedule: "0 9 * * *"  # Daily at 9 AM
+      recipients:
+        - "sre-team@example.com"
+      reports:
+        - type: "executive-summary"
+          enabled: true
+        - type: "technical-details"
+          enabled: true
+        - type: "cost-analysis"
+          enabled: true
+          
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-sre-agent
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azure-sre-agent
+  template:
+    metadata:
+      labels:
+        app: azure-sre-agent
+    spec:
+      serviceAccountName: azure-sre-agent
+      containers:
+      - name: sre-agent
+        image: mcr.microsoft.com/azure-sre-agent:latest
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+        env:
+        - name: CONFIG_PATH
+          value: "/config/config.yaml"
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: azure-credentials
+          mountPath: /secrets
+          readOnly: true
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 9090
+          name: metrics
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      volumes:
+      - name: config
+        configMap:
+          name: azure-sre-agent-config
+      - name: azure-credentials
+        secret:
+          secretName: azure-sre-agent-credentials
+          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-sre-agent
+  namespace: monitoring
+spec:
+  selector:
+    app: azure-sre-agent
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+  - name: metrics
+    port: 9090
+    targetPort: 9090
+    
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: azure-sre-agent
+  namespace: monitoring
+  
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: azure-sre-agent
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "endpoints", "nodes"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["apps"]
+  resources: ["deployments", "replicasets", "statefulsets"]
+  verbs: ["get", "list", "watch", "update", "patch"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
+  verbs: ["get", "list", "watch", "create", "update", "patch"]
+  
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: azure-sre-agent
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: azure-sre-agent
+subjects:
+- kind: ServiceAccount
+  name: azure-sre-agent
+  namespace: monitoring 

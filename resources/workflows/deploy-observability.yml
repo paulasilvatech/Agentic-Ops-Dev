@@ -1,0 +1,231 @@
+# GitHub Actions Workflow for Observability Deployment
+# This workflow automates the deployment of the complete observability stack
+
+name: Deploy Observability Infrastructure
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'development'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+      azure_subscription_id:
+        description: 'Azure Subscription ID'
+        required: true
+        type: string
+      deploy_ai_monitoring:
+        description: 'Deploy AI-enhanced monitoring components'
+        required: false
+        default: true
+        type: boolean
+
+env:
+  TERRAFORM_VERSION: '1.5.0'
+  AZURE_REGION: 'eastus2'
+  
+jobs:
+  validate:
+    name: Validate Configuration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+          
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Validate Terraform
+        run: |
+          cd resources/terraform
+          terraform init
+          terraform validate
+          
+      - name: Security Scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'config'
+          scan-ref: 'resources/'
+          
+  deploy-infrastructure:
+    name: Deploy Azure Infrastructure
+    needs: validate
+    runs-on: ubuntu-latest
+    outputs:
+      resource_group: ${{ steps.deploy.outputs.resource_group }}
+      aks_cluster_name: ${{ steps.deploy.outputs.aks_cluster_name }}
+      acr_login_server: ${{ steps.deploy.outputs.acr_login_server }}
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+          terraform_wrapper: false
+          
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Deploy Infrastructure
+        id: deploy
+        run: |
+          cd resources/terraform
+          terraform init
+          terraform plan -var="subscription_id=${{ inputs.azure_subscription_id }}" \
+                        -var="environment=${{ inputs.environment }}" \
+                        -out=tfplan
+          terraform apply -auto-approve tfplan
+          
+          # Export outputs
+          echo "resource_group=$(terraform output -raw resource_group_name)" >> $GITHUB_OUTPUT
+          echo "aks_cluster_name=$(terraform output -raw aks_cluster_name)" >> $GITHUB_OUTPUT
+          echo "acr_login_server=$(terraform output -raw acr_login_server)" >> $GITHUB_OUTPUT
+          
+  build-applications:
+    name: Build Sample Applications
+    needs: deploy-infrastructure
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        application:
+          - dotnet-sample
+          - user-service
+          - order-service
+          
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Build and Push Image
+        run: |
+          cd resources/applications/${{ matrix.application }}
+          
+          # Login to ACR
+          az acr login --name ${{ needs.deploy-infrastructure.outputs.acr_login_server }}
+          
+          # Build and push
+          docker build -t ${{ needs.deploy-infrastructure.outputs.acr_login_server }}/${{ matrix.application }}:${{ github.sha }} .
+          docker push ${{ needs.deploy-infrastructure.outputs.acr_login_server }}/${{ matrix.application }}:${{ github.sha }}
+          
+  deploy-monitoring:
+    name: Deploy Monitoring Stack
+    needs: [deploy-infrastructure, build-applications]
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Get AKS Credentials
+        run: |
+          az aks get-credentials \
+            --resource-group ${{ needs.deploy-infrastructure.outputs.resource_group }} \
+            --name ${{ needs.deploy-infrastructure.outputs.aks_cluster_name }}
+            
+      - name: Deploy Prometheus
+        run: |
+          kubectl apply -f resources/kubernetes/prometheus/
+          
+      - name: Deploy Grafana
+        run: |
+          kubectl apply -f resources/kubernetes/grafana/
+          
+      - name: Deploy Jaeger
+        run: |
+          kubectl apply -f resources/kubernetes/jaeger/
+          
+      - name: Deploy Applications
+        run: |
+          kubectl apply -f resources/kubernetes/applications/
+          
+  deploy-ai-monitoring:
+    name: Deploy AI-Enhanced Monitoring
+    needs: deploy-monitoring
+    if: ${{ inputs.deploy_ai_monitoring }}
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Deploy Azure SRE Agent Config
+        run: |
+          # Deploy AI monitoring configurations
+          kubectl apply -f resources/ai-agent-configs/
+          
+      - name: Configure AI Insights
+        run: |
+          # Configure AI-enhanced observability features
+          ./resources/scripts/configure-ai-monitoring.sh
+          
+  integration-tests:
+    name: Run Integration Tests
+    needs: [deploy-monitoring, deploy-ai-monitoring]
+    if: always()
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Run Observability Tests
+        run: |
+          cd resources/integration-examples
+          ./run-integration-tests.sh
+          
+      - name: Generate Load for Testing
+        run: |
+          ./resources/scripts/helpers/generate-load.sh --duration 300
+          
+      - name: Validate Metrics Collection
+        run: |
+          ./resources/scripts/validate-observability.sh
+          
+  notify:
+    name: Deployment Notification
+    needs: [integration-tests]
+    if: always()
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Send Notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          text: |
+            Observability Workshop Deployment ${{ job.status }}
+            Environment: ${{ inputs.environment }}
+            AI Monitoring: ${{ inputs.deploy_ai_monitoring }}
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }} 

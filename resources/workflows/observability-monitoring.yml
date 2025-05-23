@@ -1,0 +1,298 @@
+# Scheduled Observability Monitoring Workflow
+# This workflow runs periodic checks to ensure observability is functioning correctly
+
+name: Observability Health Check
+
+on:
+  schedule:
+    # Run every hour
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to monitor'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+      deep_analysis:
+        description: 'Run deep analysis (takes longer)'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  metrics-validation:
+    name: Validate Metrics Collection
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Check Prometheus health
+        run: |
+          # Verify Prometheus is healthy and scraping targets
+          PROMETHEUS_URL="http://prometheus.${{ inputs.environment || 'production' }}.example.com"
+          
+          # Check Prometheus status
+          curl -f ${PROMETHEUS_URL}/-/healthy || exit 1
+          
+          # Check all targets are up
+          UNHEALTHY_TARGETS=$(curl -s ${PROMETHEUS_URL}/api/v1/targets | \
+            jq -r '.data.activeTargets[] | select(.health != "up") | .labels.job' | wc -l)
+          
+          if [ "$UNHEALTHY_TARGETS" -gt 0 ]; then
+            echo "Found $UNHEALTHY_TARGETS unhealthy targets"
+            exit 1
+          fi
+          
+      - name: Validate critical metrics
+        run: |
+          # Check that critical metrics are being collected
+          ./resources/scripts/validate-critical-metrics.sh \
+            --environment ${{ inputs.environment || 'production' }} \
+            --metrics-list resources/monitoring-config/critical-metrics.yaml
+            
+      - name: Check metric freshness
+        run: |
+          # Ensure metrics are recent (not stale)
+          ./resources/scripts/check-metric-freshness.sh \
+            --max-age-minutes 5 \
+            --environment ${{ inputs.environment || 'production' }}
+            
+  logs-validation:
+    name: Validate Log Aggregation
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Check log ingestion rate
+        run: |
+          # Verify logs are being ingested at expected rate
+          ./resources/scripts/check-log-ingestion.sh \
+            --environment ${{ inputs.environment || 'production' }} \
+            --min-rate-per-minute 1000
+            
+      - name: Validate log parsing
+        run: |
+          # Check that logs are being parsed correctly
+          ./resources/scripts/validate-log-parsing.sh \
+            --sample-size 1000 \
+            --error-threshold 5
+            
+      - name: Check log retention
+        run: |
+          # Ensure logs are retained according to policy
+          ./resources/scripts/check-log-retention.sh \
+            --expected-days 30 \
+            --environment ${{ inputs.environment || 'production' }}
+            
+  tracing-validation:
+    name: Validate Distributed Tracing
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Generate test traces
+        run: |
+          # Create synthetic transactions to test tracing
+          ./resources/scripts/generate-test-traces.sh \
+            --environment ${{ inputs.environment || 'production' }} \
+            --count 10
+            
+      - name: Validate trace propagation
+        run: |
+          # Check that traces are properly propagated across services
+          ./resources/scripts/validate-trace-propagation.sh \
+            --environment ${{ inputs.environment || 'production' }} \
+            --timeout 60
+            
+      - name: Check trace completeness
+        run: |
+          # Ensure traces contain all expected spans
+          ./resources/scripts/check-trace-completeness.sh \
+            --environment ${{ inputs.environment || 'production' }} \
+            --completeness-threshold 95
+            
+  alerting-validation:
+    name: Validate Alerting System
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Test alert routing
+        run: |
+          # Send test alerts and verify routing
+          ./resources/scripts/test-alert-routing.sh \
+            --environment ${{ inputs.environment || 'production' }} \
+            --alert-types "critical,warning,info"
+            
+      - name: Check alert manager health
+        run: |
+          # Verify AlertManager is functioning
+          ALERTMANAGER_URL="http://alertmanager.${{ inputs.environment || 'production' }}.example.com"
+          
+          curl -f ${ALERTMANAGER_URL}/-/healthy || exit 1
+          
+      - name: Validate alert rules
+        run: |
+          # Check that all alert rules are valid and loaded
+          ./resources/scripts/validate-alert-rules.sh \
+            --rules-directory resources/alert-rules/ \
+            --environment ${{ inputs.environment || 'production' }}
+            
+  dashboard-validation:
+    name: Validate Dashboards
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Check Grafana health
+        run: |
+          # Verify Grafana is accessible
+          GRAFANA_URL="http://grafana.${{ inputs.environment || 'production' }}.example.com"
+          
+          curl -f ${GRAFANA_URL}/api/health || exit 1
+          
+      - name: Validate dashboard queries
+        run: |
+          # Check that all dashboard queries are working
+          ./resources/scripts/validate-dashboard-queries.sh \
+            --grafana-url "http://grafana.${{ inputs.environment || 'production' }}.example.com" \
+            --api-key ${{ secrets.GRAFANA_API_KEY }}
+            
+      - name: Check dashboard load times
+        run: |
+          # Ensure dashboards load within acceptable time
+          ./resources/scripts/check-dashboard-performance.sh \
+            --max-load-time 5 \
+            --environment ${{ inputs.environment || 'production' }}
+            
+  slo-validation:
+    name: Validate SLOs
+    runs-on: ubuntu-latest
+    if: ${{ inputs.deep_analysis == true || github.event_name == 'schedule' }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Calculate SLI metrics
+        run: |
+          # Calculate Service Level Indicators
+          ./resources/scripts/calculate-slis.sh \
+            --environment ${{ inputs.environment || 'production' }} \
+            --time-range "1h"
+            
+      - name: Check SLO compliance
+        run: |
+          # Verify SLOs are being met
+          ./resources/scripts/check-slo-compliance.sh \
+            --slo-config resources/slo-definitions.yaml \
+            --environment ${{ inputs.environment || 'production' }}
+            
+      - name: Generate SLO report
+        run: |
+          # Create detailed SLO compliance report
+          ./resources/scripts/generate-slo-report.sh \
+            --format html \
+            --output slo-report.html
+            
+      - name: Upload SLO report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: slo-report-${{ github.run_id }}
+          path: slo-report.html
+          
+  ai-monitoring-validation:
+    name: Validate AI Monitoring
+    runs-on: ubuntu-latest
+    if: ${{ inputs.environment == 'production' || inputs.deep_analysis == true }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Check AI agent health
+        run: |
+          # Verify Azure SRE Agent is functioning
+          ./resources/scripts/check-sre-agent-health.sh \
+            --environment ${{ inputs.environment || 'production' }}
+            
+      - name: Validate anomaly detection
+        run: |
+          # Test anomaly detection capabilities
+          ./resources/scripts/test-anomaly-detection.sh \
+            --inject-anomalies true \
+            --detection-window 5m
+            
+      - name: Check AI insights generation
+        run: |
+          # Verify AI is generating useful insights
+          ./resources/scripts/check-ai-insights.sh \
+            --min-insights-per-hour 10 \
+            --quality-threshold 0.8
+            
+  report-generation:
+    name: Generate Health Report
+    needs: [metrics-validation, logs-validation, tracing-validation, alerting-validation, dashboard-validation]
+    if: always()
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Collect results
+        run: |
+          # Aggregate results from all validation jobs
+          ./resources/scripts/collect-validation-results.sh \
+            --run-id ${{ github.run_id }}
+            
+      - name: Generate health report
+        run: |
+          # Create comprehensive health report
+          ./resources/scripts/generate-health-report.sh \
+            --format markdown \
+            --include-recommendations true \
+            --output observability-health-report.md
+            
+      - name: Send notifications
+        if: failure()
+        run: |
+          # Send alerts for any failures
+          ./resources/scripts/send-health-notifications.sh \
+            --channels "slack,email,teams" \
+            --severity "high" \
+            --report observability-health-report.md
+            
+      - name: Update status page
+        run: |
+          # Update public status page
+          ./resources/scripts/update-status-page.sh \
+            --component "observability" \
+            --status "${{ job.status }}" \
+            --environment ${{ inputs.environment || 'production' }}
+            
+      - name: Archive reports
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: observability-health-reports-${{ github.run_id }}
+          path: |
+            observability-health-report.md
+            validation-results/
+            performance-metrics/ 

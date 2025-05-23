@@ -1,0 +1,345 @@
+# CI/CD Workflow with Observability Integration
+# This workflow demonstrates how to integrate observability into your CI/CD pipeline
+
+name: Application CI/CD with Observability
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'resources/applications/**'
+      - '.github/workflows/application-cicd.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'resources/applications/**'
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  NODE_VERSION: '18.x'
+  REGISTRY: ghcr.io
+
+jobs:
+  code-quality:
+    name: Code Quality & Security
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          
+      - name: Code Analysis with SonarCloud
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          
+      - name: Security Scan with Snyk
+        uses: snyk/actions/dotnet@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+          
+      - name: Dependency Check
+        run: |
+          # Check for vulnerable dependencies
+          dotnet list package --vulnerable --include-transitive
+          
+  build-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [dotnet-sample, user-service, order-service]
+        
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          
+      - name: Restore dependencies
+        run: |
+          cd resources/applications/${{ matrix.app }}
+          dotnet restore
+          
+      - name: Build application
+        run: |
+          cd resources/applications/${{ matrix.app }}
+          dotnet build --configuration Release --no-restore
+          
+      - name: Run unit tests with coverage
+        run: |
+          cd resources/applications/${{ matrix.app }}
+          dotnet test --no-restore --verbosity normal \
+            --collect:"XPlat Code Coverage" \
+            --logger trx --results-directory coverage
+            
+      - name: Upload test results to Azure DevOps
+        uses: azure/publish-test-results@v1
+        if: always()
+        with:
+          test-results-files: '**/coverage/*.trx'
+          test-run-title: '${{ matrix.app }} Test Results'
+          
+      - name: Generate telemetry for build metrics
+        run: |
+          # Send custom metrics to Application Insights
+          curl -X POST https://dc.services.visualstudio.com/v2/track \
+            -H "Content-Type: application/json" \
+            -d '{
+              "name": "Microsoft.ApplicationInsights.Event",
+              "time": "'$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)'",
+              "iKey": "${{ secrets.APP_INSIGHTS_KEY }}",
+              "data": {
+                "baseType": "EventData",
+                "baseData": {
+                  "name": "BuildCompleted",
+                  "properties": {
+                    "application": "${{ matrix.app }}",
+                    "branch": "${{ github.ref_name }}",
+                    "commit": "${{ github.sha }}",
+                    "workflow": "${{ github.workflow }}"
+                  }
+                }
+              }
+            }'
+            
+  container-build:
+    name: Build Container Images
+    needs: [code-quality, build-test]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    strategy:
+      matrix:
+        app: [dotnet-sample, user-service, order-service]
+        
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.app }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha,prefix={{branch}}-
+            type=raw,value=latest,enable={{is_default_branch}}
+            
+      - name: Build and push with telemetry
+        uses: docker/build-push-action@v5
+        with:
+          context: resources/applications/${{ matrix.app }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            APP_INSIGHTS_CONNECTION_STRING=${{ secrets.APP_INSIGHTS_CONNECTION_STRING }}
+            ENABLE_TELEMETRY=true
+            BUILD_NUMBER=${{ github.run_number }}
+            
+  deploy-staging:
+    name: Deploy to Staging
+    needs: container-build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    environment: staging
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Get AKS Credentials
+        run: |
+          az aks get-credentials \
+            --resource-group rg-obs-workshop-staging \
+            --name aks-obs-workshop-staging
+            
+      - name: Deploy to Kubernetes
+        run: |
+          # Update image tags in manifests
+          for app in dotnet-sample user-service order-service; do
+            kubectl set image deployment/${app} \
+              ${app}=${{ env.REGISTRY }}/${{ github.repository }}/${app}:develop-${{ github.sha }} \
+              -n applications
+          done
+          
+      - name: Create deployment annotation
+        run: |
+          # Annotate deployment in monitoring systems
+          kubectl annotate deployment -n applications --all \
+            "deployment.observability.io/version=${{ github.sha }}" \
+            "deployment.observability.io/timestamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            "deployment.observability.io/deployer=${{ github.actor }}" \
+            --overwrite
+            
+      - name: Wait for rollout
+        run: |
+          for app in dotnet-sample user-service order-service; do
+            kubectl rollout status deployment/${app} -n applications --timeout=300s
+          done
+          
+      - name: Run smoke tests
+        run: |
+          # Execute smoke tests against staging
+          ./resources/scripts/run-smoke-tests.sh staging
+          
+      - name: Send deployment event to monitoring
+        run: |
+          # Create deployment marker in Grafana
+          curl -X POST http://grafana-staging.example.com/api/annotations \
+            -H "Authorization: Bearer ${{ secrets.GRAFANA_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "dashboardId": 1,
+              "panelId": 1,
+              "time": '$(date +%s000)',
+              "tags": ["deployment", "staging", "${{ github.sha }}"],
+              "text": "Deployed by ${{ github.actor }} from ${{ github.ref }}"
+            }'
+            
+  performance-validation:
+    name: Performance Validation
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Run load tests
+        run: |
+          # Execute performance tests
+          ./resources/performance-tests/run-load-tests.sh \
+            --environment staging \
+            --duration 600 \
+            --users 100
+            
+      - name: Analyze performance metrics
+        run: |
+          # Query Prometheus for performance data
+          ./resources/scripts/analyze-performance.sh \
+            --environment staging \
+            --baseline main \
+            --candidate ${{ github.sha }}
+            
+      - name: Check SLOs
+        run: |
+          # Validate Service Level Objectives
+          ./resources/scripts/check-slos.sh staging
+          
+      - name: Generate performance report
+        uses: actions/upload-artifact@v3
+        with:
+          name: performance-report-${{ github.sha }}
+          path: performance-report.html
+          
+  deploy-production:
+    name: Deploy to Production
+    needs: [deploy-staging, performance-validation]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Create change request
+        run: |
+          # Integration with change management
+          echo "Creating change request for production deployment"
+          
+      - name: Blue-Green Deployment
+        run: |
+          # Implement blue-green deployment strategy
+          ./resources/scripts/blue-green-deploy.sh \
+            --environment production \
+            --version ${{ github.sha }}
+            
+      - name: Progressive rollout
+        run: |
+          # Gradually increase traffic to new version
+          ./resources/scripts/progressive-rollout.sh \
+            --initial-percentage 10 \
+            --increment 20 \
+            --interval 300
+            
+      - name: Monitor deployment health
+        run: |
+          # Continuously monitor deployment health
+          ./resources/scripts/monitor-deployment.sh \
+            --environment production \
+            --duration 1800 \
+            --alert-threshold 5
+            
+  observability-validation:
+    name: Validate Observability
+    needs: [deploy-staging, deploy-production]
+    if: always()
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Verify metrics collection
+        run: |
+          # Ensure all metrics are being collected
+          ./resources/scripts/validate-metrics.sh
+          
+      - name: Verify distributed tracing
+        run: |
+          # Validate trace propagation
+          ./resources/scripts/validate-tracing.sh
+          
+      - name: Verify log aggregation
+        run: |
+          # Check log collection and correlation
+          ./resources/scripts/validate-logging.sh
+          
+      - name: Generate observability report
+        run: |
+          # Create comprehensive observability report
+          ./resources/scripts/generate-observability-report.sh
+          
+      - name: Upload observability artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: observability-report-${{ github.sha }}
+          path: |
+            observability-report.html
+            metrics-dashboard.json
+            trace-analysis.json 
