@@ -1,0 +1,115 @@
+# Prometheus alerting rules
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-rules
+  namespace: monitoring
+data:
+  alert-rules.yml: |
+    groups:
+    - name: kubernetes-apps
+      rules:
+      - alert: KubePodCrashLooping
+        expr: rate(kube_pod_container_status_restarts_total[15m]) > 0
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: Kubernetes pod crash looping (instance {{ $labels.instance }})
+          description: "Pod {{ $labels.pod }} is crash looping\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+      - alert: KubePodNotReady
+        expr: kube_pod_status_phase{phase=~"Pending|Unknown"} > 0
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: Kubernetes Pod not ready (instance {{ $labels.instance }})
+          description: "Pod {{ $labels.pod }} has been in a non-ready state for longer than 15 minutes.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+      - alert: KubeDeploymentReplicasMismatch
+        expr: kube_deployment_spec_replicas != kube_deployment_status_available_replicas
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: Kubernetes Deployment replicas mismatch (instance {{ $labels.instance }})
+          description: "Deployment Replicas mismatch\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+    - name: kubernetes-nodes
+      rules:
+      - alert: KubernetesNodeReady
+        expr: kube_node_status_condition{condition="Ready",status="true"} == 0
+        for: 10m
+        labels:
+          severity: critical
+        annotations:
+          summary: Kubernetes Node ready (instance {{ $labels.instance }})
+          description: "Node {{ $labels.node }} has been unready for a long time\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+      - alert: KubernetesMemoryPressure
+        expr: kube_node_status_condition{condition="MemoryPressure",status="true"} == 1
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: Kubernetes memory pressure (instance {{ $labels.instance }})
+          description: "Node {{ $labels.node }} has MemoryPressure condition\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+      - alert: KubernetesDiskPressure
+        expr: kube_node_status_condition{condition="DiskPressure",status="true"} == 1
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: Kubernetes disk pressure (instance {{ $labels.instance }})
+          description: "Node {{ $labels.node }} has DiskPressure condition\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+    - name: application-alerts
+      rules:
+      - alert: HighErrorRate
+        expr: (rate(http_requests_total{status=~"5.."}[5m]) / rate(http_requests_total[5m])) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: High error rate detected
+          description: "Error rate is {{ $value | humanizePercentage }} for {{ $labels.job }}"
+
+      - alert: HighLatency
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) > 0.5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: High latency detected
+          description: "95th percentile latency is {{ $value }}s for {{ $labels.job }}"
+
+      - alert: ServiceDown
+        expr: up == 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: Service is down
+          description: "Service {{ $labels.job }} has been down for more than 5 minutes"
+
+    - name: istio-alerts
+      rules:
+      - alert: IstioHighRequestLatency
+        expr: histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket[1m])) by (le, destination_service_name)) > 1000
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: Istio high request latency
+          description: "Istio 99th percentile latency is {{ $value }}ms for service {{ $labels.destination_service_name }}"
+
+      - alert: IstioHighRequestErrorRate
+        expr: sum(rate(istio_requests_total{response_code!~"2.."}[5m])) by (destination_service_name) / sum(rate(istio_requests_total[5m])) by (destination_service_name) > 0.01
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: Istio high request error rate
+          description: "Istio error rate is {{ $value | humanizePercentage }} for service {{ $labels.destination_service_name }}"

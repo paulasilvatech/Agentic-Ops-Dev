@@ -1,0 +1,160 @@
+# .NET Sample Application Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-sample-app
+  namespace: applications
+  labels:
+    app: dotnet-sample-app
+    version: v1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dotnet-sample-app
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: dotnet-sample-app
+        version: v1
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "80"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+      - name: dotnet-sample-app
+        image: dotnet-sample-app:latest
+        ports:
+        - containerPort: 80
+          name: http
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"
+        - name: APPLICATIONINSIGHTS_CONNECTION_STRING
+          valueFrom:
+            secretKeyRef:
+              name: app-insights-secret
+              key: connection-string
+        - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+          value: "http://jaeger-collector:14268/api/traces"
+        - name: OTEL_SERVICE_NAME
+          value: "dotnet-sample-app"
+        - name: OTEL_SERVICE_VERSION
+          value: "1.0.0"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        livenessProbe:
+          httpGet:
+            path: /health/live
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        startupProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          failureThreshold: 30
+---
+# Service for .NET Sample Application
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnet-sample-app
+  namespace: applications
+  labels:
+    app: dotnet-sample-app
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "80"
+    prometheus.io/path: "/metrics"
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    app: dotnet-sample-app
+---
+# Secret for Application Insights connection string
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-insights-secret
+  namespace: applications
+type: Opaque
+stringData:
+  connection-string: "InstrumentationKey=YOUR_INSTRUMENTATION_KEY;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/"
+---
+# Virtual Service for Istio (if Istio is enabled)
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: dotnet-sample-app
+  namespace: applications
+spec:
+  hosts:
+  - dotnet-sample-app
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: dotnet-sample-app
+        port:
+          number: 80
+    fault:
+      delay:
+        percentage:
+          value: 1
+        fixedDelay: 5s
+---
+# Destination Rule for Istio
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: dotnet-sample-app
+  namespace: applications
+spec:
+  host: dotnet-sample-app
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+---
+# Service Monitor for Prometheus
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: dotnet-sample-app
+  namespace: applications
+  labels:
+    app: dotnet-sample-app
+spec:
+  selector:
+    matchLabels:
+      app: dotnet-sample-app
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 30s

@@ -1,0 +1,22 @@
+# Example Terraform variables file for Azure Observability Workshop
+# Copy this file to terraform.tfvars and update with your values
+
+# REQUIRED: Your Azure subscription ID
+subscription_id = "00000000-0000-0000-0000-000000000000"
+
+# Optional: Override default values
+# location = "East US 2"
+# environment = "workshop"
+# admin_username = "azureuser"
+# admin_password = "ObservabilityWorkshop@2024!"
+# kubernetes_version = "1.28.0"
+# node_count = 3
+# vm_size = "Standard_D4s_v3"
+# log_retention_days = 90
+
+# Additional tags (optional)
+# tags = {
+#   "Department" = "Engineering"
+#   "CostCenter" = "12345"
+#   "Owner"      = "yourname@company.com"
+# }
