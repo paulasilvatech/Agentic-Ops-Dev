@@ -105,9 +105,9 @@ The workshop is organized into progressive modules, allowing you to choose the d
 ## 🔑 Prerequisites
 
 ### Required Accounts
-- Azure subscription with Contributor access
-- GitHub account with GitHub Copilot access (trial available)
-- Access to Azure SRE Agent preview (registration provided)
+- Create [Azure Free Account](https://go.microsoft.com/fwlink/?linkid=859151)
+- GitHub account with [GitHub Copilot Free](https://code.visualstudio.com/docs/copilot/setup-simplified)
+- Access to [Azure SRE Agent preview](https://microsoft.qualtrics.com/jfe/form/SV_cw3LUvdoaJ0SdcW)
 
 ### Technical Requirements
 - Development environment: VS Code, Azure CLI, Git
@@ -152,4 +152,4 @@ A hands-on workshop for implementing comprehensive observability solutions for c
 
 ## 👤 Credits
 
-This Azure AI Ops Observability Workshop was developed by [Paula Silva](https://github.com/paulanunes85), Developer Productivity Global Black Belt at Microsoft Americas. The workshop provides a comprehensive approach to implementing AI-enhanced observability solutions for modern cloud applications.
+This Azure AI Ops Observability Workshop was developed by [Paula Silva](https://github.com/paulanunes85), Developer Productivity [Global Black Belt at Microsoft Americas](https://www.linkedin.com/in/paulanunes/). The workshop provides a comprehensive approach to implementing AI-enhanced observability solutions for modern cloud applications.
