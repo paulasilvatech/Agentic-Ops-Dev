@@ -14,7 +14,6 @@ resource "azurerm_kubernetes_cluster" "main" {
     node_count          = 3
     vm_size             = "Standard_D4s_v3"
     vnet_subnet_id      = azurerm_subnet.aks.id
-    enable_auto_scaling = true
     min_count          = 1
     max_count          = 5
     
@@ -44,7 +43,6 @@ resource "azurerm_kubernetes_cluster" "main" {
 
   # Azure Active Directory Integration
   azure_active_directory_role_based_access_control {
-    managed                = true
     admin_group_object_ids = []
   }
 
@@ -61,7 +59,6 @@ resource "azurerm_kubernetes_cluster_node_pool" "workload" {
   vm_size              = "Standard_D8s_v3"
   node_count           = 2
   vnet_subnet_id       = azurerm_subnet.aks.id
-  enable_auto_scaling  = true
   min_count           = 0
   max_count           = 10
 
