@@ -913,6 +913,40 @@ Azure SRE Agent represents the future of site reliability engineering, combining
 - **Creates detailed GitHub issues** with root cause analysis
 - **Learns from patterns** to prevent future incidents
 
+### 🤖 SRE Agent Workflow Process
+
+```mermaid
+flowchart TD
+    A[Azure Monitor Alert] --> B[SRE Agent Detection]
+    B --> C[Automated Investigation]
+    C --> D[Data Collection]
+    D --> E[AI Analysis]
+    
+    E --> F{Severity Assessment}
+    F -->|Critical| G[Immediate Auto-Remediation]
+    F -->|High| H[Human Approval Required]
+    F -->|Medium| I[Generate Recommendations]
+    
+    G --> J[Execute Fix]
+    H --> K[Wait for Approval]
+    K --> L[Execute Approved Actions]
+    I --> M[Create GitHub Issue]
+    
+    J --> N[Monitor Recovery]
+    L --> N
+    M --> N
+    
+    N --> O[Post-Incident Analysis]
+    O --> P[Update Knowledge Base]
+    P --> Q[Improve Detection Rules]
+    
+    style A fill:#ffcdd2
+    style B fill:#fff3e0
+    style E fill:#e8f5e8
+    style G fill:#bbdefb
+    style J fill:#c8e6c9
+```
+
 **Key Capabilities**:
 
 1. **Continuous Health Monitoring**:
@@ -1221,3 +1255,9 @@ Before the Intermediate Workshop, try to:
 ---
 
 **Continue to Part 3** for the Intermediate Workshop, or review any concepts from today's session that need reinforcement.
+
+---
+
+## 🔙 Navigation
+
+**[⬅️ Back to Main README](../README.md)**

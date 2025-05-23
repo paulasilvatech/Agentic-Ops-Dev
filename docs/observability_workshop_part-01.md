@@ -1804,3 +1804,9 @@ If you encounter issues:
 5. **📖 Consult documentation**: Reference troubleshooting section in Part 5
 
 **🎉 Congratulations!** You've successfully completed Part 1 of the Azure Observability Workshop. Your foundation is now ready for advanced monitoring scenarios.
+
+---
+
+## 🔙 Navigation
+
+**[⬅️ Back to Main README](../README.md)**

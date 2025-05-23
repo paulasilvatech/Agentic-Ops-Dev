@@ -376,6 +376,40 @@ with tracer.start_as_current_span("user-service-call") as span:
 
 ## ☁️ Azure Observability Ecosystem
 
+### 🏗️ Complete Observability Data Flow
+
+```mermaid
+flowchart TD
+    A[Applications & Services] --> B[OpenTelemetry SDKs]
+    C[Infrastructure] --> D[Azure Monitor Agent]
+    E[Kubernetes Clusters] --> F[Container Insights]
+    
+    B --> G[Application Insights]
+    D --> H[Log Analytics Workspace]
+    F --> H
+    G --> H
+    
+    H --> I[Azure Monitor]
+    I --> J[Intelligent Alerts]
+    I --> K[Custom Dashboards]
+    I --> L[Azure SRE Agent]
+    
+    J --> M[Action Groups]
+    M --> N[Automated Remediation]
+    M --> O[Notification Channels]
+    
+    L --> P[Predictive Analysis]
+    L --> Q[Self-Healing Actions]
+    
+    style A fill:#e1f5fe
+    style G fill:#00bcf2,stroke:#fff,color:#fff
+    style H fill:#7fba00,stroke:#fff,color:#fff
+    style I fill:#0078d4,stroke:#fff,color:#fff
+    style L fill:#ffb900,stroke:#fff,color:#fff
+```
+
+---
+
 Microsoft Azure provides a comprehensive set of observability services that work together to provide end-to-end visibility into your applications and infrastructure.
 
 ### 📊 Core Azure Monitor Services
@@ -1028,3 +1062,9 @@ Welcome to the world of modern observability! Let's build better, more reliable 
 - [Grafana](https://grafana.com/)
 - [Jaeger](https://www.jaegertracing.io/)
 - [OpenTelemetry](https://opentelemetry.io/)
+
+---
+
+## 🔙 Navigation
+
+**[⬅️ Back to Main README](../README.md)**

@@ -950,6 +950,60 @@ echo "✅ Check Application Insights for enriched telemetry data"
 
 ## ☁️ Module 2: Multi-Cloud Monitoring Integration (90 minutes)
 
+### 🏗️ Multi-Cloud Monitoring Architecture
+
+```mermaid
+graph TB
+    subgraph "Application Layer"
+        US[User Service]
+        OS[Order Service]
+        GW[API Gateway]
+    end
+    
+    subgraph "Monitoring Platforms"
+        AI[Azure Application Insights]
+        DD[Datadog]
+        PM[Prometheus]
+        GF[Grafana]
+    end
+    
+    subgraph "Data Collection"
+        OT[OpenTelemetry SDK]
+        AM[Azure Monitor Agent]
+        PE[Prometheus Exporters]
+    end
+    
+    subgraph "Unified Dashboard"
+        UD[Dashboard Service]
+        API[Unified API]
+        WEB[Web Dashboard]
+    end
+    
+    US --> OT
+    OS --> OT
+    GW --> OT
+    
+    OT --> AI
+    OT --> DD
+    US --> PE
+    OS --> PE
+    PE --> PM
+    
+    AI --> UD
+    DD --> UD
+    PM --> UD
+    GF --> UD
+    
+    UD --> API
+    API --> WEB
+    
+    style AI fill:#00bcf2,stroke:#fff,color:#fff
+    style DD fill:#632ca6,stroke:#fff,color:#fff
+    style PM fill:#e6522c,stroke:#fff,color:#fff
+    style GF fill:#f46800,stroke:#fff,color:#fff
+    style UD fill:#4caf50,stroke:#fff,color:#fff
+```
+
 ### 🐶 2.1 Setting Up Datadog Integration
 **Time Required**: 30 minutes
 
@@ -1726,3 +1780,9 @@ curl http://localhost:5001/api/dashboard/health | jq
 ---
 
 **Continue to Part 4** for the remaining intermediate modules (CI/CD Integration and Security Monitoring) and then Part 5 for the Advanced Workshop.
+
+---
+
+## 🔙 Navigation
+
+**[⬅️ Back to Main README](../README.md)**
