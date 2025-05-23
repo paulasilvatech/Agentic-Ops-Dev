@@ -1,0 +1,564 @@
+# Complete Azure DevOps Pipeline with Observability
+# This pipeline demonstrates full CI/CD with integrated observability
+
+trigger:
+  branches:
+    include:
+    - main
+    - develop
+    - feature/*
+  paths:
+    exclude:
+    - README.md
+    - docs/*
+
+pr:
+  branches:
+    include:
+    - main
+    - develop
+
+variables:
+  # Container Registry
+  dockerRegistryServiceConnection: 'ACR-Connection'
+  imageRepository: 'observability-workshop'
+  containerRegistry: 'acrworkshop.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  tag: '$(Build.BuildId)'
+  
+  # Kubernetes
+  kubernetesServiceConnection: 'AKS-Connection'
+  k8sNamespace: 'applications'
+  
+  # Azure Resources
+  azureSubscription: 'Azure-Subscription'
+  resourceGroup: 'rg-observability-workshop'
+  location: 'eastus2'
+  
+  # Monitoring
+  appInsightsKey: '$(APP_INSIGHTS_KEY)'
+  datadogApiKey: '$(DATADOG_API_KEY)'
+  
+  # SonarQube
+  sonarQubeServiceConnection: 'SonarQube-Connection'
+  sonarQubeProjectKey: 'observability-workshop'
+
+stages:
+- stage: Build
+  displayName: 'Build and Test'
+  jobs:
+  - job: BuildTest
+    displayName: 'Build, Test & Analyze'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    
+    # Code Quality Analysis
+    - task: SonarQubePrepare@5
+      displayName: 'Prepare SonarQube Analysis'
+      inputs:
+        SonarQube: '$(sonarQubeServiceConnection)'
+        scannerMode: 'MSBuild'
+        projectKey: '$(sonarQubeProjectKey)'
+        projectName: 'Observability Workshop'
+        extraProperties: |
+          sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/**/coverage.opencover.xml
+          sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/**/*.trx
+    
+    # Build Application
+    - task: DotNetCoreCLI@2
+      displayName: 'Restore Dependencies'
+      inputs:
+        command: 'restore'
+        projects: '**/*.csproj'
+        feedsToUse: 'select'
+    
+    - task: DotNetCoreCLI@2
+      displayName: 'Build Application'
+      inputs:
+        command: 'build'
+        projects: '**/*.csproj'
+        arguments: '--configuration Release'
+    
+    # Run Tests with Coverage
+    - task: DotNetCoreCLI@2
+      displayName: 'Run Unit Tests'
+      inputs:
+        command: 'test'
+        projects: '**/*Tests/*.csproj'
+        arguments: '--configuration Release --collect:"XPlat Code Coverage" --logger trx --results-directory $(Agent.TempDirectory)'
+        publishTestResults: true
+    
+    # Security Scanning
+    - task: WhiteSource@21
+      displayName: 'Security Vulnerability Scan'
+      inputs:
+        cwd: '$(System.DefaultWorkingDirectory)'
+        projectName: 'observability-workshop'
+    
+    # Publish Code Coverage
+    - task: PublishCodeCoverageResults@1
+      displayName: 'Publish Code Coverage'
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
+    
+    # Complete SonarQube Analysis
+    - task: SonarQubeAnalyze@5
+      displayName: 'Run SonarQube Analysis'
+    
+    - task: SonarQubePublish@5
+      displayName: 'Publish SonarQube Results'
+      inputs:
+        pollingTimeoutSec: '300'
+    
+    # Build and Push Docker Image
+    - task: Docker@2
+      displayName: 'Build Docker Image'
+      inputs:
+        containerRegistry: '$(dockerRegistryServiceConnection)'
+        repository: '$(imageRepository)'
+        command: 'build'
+        Dockerfile: '$(dockerfilePath)'
+        tags: |
+          $(tag)
+          latest
+        arguments: |
+          --build-arg APP_INSIGHTS_KEY=$(appInsightsKey)
+          --build-arg BUILD_NUMBER=$(Build.BuildId)
+          --build-arg BUILD_DATE=$(Build.BuildTime)
+          --label "com.microsoft.azure-devops.build-id=$(Build.BuildId)"
+          --label "com.microsoft.azure-devops.build-number=$(Build.BuildNumber)"
+          --label "com.microsoft.azure-devops.build-uri=$(Build.BuildUri)"
+    
+    - task: Docker@2
+      displayName: 'Push Docker Image'
+      inputs:
+        containerRegistry: '$(dockerRegistryServiceConnection)'
+        repository: '$(imageRepository)'
+        command: 'push'
+        tags: |
+          $(tag)
+          latest
+    
+    # Container Scanning
+    - task: AquaSecScanner@4
+      displayName: 'Scan Container Image'
+      inputs:
+        image: '$(containerRegistry)/$(imageRepository):$(tag)'
+        scanner: 'trivy'
+        runQuality: true
+        severity: 'CRITICAL,HIGH'
+    
+    # Create Build Artifacts
+    - task: CopyFiles@2
+      displayName: 'Copy Kubernetes Manifests'
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)/kubernetes'
+        Contents: '**/*.yaml'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/kubernetes'
+    
+    - task: CopyFiles@2
+      displayName: 'Copy Scripts'
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)/scripts'
+        Contents: '**/*.sh'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/scripts'
+    
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifacts'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+    
+    # Send Build Telemetry
+    - task: PowerShell@2
+      displayName: 'Send Build Metrics to Application Insights'
+      inputs:
+        targetType: 'inline'
+        script: |
+          $customEvent = @{
+            name = "Microsoft.ApplicationInsights.Event"
+            time = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+            iKey = "$(appInsightsKey)"
+            data = @{
+              baseType = "EventData"
+              baseData = @{
+                name = "BuildCompleted"
+                properties = @{
+                  BuildId = "$(Build.BuildId)"
+                  BuildNumber = "$(Build.BuildNumber)"
+                  SourceBranch = "$(Build.SourceBranch)"
+                  RepositoryName = "$(Build.Repository.Name)"
+                  BuildResult = "$(Agent.JobStatus)"
+                  Duration = $env:SYSTEM_TOTALJOBSINPROGRESS
+                }
+              }
+            }
+          }
+          
+          $json = $customEvent | ConvertTo-Json -Depth 10
+          Invoke-RestMethod -Uri "https://dc.services.visualstudio.com/v2/track" -Method Post -Body $json -ContentType "application/json"
+
+- stage: DeployDev
+  displayName: 'Deploy to Development'
+  dependsOn: Build
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
+  jobs:
+  - deployment: DeployToDev
+    displayName: 'Deploy to Dev Environment'
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'development'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+          
+          - task: KubernetesManifest@0
+            displayName: 'Create Namespace'
+            inputs:
+              action: 'deploy'
+              kubernetesServiceConnection: '$(kubernetesServiceConnection)'
+              namespace: 'dev'
+              manifests: |
+                $(Pipeline.Workspace)/drop/kubernetes/namespace.yaml
+          
+          - task: KubernetesManifest@0
+            displayName: 'Deploy to Kubernetes'
+            inputs:
+              action: 'deploy'
+              kubernetesServiceConnection: '$(kubernetesServiceConnection)'
+              namespace: 'dev'
+              manifests: |
+                $(Pipeline.Workspace)/drop/kubernetes/deployment.yaml
+                $(Pipeline.Workspace)/drop/kubernetes/service.yaml
+              containers: |
+                $(containerRegistry)/$(imageRepository):$(tag)
+          
+          - task: Bash@3
+            displayName: 'Run Smoke Tests'
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Wait for deployment to be ready
+                kubectl wait --for=condition=available --timeout=300s deployment/$(imageRepository) -n dev
+                
+                # Get service endpoint
+                SERVICE_IP=$(kubectl get svc $(imageRepository) -n dev -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+                
+                # Run smoke tests
+                curl -f http://$SERVICE_IP/health || exit 1
+                curl -f http://$SERVICE_IP/ready || exit 1
+          
+          - task: PowerShell@2
+            displayName: 'Create Deployment Annotation'
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Create Grafana annotation
+                $annotation = @{
+                  dashboardId = 1
+                  panelId = 1
+                  time = [DateTimeOffset]::UtcNow.ToUnixTimeMilliseconds()
+                  tags = @("deployment", "dev", "$(Build.BuildNumber)")
+                  text = "Deployed build $(Build.BuildNumber) to development"
+                }
+                
+                $headers = @{
+                  "Authorization" = "Bearer $(GRAFANA_API_KEY)"
+                  "Content-Type" = "application/json"
+                }
+                
+                Invoke-RestMethod -Uri "https://grafana.example.com/api/annotations" -Method Post -Headers $headers -Body ($annotation | ConvertTo-Json)
+
+- stage: LoadTest
+  displayName: 'Load Testing'
+  dependsOn: DeployDev
+  condition: succeeded()
+  jobs:
+  - job: RunLoadTests
+    displayName: 'Run Load Tests'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: k6-load-test@0
+      displayName: 'Run k6 Load Test'
+      inputs:
+        filename: '$(System.DefaultWorkingDirectory)/tests/load-test.js'
+        cloudApiToken: '$(K6_CLOUD_TOKEN)'
+    
+    - task: PublishTestResults@2
+      displayName: 'Publish Load Test Results'
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '**/k6-results.xml'
+        testRunTitle: 'Load Test Results'
+
+- stage: DeployStaging
+  displayName: 'Deploy to Staging'
+  dependsOn: LoadTest
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
+  jobs:
+  - deployment: DeployToStaging
+    displayName: 'Deploy to Staging Environment'
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'staging'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+          
+          - task: HelmDeploy@0
+            displayName: 'Deploy using Helm'
+            inputs:
+              connectionType: 'Azure Resource Manager'
+              azureSubscription: '$(azureSubscription)'
+              azureResourceGroup: '$(resourceGroup)'
+              kubernetesCluster: 'aks-staging'
+              namespace: 'staging'
+              command: 'upgrade'
+              chartType: 'FilePath'
+              chartPath: '$(Pipeline.Workspace)/drop/kubernetes/helm-chart'
+              releaseName: '$(imageRepository)'
+              overrideValues: |
+                image.repository=$(containerRegistry)/$(imageRepository)
+                image.tag=$(tag)
+                env=staging
+                monitoring.enabled=true
+                monitoring.datadog.enabled=true
+              waitForExecution: true
+          
+          - task: AzureCLI@2
+            displayName: 'Run Integration Tests'
+            inputs:
+              azureSubscription: '$(azureSubscription)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                # Run integration tests against staging
+                npm install -g newman
+                newman run $(Pipeline.Workspace)/drop/tests/postman-collection.json \
+                  -e $(Pipeline.Workspace)/drop/tests/staging-environment.json \
+                  --reporters cli,junit \
+                  --reporter-junit-export $(Agent.TempDirectory)/integration-test-results.xml
+          
+          - task: PublishTestResults@2
+            displayName: 'Publish Integration Test Results'
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '$(Agent.TempDirectory)/integration-test-results.xml'
+              testRunTitle: 'Integration Test Results - Staging'
+
+- stage: DeployProduction
+  displayName: 'Deploy to Production'
+  dependsOn: DeployStaging
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  jobs:
+  - deployment: DeployToProduction
+    displayName: 'Deploy to Production Environment'
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'production'
+    strategy:
+      canary:
+        increments: [10, 50, 100]
+        preDeploy:
+          steps:
+          - task: ServiceNow-DevOps-Agent-Notification@1
+            displayName: 'Create Change Request'
+            inputs:
+              connectedServiceName: 'ServiceNow'
+              changeRequestDetails: |
+                {
+                  "short_description": "Deploy $(imageRepository):$(tag) to production",
+                  "description": "Automated deployment from Azure DevOps pipeline $(Build.BuildNumber)",
+                  "assignment_group": "SRE Team",
+                  "impact": "2",
+                  "urgency": "3"
+                }
+        
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+          
+          - task: KubernetesManifest@0
+            displayName: 'Deploy Canary'
+            inputs:
+              action: 'deploy'
+              kubernetesServiceConnection: '$(kubernetesServiceConnection)'
+              namespace: 'production'
+              manifests: |
+                $(Pipeline.Workspace)/drop/kubernetes/deployment.yaml
+              containers: |
+                $(containerRegistry)/$(imageRepository):$(tag)
+              strategy: 'canary'
+              trafficSplitMethod: 'smi'
+              percentage: $(strategy.increment)
+          
+          - task: Bash@3
+            displayName: 'Monitor Canary Health'
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Monitor canary deployment for 5 minutes
+                END_TIME=$(($(date +%s) + 300))
+                
+                while [ $(date +%s) -lt $END_TIME ]; do
+                  # Check error rate
+                  ERROR_RATE=$(curl -s "http://prometheus:9090/api/v1/query?query=rate(http_requests_total{status=~\"5..\",version=\"$(tag)\"}[1m])" | jq -r '.data.result[0].value[1]')
+                  
+                  if (( $(echo "$ERROR_RATE > 0.05" | bc -l) )); then
+                    echo "High error rate detected: $ERROR_RATE"
+                    exit 1
+                  fi
+                  
+                  sleep 30
+                done
+          
+          - task: Datadog@0
+            displayName: 'Create Datadog Event'
+            inputs:
+              datadogApiKey: '$(datadogApiKey)'
+              eventTitle: 'Production Deployment'
+              eventText: |
+                Deployed $(imageRepository):$(tag) to production
+                Build: $(Build.BuildNumber)
+                Canary: $(strategy.increment)%
+              eventPriority: 'normal'
+              eventTags: 'deployment:production,version:$(tag),canary:$(strategy.increment)'
+        
+        postRouteTraffic:
+          steps:
+          - task: InvokeRESTAPI@1
+            displayName: 'Run Synthetic Tests'
+            inputs:
+              connectionType: 'connectedServiceName'
+              serviceConnection: 'Datadog-API'
+              method: 'POST'
+              urlSuffix: '/api/v1/synthetics/tests/trigger'
+              body: |
+                {
+                  "tests": [
+                    {"public_id": "abc-123-def"},
+                    {"public_id": "ghi-456-jkl"}
+                  ]
+                }
+          
+          - task: AzureMonitor@1
+            displayName: 'Check SLOs'
+            inputs:
+              connectedServiceName: 'Azure-Monitor'
+              queryType: 'Kusto'
+              query: |
+                requests
+                | where timestamp > ago(10m)
+                | summarize 
+                    SuccessRate = countif(resultCode < 500) * 100.0 / count(),
+                    P95Latency = percentile(duration, 95)
+                | where SuccessRate < 99.5 or P95Latency > 1000
+              threshold: 0
+              failOnThreshold: true
+        
+        on:
+          failure:
+            steps:
+            - task: KubernetesManifest@0
+              displayName: 'Rollback Deployment'
+              inputs:
+                action: 'reject'
+                kubernetesServiceConnection: '$(kubernetesServiceConnection)'
+                namespace: 'production'
+                manifests: |
+                  $(Pipeline.Workspace)/drop/kubernetes/deployment.yaml
+            
+            - task: CreateWorkItem@1
+              displayName: 'Create Incident'
+              inputs:
+                workItemType: 'Incident'
+                title: 'Production Deployment Failed - $(Build.BuildNumber)'
+                assignedTo: 'SRE Team'
+                areaPath: 'Observability Workshop\Production'
+                iterationPath: 'Observability Workshop\Current Sprint'
+                fieldMappings: |
+                  Severity=1 - Critical
+                  Priority=1
+                  Description=Automated deployment $(Build.BuildNumber) failed during canary phase $(strategy.increment)%
+          
+          success:
+            steps:
+            - task: PowerShell@2
+              displayName: 'Update Status Page'
+              inputs:
+                targetType: 'inline'
+                script: |
+                  # Update status page with deployment info
+                  $incident = @{
+                    name = "Deployment in Progress"
+                    status = "resolved"
+                    message = "Successfully deployed version $(tag)"
+                  }
+                  
+                  Invoke-RestMethod -Uri "https://api.statuspage.io/v1/pages/xyz/incidents" -Method Post -Headers @{
+                    "Authorization" = "OAuth $(STATUSPAGE_API_KEY)"
+                  } -Body ($incident | ConvertTo-Json)
+
+# Post-deployment stage for observability validation
+- stage: ValidateObservability
+  displayName: 'Validate Observability'
+  dependsOn: DeployProduction
+  condition: succeeded()
+  jobs:
+  - job: ValidateMetrics
+    displayName: 'Validate Metrics Collection'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: Bash@3
+      displayName: 'Check Prometheus Metrics'
+      inputs:
+        targetType: 'inline'
+        script: |
+          # Verify key metrics are being collected
+          METRICS=("http_requests_total" "http_request_duration_seconds" "process_cpu_seconds_total" "process_resident_memory_bytes")
+          
+          for metric in "${METRICS[@]}"; do
+            RESULT=$(curl -s "http://prometheus:9090/api/v1/query?query=${metric}" | jq -r '.status')
+            if [ "$RESULT" != "success" ]; then
+              echo "Metric $metric not found"
+              exit 1
+            fi
+          done
+    
+    - task: AzureCLI@2
+      displayName: 'Verify Application Insights'
+      inputs:
+        azureSubscription: '$(azureSubscription)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          # Check if telemetry is being received
+          az monitor app-insights metrics show \
+            --app $(appInsightsName) \
+            --resource-group $(resourceGroup) \
+            --metric requests/count \
+            --interval PT1M
+    
+    - task: PublishPipelineMetadata@0
+      displayName: 'Publish Pipeline Metadata'
+      inputs:
+        pipelineId: '$(System.DefinitionId)'
+        pipelineName: '$(System.DefinitionName)'
+        pipelineVersion: '$(Build.BuildNumber)'
+        customMetadata: |
+          deploymentDuration: $(System.JobPositionInPhase)
+          targetEnvironment: production
+          deploymentStrategy: canary
+          imageTag: $(tag) 
