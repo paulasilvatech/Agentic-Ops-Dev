@@ -57,8 +57,6 @@ The workshop is organized into progressive modules, allowing you to choose the d
 
 ## 🗺️ Learning Path
 
-![Learning Path](./images/learning-path.svg)
-
 ### 1️⃣ [Introduction to Observability](./observability_introduction.md)
 - Foundation concepts and technologies
 - The three pillars: Metrics, Logs, and Traces
@@ -123,7 +121,7 @@ The workshop is organized into progressive modules, allowing you to choose the d
    git clone https://github.com/YourUsername/Agentic-Ops-Dev.git
    cd Agentic-Ops-Dev
    ```
-
+   
 2. **Register for Workshop Access**
    - Visit [https://agentic-ops.dev](https://agentic-ops.dev) to register
    - Complete the Azure SRE Agent preview registration
@@ -141,16 +139,15 @@ The workshop is organized into progressive modules, allowing you to choose the d
 - **Progressive Learning**: Start from basics and advance to enterprise-scale solutions
 - **GitHub Copilot Integration**: Use AI to write monitoring queries and troubleshoot issues
 
-## 📱 Connect With Us
-
-- **Official Website**: [https://agentic-ops.dev](https://agentic-ops.dev)
-
 ## 🔗 Related Repositories
 
-### [Design-to-Code Playbook](https://github.com/paulasilvatech/Design-to-Code-Dev)
+### [Design-to-Code](https://github.com/paulasilvatech/Design-to-Code-Dev)
 A comprehensive guide for transforming Figma designs into production-ready code. This playbook provides a structured approach to converting design assets into high-quality, accessible, and maintainable code with practical workflows, code examples, and hands-on exercises using modern tools like VS Code, GitHub Copilot, and Azure AI.
 
-### [Enterprise AI-Assisted Code Optimization](https://github.com/paulasilvatech/Code-AI-Dev)
+### [AI Code Development](https://github.com/paulasilvatech/Code-AI-Dev)
+A complete guide for leveraging AI tools like GitHub Copilot to optimize and improve code quality in enterprise environments. This repository covers advanced AI-assisted workflows, refactoring techniques, code optimization strategies, and best practices for integrating AI tools into your development process.
+
+### [Agentic Operations & Observability](https://github.com/paulasilvatech/Agentic-Ops-Dev)
 A complete guide for leveraging AI tools like GitHub Copilot to optimize and improve code quality in enterprise environments. This repository covers advanced AI-assisted workflows, refactoring techniques, code optimization strategies, and best practices for integrating AI tools into your development process.
 
 ## 👤 Credits
