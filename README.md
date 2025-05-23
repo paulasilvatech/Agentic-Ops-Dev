@@ -108,6 +108,7 @@ The workshop is organized into progressive modules, allowing you to choose the d
 - Create [Azure Free Account](https://go.microsoft.com/fwlink/?linkid=859151)
 - GitHub account with [GitHub Copilot Free](https://code.visualstudio.com/docs/copilot/setup-simplified)
 - Access to [Azure SRE Agent preview](https://microsoft.qualtrics.com/jfe/form/SV_cw3LUvdoaJ0SdcW)
+- Download [VS Code](https://visualstudio.microsoft.com/downloads/)
 
 ### Technical Requirements
 - Development environment: VS Code, Azure CLI, Git
