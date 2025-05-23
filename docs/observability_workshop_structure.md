@@ -11,6 +11,15 @@ This document provides a comprehensive overview of the Azure Observability Works
 ### Mission Statement
 Transform participants from basic monitoring users to enterprise-scale observability experts capable of implementing comprehensive, AI-enhanced monitoring solutions across multi-cloud environments.
 
+### 🤖 Complete Automation Included
+This workshop includes **full automation** to eliminate setup overhead and maximize learning time. Every exercise can be deployed instantly using our comprehensive automation resources in the `resources/` directory.
+
+#### ⚡ Quick Deployment Options
+- **🚀 One-Command Setup**: `./resources/quick-start.sh deploy YOUR_SUBSCRIPTION_ID`
+- **🔧 Modular Deployment**: Individual scripts for each workshop component
+- **☁️ Infrastructure as Code**: Complete Terraform configurations
+- **⚓ Kubernetes Ready**: Pre-configured manifests for all services
+
 ### Target Audience
 - **DevOps Engineers** looking to enhance monitoring capabilities
 - **Site Reliability Engineers (SREs)** implementing advanced observability
@@ -30,6 +39,12 @@ Transform participants from basic monitoring users to enterprise-scale observabi
 - Understanding of web applications
 - No prior monitoring experience required
 
+**🤖 Automation Support**:
+- **Quick Setup**: `./resources/quick-start.sh deploy YOUR_SUBSCRIPTION_ID`
+- **Pre-built Applications**: Sample apps with telemetry already configured
+- **Ready-to-Use Dashboards**: Grafana dashboards automatically deployed
+- **Helper Scripts**: `./resources/scripts/helpers/start-workshop-env.sh`
+
 **Learning Objectives**:
 - Understand fundamental observability concepts
 - Set up basic Azure Monitor and Application Insights
@@ -38,9 +53,9 @@ Transform participants from basic monitoring users to enterprise-scale observabi
 
 **Modules**:
 1. **Introduction to Observability Concepts** (30 min)
-2. **Basic Azure Monitor Setup** (45 min)
-3. **Simple Alerting and Dashboards** (30 min)
-4. **Basic Troubleshooting** (15 min)
+2. **Basic Azure Monitor Setup** (45 min) - *Automated with `deploy-infrastructure.sh`*
+3. **Simple Alerting and Dashboards** (30 min) - *Pre-configured templates available*
+4. **Basic Troubleshooting** (15 min) - *Using automated sample apps*
 
 ### 🔄 Intermediate Track (4 hours)
 **Target**: Some cloud experience, ready for advanced configurations

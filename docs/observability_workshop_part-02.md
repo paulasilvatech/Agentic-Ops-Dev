@@ -15,8 +15,31 @@
 
 ## 📈 Module 2: Creating Your First Dashboard and Alerts (25 minutes)
 
+### 🤖 Automation Alternative: Pre-Built Dashboards
+
+**⚡ Skip manual dashboard creation?** Our automation includes ready-to-use dashboards:
+
+```bash
+# Access pre-configured Grafana dashboards with sample data
+cd resources/
+./scripts/helpers/port-forward-grafana.sh
+
+# Visit http://localhost:3000 (admin/ObservabilityWorkshop@2024!)
+# Available dashboards:
+# - Application Performance Overview
+# - Infrastructure Monitoring
+# - Business KPIs
+# - Error Analysis Dashboard
+# - SLO/SLI Tracking
+
+# Generate sample traffic for realistic dashboard data
+./scripts/helpers/generate-load.sh
+```
+
+**📚 Continue with manual creation below** to understand dashboard design principles.
+
 ### 🎨 2.1 Build Custom Dashboard in Azure Portal
-**Time Required**: 15 minutes
+**Time Required**: 15 minutes (⚡ *or instant with pre-built dashboards*)
 
 #### 📱 1. Access Application Insights Data
    - **Go to Azure Portal** (`portal.azure.com`)

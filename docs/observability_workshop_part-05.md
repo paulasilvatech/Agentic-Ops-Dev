@@ -1,6 +1,30 @@
 # 🚀 Complete Azure Observability Workshop Guide - Part 5
 ## 🏢 Advanced Workshop - Enterprise-Scale Observability Setup (2 hours)
 
+### 🤖 Enterprise Automation
+
+**⚡ Deploy enterprise-scale observability instantly:**
+
+```bash
+# Enterprise-grade deployment
+cd resources/
+./deploy-workshop.sh YOUR_SUBSCRIPTION_ID --enterprise
+
+# Includes:
+# - AKS cluster with monitoring
+# - Enterprise security configurations
+# - Multi-region setup templates
+# - Cost optimization dashboards
+# - Compliance monitoring
+
+# Access enterprise dashboards
+./scripts/helpers/start-workshop-env.sh
+```
+
+**🏢 Production Ready**: Complete Terraform infrastructure for enterprise deployment.
+
+---
+
 ### ✅ Prerequisites Check
 Before starting the Advanced Workshop, ensure you have completed Parts 1-4 and have:
 - ✅ Intermediate Workshop completed successfully with working microservices

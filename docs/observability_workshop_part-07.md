@@ -1,6 +1,29 @@
 # Complete Azure Observability Workshop Guide - Part 7
 ## Multi-Cloud Integration & Advanced Troubleshooting (2.5 hours)
 
+### 🤖 Multi-Cloud Automation
+
+**⚡ Deploy multi-cloud observability instantly:**
+
+```bash
+# Multi-cloud environment setup
+cd resources/
+./quick-start.sh deploy YOUR_SUBSCRIPTION_ID --multi-cloud
+
+# Includes:
+# - AWS CloudWatch integration templates
+# - Google Cloud Monitoring examples
+# - Cross-cloud correlation dashboards
+# - Advanced troubleshooting scenarios
+
+# Access multi-cloud monitoring
+./scripts/helpers/start-workshop-env.sh
+```
+
+**🌐 Cloud Native**: Pre-configured templates for AWS and GCP integration.
+
+---
+
 ### Prerequisites Check
 Before starting Part 7, ensure you have completed Parts 5-6 and have:
 - ✅ Enterprise Kubernetes cluster with Istio service mesh running

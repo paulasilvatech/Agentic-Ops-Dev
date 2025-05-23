@@ -35,6 +35,23 @@
 
 ## 🎯 Pre-Workshop Preparation
 
+### 🤖 Quick Start: Skip Manual Setup with Automation!
+
+**⚡ Want to jump straight to learning?** Our complete automation can deploy everything for you:
+
+```bash
+# Navigate to the automation resources
+cd resources/
+
+# Deploy the complete workshop environment (takes ~10-15 minutes)
+./quick-start.sh deploy YOUR_SUBSCRIPTION_ID
+
+# Start all services and begin learning immediately
+./quick-start.sh start
+```
+
+**📚 Continue with manual setup below** if you want to understand each step in detail or customize the deployment.
+
 ### 🎓 What You'll Learn
 By completing these workshops, you will:
 - **🔍 Master Azure observability fundamentals** and advanced techniques
@@ -44,6 +61,13 @@ By completing these workshops, you will:
 - **⚡ Establish automated incident response** with intelligent agents
 - **🏢 Build enterprise-scale observability solutions**
 - **🔐 Integrate security monitoring** with Microsoft Defender and Sentinel
+
+### 🛠️ Automation Resources Available
+All manual steps in this workshop have automated alternatives in the `resources/` directory:
+- **🏗️ Infrastructure**: `./scripts/deploy-infrastructure.sh`
+- **📊 Monitoring Stack**: `./scripts/deploy-monitoring.sh`
+- **🚀 Applications**: `./scripts/deploy-applications.sh`
+- **🔧 Helper Tools**: `./scripts/helpers/` (port forwarding, load generation, etc.)
 
 ### 🌟 Workshop Overview and AI-Enhanced Features
 
@@ -1053,8 +1077,23 @@ By the end of today's beginner workshop, you'll have:
 
 ## 🔧 Module 1: Setting Up Your First Monitoring Solution (30 minutes)
 
+### 🤖 Automation Alternative: Complete Setup in 5 Minutes
+
+**⚡ Skip manual setup?** Use our automation to deploy everything instantly:
+
+```bash
+# Option 1: Complete automated deployment (recommended)
+cd resources/
+./quick-start.sh deploy YOUR_SUBSCRIPTION_ID
+
+# Option 2: Just the infrastructure components
+./scripts/deploy-infrastructure.sh YOUR_SUBSCRIPTION_ID
+```
+
+**📚 Continue with manual steps below** if you want to understand the detailed setup process.
+
 ### 1.1 🏗️ Create Resource Group and Basic Resources
-**⏱️ Time Required**: 15 minutes
+**⏱️ Time Required**: 15 minutes (⚡ *or 2 minutes with automation*)
 
 #### 🔧 Set up Workshop Environment
 ```bash
@@ -1224,7 +1263,34 @@ cat workshop-config.txt | grep -E "^(RESOURCE_GROUP|LOCATION|APP_NAME)="
 **✅ Checkpoint**: You should see both Application Insights and Log Analytics workspace in Azure Portal under your resource group
 
 ### 1.2 🚀 Deploy Sample Application with Monitoring
-**⏱️ Time Required**: 15 minutes
+**⏱️ Time Required**: 15 minutes (⚡ *or 3 minutes with automation*)
+
+#### 🤖 Automation Alternative: Pre-Built Applications
+
+**⚡ Skip application development?** Use our pre-built, fully instrumented sample applications:
+
+```bash
+# Deploy all sample applications with telemetry
+cd resources/
+./scripts/deploy-applications.sh
+
+# Available pre-built applications:
+# - .NET Core Web API with Application Insights
+# - Python Flask app with OpenTelemetry
+# - Node.js Express app with monitoring
+# - Load generator for creating realistic traffic
+
+# Start all applications and services
+./scripts/helpers/start-workshop-env.sh
+```
+
+**🌐 Access Pre-Deployed Applications:**
+- **🚀 .NET Sample App**: http://localhost:8080
+- **📊 Grafana Dashboards**: http://localhost:3000 (admin/ObservabilityWorkshop@2024!)
+- **📈 Prometheus**: http://localhost:9090
+- **🔍 Jaeger Tracing**: http://localhost:16686
+
+**📚 Continue with manual development below** if you want to build the application step-by-step.
 
 #### 📁 Create Sample Application Structure
 ```bash
@@ -1804,6 +1870,38 @@ If you encounter issues:
 5. **📖 Consult documentation**: Reference troubleshooting section in Part 5
 
 **🎉 Congratulations!** You've successfully completed Part 1 of the Azure Observability Workshop. Your foundation is now ready for advanced monitoring scenarios.
+
+### 🚀 Quick Reference: Automation Resources
+
+Remember, all the manual steps you've learned are automated in the `resources/` directory:
+
+```bash
+# Complete workshop setup
+./resources/quick-start.sh deploy YOUR_SUBSCRIPTION_ID
+./resources/quick-start.sh start
+
+# Individual components
+./resources/scripts/deploy-infrastructure.sh YOUR_SUBSCRIPTION_ID
+./resources/scripts/deploy-monitoring.sh
+./resources/scripts/deploy-applications.sh
+
+# Helper utilities
+./resources/scripts/helpers/port-forward-grafana.sh
+./resources/scripts/helpers/generate-load.sh
+./resources/scripts/helpers/start-workshop-env.sh
+```
+
+### 📖 Automation Resources Reference
+
+| **🔧 Script** | **📋 Purpose** | **⏱️ Time Saved** |
+|--------------|-------------|----------------|
+| `quick-start.sh` | Complete workshop deployment and management | 45+ minutes |
+| `deploy-infrastructure.sh` | Azure resources (AKS, monitoring, storage) | 20 minutes |
+| `deploy-monitoring.sh` | Prometheus, Grafana, Jaeger setup | 15 minutes |
+| `deploy-applications.sh` | Sample apps with full telemetry | 10 minutes |
+| Helper scripts | Port forwarding, load generation, utilities | 5+ minutes |
+
+**💡 Pro Tip**: Use the automation for quick setup, then customize the generated configurations to match your specific requirements!
 
 ---
 

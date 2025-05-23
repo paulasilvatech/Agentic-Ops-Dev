@@ -1032,12 +1032,64 @@ Examples:
 
 Congratulations! You now have a solid foundation in modern observability concepts and technologies. This knowledge will serve as your guide throughout the Azure Observability Workshop.
 
+### 🤖 Workshop Automation Resources
+
+Before diving into the hands-on workshop, know that we've provided **complete automation** to make your learning experience smooth and efficient! All scripts, templates, and deployment automation are available in the `resources/` directory.
+
+#### ⚡ Quick Start Options
+
+**🎯 Option 1: One-Command Deployment (Recommended for Students)**
+```bash
+# Navigate to the resources directory
+cd resources/
+
+# Deploy the complete workshop environment with one command
+./quick-start.sh deploy YOUR_SUBSCRIPTION_ID
+
+# Start all workshop services (port forwarding, load generation)
+./quick-start.sh start
+```
+
+**🔧 Option 2: Step-by-Step with Full Control**
+```bash
+# Use the comprehensive deployment script with optional parameters
+./deploy-workshop.sh YOUR_SUBSCRIPTION_ID
+
+# Or deploy individual components
+./scripts/deploy-infrastructure.sh YOUR_SUBSCRIPTION_ID
+./scripts/deploy-monitoring.sh
+./scripts/deploy-applications.sh
+```
+
+#### 📁 What's Included in the Automation
+
+The `resources/` directory contains everything you need:
+
+- **🚀 `quick-start.sh`** - One-command deployment and management
+- **🏗️ `deploy-workshop.sh`** - Complete environment setup
+- **☁️ `terraform/`** - Infrastructure as Code for AKS, monitoring, and Azure resources
+- **⚓ `kubernetes/`** - Kubernetes manifests for Prometheus, Grafana, and sample apps
+- **💻 `applications/`** - Sample .NET, Python, and Node.js applications with telemetry
+- **🔧 `scripts/`** - Individual deployment scripts and helper utilities
+
+#### 🌐 What Gets Deployed Automatically
+
+When you use our automation, you'll get:
+
+- **Azure Infrastructure**: AKS cluster, Container Registry, Log Analytics, Application Insights
+- **Monitoring Stack**: Prometheus, Grafana, Jaeger, AlertManager
+- **Sample Applications**: Instrumented applications for generating telemetry
+- **Service Mesh Ready**: Istio preparation for advanced scenarios
+- **Access URLs**: All services accessible via localhost with port forwarding
+
 ### ➡️ What's Next?
-1. **Choose your track** based on your current skill level
-2. **Set up your environment** using the prerequisites guide
-3. **Join the workshop** and begin your hands-on journey
-4. **Apply what you learn** in your own environments
-5. **Share your success** and help others on their observability journey
+1. **🤖 Use automation for quick setup** - Deploy in minutes with `./quick-start.sh`
+2. **🎯 Choose your learning track** based on your current skill level
+3. **📚 Follow the workshop modules** with hands-on exercises
+4. **🔍 Explore the pre-deployed environment** with real telemetry data
+5. **🛠️ Experiment and customize** using the provided templates
+6. **📖 Apply what you learn** in your own environments
+7. **🌟 Share your success** and help others on their observability journey
 
 ### 📝 Remember:
 - **Observability is a journey, not a destination**

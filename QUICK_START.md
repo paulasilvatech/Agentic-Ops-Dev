@@ -37,6 +37,7 @@ git clone https://github.com/paulasilvatech/Agentic-Ops-Dev.git
 cd Agentic-Ops-Dev/resources
 
 # One-command deployment (replace with your subscription ID)
+# This deploys: AKS cluster, monitoring stack, sample apps, and dashboards
 ./quick-start.sh deploy YOUR_AZURE_SUBSCRIPTION_ID
 ```
 
@@ -48,14 +49,17 @@ cd Agentic-Ops-Dev/resources
 
 ### Step 3: Explore (8 minutes)
 ```bash
-# Generate sample traffic
+# Generate sample traffic using our automated load generator
 ./scripts/helpers/generate-load.sh
 
-# Access the monitoring stack:
+# Access the pre-configured monitoring stack:
 # 📊 Grafana:    http://localhost:3000 (admin/ObservabilityWorkshop@2024!)
 # 📈 Prometheus: http://localhost:9090
 # 🔍 Jaeger:     http://localhost:16686
+# 🚀 Sample App: http://localhost:8080
 ```
+
+> 💡 **All dashboards, alerts, and configurations are automatically deployed from `/resources/`!**
 
 **🎉 Congratulations!** You now have a complete observability platform running!
 

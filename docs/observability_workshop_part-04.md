@@ -1,6 +1,30 @@
 # 🚀 Complete Azure Observability Workshop Guide - Part 4
 ## 🔒 Intermediate Workshop - CI/CD Integration & Security Monitoring
 
+### 🤖 DevSecOps Automation
+
+**⚡ Deploy secure monitoring with CI/CD integration:**
+
+```bash
+# Complete DevSecOps automation
+cd resources/
+./quick-start.sh deploy YOUR_SUBSCRIPTION_ID
+
+# Includes:
+# - GitHub Actions CI/CD templates
+# - Azure DevOps pipeline examples
+# - Microsoft Defender integration
+# - Automated security monitoring setup
+
+# Access security dashboards
+./scripts/helpers/port-forward-grafana.sh
+# Security dashboards available at http://localhost:3000
+```
+
+**📊 Security Templates**: Pre-configured monitoring for compliance and threat detection.
+
+---
+
 ### 🔗 Continuing from Part 3
 **Prerequisites**: You should have completed Parts 1-3 and have:
 - ✅ Microservices running with distributed tracing

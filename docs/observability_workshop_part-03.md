@@ -1,6 +1,28 @@
 # 🚀 Complete Azure Observability Workshop Guide - Part 3
 ## 🔧 Intermediate Workshop (4 hours)
 
+### 🤖 Quick Setup with Automation
+
+**⚡ Accelerate your intermediate learning** with our complete automation:
+
+```bash
+# Deploy advanced monitoring stack instantly
+cd resources/
+./quick-start.sh deploy YOUR_SUBSCRIPTION_ID
+
+# Access intermediate services:
+# - Distributed tracing: http://localhost:16686 (Jaeger)
+# - Service mesh ready: Istio configurations included
+# - Multi-cloud templates: AWS and GCP integration examples
+
+# Start advanced workshop environment
+./scripts/helpers/start-workshop-env.sh
+```
+
+**🏗️ Infrastructure as Code**: All Terraform configurations in `resources/terraform/` for production deployment.
+
+---
+
 ### ✅ Prerequisites Check
 Before starting the Intermediate Workshop, ensure you have completed Parts 1-2 and have:
 - ✅ Beginner Workshop completed successfully

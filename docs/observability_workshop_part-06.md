@@ -1,6 +1,30 @@
 # 🚀 Complete Azure Observability Workshop Guide - Part 6
 ## 🤖 Service Mesh & AI-Enhanced SRE Agent (2.5 hours)
 
+### 🤖 AI & Service Mesh Automation
+
+**⚡ Deploy AI-enhanced service mesh observability:**
+
+```bash
+# AI-enhanced service mesh deployment
+cd resources/
+./quick-start.sh deploy YOUR_SUBSCRIPTION_ID --service-mesh
+
+# Includes:
+# - Istio service mesh with observability
+# - AI-powered anomaly detection
+# - Azure SRE Agent simulation
+# - Intelligent alerting and auto-remediation
+
+# Access AI-enhanced monitoring
+./scripts/helpers/port-forward-jaeger.sh
+# Distributed tracing: http://localhost:16686
+```
+
+**🤖 AI Features**: Pre-configured machine learning models for observability insights.
+
+---
+
 ### ✅ Prerequisites Check
 Before starting Part 6, ensure you have completed Part 5 and have:
 - ✅ Enterprise Kubernetes cluster running (AKS)

@@ -117,23 +117,47 @@ The workshop is organized into progressive modules, allowing you to choose the d
 
 ## 🛠️ Getting Started
 
-1. **Fork and Clone this Repository**
-   ```bash
-   git clone https://github.com/YourUsername/Agentic-Ops-Dev.git
-   cd Agentic-Ops-Dev
-   ```
-   
-2. **Register for Workshop Access**
+### 🚀 Quick Start (Recommended)
+**Want to start learning immediately?** Use our complete automation:
+
+```bash
+# 1. Fork and Clone this Repository
+git clone https://github.com/YourUsername/Agentic-Ops-Dev.git
+cd Agentic-Ops-Dev
+
+# 2. Deploy Everything Automatically (10-15 minutes)
+cd resources
+./quick-start.sh deploy YOUR_AZURE_SUBSCRIPTION_ID
+
+# 3. Start Learning with Full Environment
+./quick-start.sh start
+```
+
+### 📚 Manual Learning Path
+For step-by-step understanding:
+
+1. **Register for Workshop Access**
    - Visit [https://agentic-ops.dev](https://agentic-ops.dev) to register
    - Complete the Azure SRE Agent preview registration
 
-3. **Follow the Workshop Structure**
+2. **Follow the Workshop Structure**
    - Start with [Introduction to Observability](./docs/observability_introduction.md)
    - Progress through the modules based on your experience level
    - Use the [Troubleshooting Guide](./docs/observability_troubleshooting_guide.md) if needed
 
+3. **Leverage Automation Resources**
+   - All scripts, templates, and automation tools are in `/resources/`
+   - Use individual components: `./resources/scripts/deploy-infrastructure.sh`
+   - Access pre-built applications: `./resources/applications/`
+   - Deploy with Terraform: `./resources/terraform/`
+
 ## 🌟 Key Features
 
+- **🤖 Complete Automation**: One-command deployment with `/resources/quick-start.sh`
+- **🏗️ Infrastructure as Code**: Production-ready Terraform configurations in `/resources/terraform/`
+- **💻 Ready-to-Use Applications**: Sample apps with full telemetry in `/resources/applications/`
+- **📊 Pre-Built Dashboards**: Grafana dashboards automatically deployed from `/resources/kubernetes/`
+- **🔧 Helper Scripts**: Port-forwarding, load generation, and utilities in `/resources/scripts/helpers/`
 - **AI-Enhanced Monitoring**: Learn to implement Azure SRE Agent for intelligent observability
 - **Multi-Cloud Coverage**: Build unified monitoring across Azure, AWS, and GCP
 - **Real-World Scenarios**: Practice with authentic production-like challenges

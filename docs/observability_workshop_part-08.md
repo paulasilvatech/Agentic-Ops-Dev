@@ -1,6 +1,38 @@
 # Complete Azure Observability Workshop Guide - Part 8
 ## Compliance, Challenge Labs & Workshop Wrap-up (2 hours)
 
+### 🤖 Compliance & Challenges Automation
+
+**⚡ Deploy compliance monitoring and challenge scenarios:**
+
+```bash
+# Complete workshop finale setup
+cd resources/
+./quick-start.sh deploy YOUR_SUBSCRIPTION_ID --complete
+
+# Includes:
+# - Compliance monitoring dashboards
+# - Challenge lab scenarios
+# - Final assessment environment
+# - Complete cleanup automation
+
+# Access final assessment environment
+./scripts/helpers/start-workshop-env.sh
+```
+
+**📋 Workshop Complete**: All automation available for future reference and customization.
+
+### 🧹 Easy Cleanup
+
+When you're finished with the workshop:
+
+```bash
+# Complete cleanup of all resources
+./quick-start.sh cleanup
+```
+
+---
+
 ### Prerequisites Check
 Before starting Part 8, ensure you have completed Parts 5-7 and have:
 - ✅ Multi-cloud observability platform operational
