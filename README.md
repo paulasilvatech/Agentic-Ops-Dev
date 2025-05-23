@@ -1,4 +1,4 @@
-# 🚀 Agentic Operations Workshop
+# 🚀 Agentic Operations and Observability
 
 Welcome to the **Agentic Ops Dev** Azure Observability Workshop! This hands-on workshop guides you through implementing comprehensive observability solutions for cloud applications using Azure Monitor, Application Insights, and new AI-powered tools like Azure SRE Agent.
 
