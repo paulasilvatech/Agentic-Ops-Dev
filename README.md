@@ -57,47 +57,47 @@ The workshop is organized into progressive modules, allowing you to choose the d
 
 ## Learning Path
 
-### Module 1: Introduction to Observability
+### Module 1: [Introduction to Observability](./docs/observability_introduction.md)
 - Foundation concepts and technologies
 - The three pillars: Metrics, Logs, and Traces
 - Azure observability ecosystem overview
 
-### Module 2: Beginning Your Observability Journey
+### Module 2: [Beginning Your Observability Journey](./docs/observability_workshop_part-01.md)
 - Workshop preparation and account setup
 - Creating your first monitoring solution
 - Exploring Azure Monitor fundamentals
 
-### Module 3: Building Dashboards and Alerts
+### Module 3: [Building Dashboards and Alerts](./docs/observability_workshop_part-02.md)
 - Creating custom dashboards
 - Setting up intelligent alerts
 - Using GitHub Copilot for monitoring queries
 
-### Module 4: Advanced Application Insights
+### Module 4: [Advanced Application Insights](./docs/observability_workshop_part-03.md)
 - Distributed tracing across microservices
 - Custom telemetry and business metrics
 - Advanced performance monitoring
 
-### Module 5: Multi-Cloud Integration
+### Module 5: [Multi-Cloud Integration](./docs/observability_workshop_part-04.md)
 - Monitoring across Azure, AWS, and GCP
 - Centralized observability platform
 - Cross-cloud correlation and insights
 
-### Module 6: AI-Enhanced Monitoring
+### Module 6: [AI-Enhanced Monitoring](./docs/observability_workshop_part-05.md)
 - Azure SRE Agent implementation
 - Intelligent incident detection and response
 - Predictive analytics and anomaly detection
 
-### Module 7: Enterprise Implementation
+### Module 7: [Enterprise Implementation](./docs/observability_workshop_part-06.md)
 - Scalable observability architecture
 - Governance and compliance monitoring
 - Cost optimization strategies
 
-### Module 8: Hands-On Challenge Labs
+### Module 8: [Hands-On Challenge Labs](./docs/observability_workshop_part-07.md)
 - Real-world troubleshooting scenarios
 - End-to-end implementation exercises
 - Performance optimization tasks
 
-### Troubleshooting Guide
+### [Troubleshooting Guide](./docs/observability_troubleshooting_guide.md)
 - Common issues and solutions
 - Advanced debugging techniques
 - Performance optimization strategies
