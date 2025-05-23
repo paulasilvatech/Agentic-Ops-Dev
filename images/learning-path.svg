@@ -26,7 +26,7 @@
   
   <!-- Title -->
   <text x="400" y="40" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="bold" fill="#323130">
-    🗺️ Azure Observability Learning Path
+    Azure Observability Learning Path
   </text>
   
   <!-- Progress Path Line -->
@@ -37,9 +37,9 @@
     <rect x="0" y="0" width="500" height="80" rx="12" fill="url(#cardGradient1)" stroke="#0078D4" stroke-width="2" filter="url(#shadow)"/>
     <circle cx="-50" cy="40" r="15" fill="#0078D4"/>
     <text x="-50" y="47" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">1</text>
-    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1565C0">📚 Introduction to Observability</text>
-    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Foundation concepts • Three pillars • Azure ecosystem</text>
-    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">⏱️ 30 minutes</text>
+    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1565C0">Introduction to Observability</text>
+    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Foundation concepts - Three pillars - Azure ecosystem</text>
+    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">30 minutes</text>
   </g>
   
   <!-- Module 2: Beginning -->
@@ -47,9 +47,9 @@
     <rect x="0" y="0" width="500" height="80" rx="12" fill="url(#cardGradient1)" stroke="#0078D4" stroke-width="2" filter="url(#shadow)"/>
     <circle cx="-50" cy="40" r="15" fill="#0078D4"/>
     <text x="-50" y="47" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">2</text>
-    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1565C0">🚀 Beginning Your Journey</text>
-    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Setup • First monitoring solution • Azure Monitor basics</text>
-    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">⏱️ 45 minutes</text>
+    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1565C0">Beginning Your Journey</text>
+    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Setup - First monitoring solution - Azure Monitor basics</text>
+    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">45 minutes</text>
   </g>
   
   <!-- Module 3: Dashboards -->
@@ -57,9 +57,9 @@
     <rect x="0" y="0" width="500" height="80" rx="12" fill="url(#cardGradient1)" stroke="#0078D4" stroke-width="2" filter="url(#shadow)"/>
     <circle cx="-50" cy="40" r="15" fill="#0078D4"/>
     <text x="-50" y="47" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">3</text>
-    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1565C0">📊 Building Dashboards & Alerts</text>
-    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Custom dashboards • Intelligent alerts • GitHub Copilot</text>
-    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">⏱️ 60 minutes</text>
+    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1565C0">Building Dashboards &amp; Alerts</text>
+    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Custom dashboards - Intelligent alerts - GitHub Copilot</text>
+    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">60 minutes</text>
   </g>
   
   <!-- Module 4: Advanced Insights -->
@@ -67,9 +67,9 @@
     <rect x="0" y="0" width="500" height="80" rx="12" fill="url(#cardGradient2)" stroke="#F57C00" stroke-width="2" filter="url(#shadow)"/>
     <circle cx="-50" cy="40" r="15" fill="#F57C00"/>
     <text x="-50" y="47" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">4</text>
-    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#EF6C00">🔍 Advanced Application Insights</text>
-    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Distributed tracing • Custom telemetry • Performance monitoring</text>
-    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">⏱️ 75 minutes</text>
+    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#EF6C00">Advanced Application Insights</text>
+    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Distributed tracing - Custom telemetry - Performance monitoring</text>
+    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">75 minutes</text>
   </g>
   
   <!-- Module 5: Multi-Cloud -->
@@ -77,9 +77,9 @@
     <rect x="0" y="0" width="500" height="80" rx="12" fill="url(#cardGradient2)" stroke="#F57C00" stroke-width="2" filter="url(#shadow)"/>
     <circle cx="-50" cy="40" r="15" fill="#F57C00"/>
     <text x="-50" y="47" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">5</text>
-    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#EF6C00">☁️ Multi-Cloud Integration</text>
-    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Azure, AWS, GCP • Centralized platform • Cross-cloud correlation</text>
-    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">⏱️ 90 minutes</text>
+    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#EF6C00">Multi-Cloud Integration</text>
+    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Azure, AWS, GCP - Centralized platform - Cross-cloud correlation</text>
+    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">90 minutes</text>
   </g>
   
   <!-- Module 6: AI Enhancement -->
@@ -87,9 +87,9 @@
     <rect x="0" y="0" width="500" height="80" rx="12" fill="url(#cardGradient3)" stroke="#7B1FA2" stroke-width="2" filter="url(#shadow)"/>
     <circle cx="-50" cy="40" r="15" fill="#7B1FA2"/>
     <text x="-50" y="47" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">6</text>
-    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#6A1B9A">🤖 AI-Enhanced Monitoring</text>
-    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Azure SRE Agent • Intelligent detection • Predictive analytics</text>
-    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">⏱️ 120 minutes</text>
+    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#6A1B9A">AI-Enhanced Monitoring</text>
+    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Azure SRE Agent - Intelligent detection - Predictive analytics</text>
+    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">120 minutes</text>
   </g>
   
   <!-- Module 7: Enterprise -->
@@ -97,9 +97,9 @@
     <rect x="0" y="0" width="500" height="80" rx="12" fill="url(#cardGradient3)" stroke="#7B1FA2" stroke-width="2" filter="url(#shadow)"/>
     <circle cx="-50" cy="40" r="15" fill="#7B1FA2"/>
     <text x="-50" y="47" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">7</text>
-    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#6A1B9A">🏢 Enterprise Implementation</text>
-    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Scalable architecture • Governance • Cost optimization</text>
-    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">⏱️ 150 minutes</text>
+    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#6A1B9A">Enterprise Implementation</text>
+    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Scalable architecture - Governance - Cost optimization</text>
+    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">150 minutes</text>
   </g>
   
   <!-- Module 8: Challenge Labs -->
@@ -107,19 +107,19 @@
     <rect x="0" y="0" width="500" height="80" rx="12" fill="url(#cardGradient3)" stroke="#7B1FA2" stroke-width="2" filter="url(#shadow)"/>
     <circle cx="-50" cy="40" r="15" fill="#7B1FA2"/>
     <text x="-50" y="47" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">8</text>
-    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#6A1B9A">🎯 Hands-On Challenge Labs</text>
-    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Real-world scenarios • Implementation exercises • Optimization</text>
-    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">⏱️ 120 minutes</text>
+    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#6A1B9A">Hands-On Challenge Labs</text>
+    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Real-world scenarios - Implementation exercises - Optimization</text>
+    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">120 minutes</text>
   </g>
   
   <!-- Troubleshooting Guide -->
   <g transform="translate(150, 1040)">
     <rect x="0" y="0" width="500" height="80" rx="12" fill="#E8F5E8" stroke="#4CAF50" stroke-width="2" filter="url(#shadow)"/>
     <circle cx="-50" cy="40" r="15" fill="#4CAF50"/>
-    <text x="-50" y="47" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">🧩</text>
-    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#388E3C">🔧 Troubleshooting Guide</text>
-    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Common issues • Advanced debugging • Performance optimization</text>
-    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">📖 Reference material</text>
+    <text x="-50" y="47" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">+</text>
+    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#388E3C">Troubleshooting Guide</text>
+    <text x="20" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#424242">Common issues - Advanced debugging - Performance optimization</text>
+    <text x="20" y="65" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#666666">Reference material</text>
   </g>
   
   <!-- Difficulty Legend -->

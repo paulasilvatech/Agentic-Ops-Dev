@@ -182,13 +182,13 @@
   </g>
   
   <!-- Multi-Cloud Integration -->
-  <rect x="310" y="485" width="380" height="30" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1" filter="url(#shadow)"/>
-  <text x="500" y="506" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="bold" fill="#323130">
+  <rect x="310" y="420" width="380" height="30" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1" filter="url(#shadow)"/>
+  <text x="500" y="441" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="bold" fill="#323130">
     Multi-Cloud Integration
   </text>
   
   <!-- Azure -->
-  <g transform="translate(200, 520)">
+  <g transform="translate(200, 470)">
     <rect x="0" y="0" width="120" height="60" rx="8" fill="url(#blueGradient)" filter="url(#shadow)"/>
     <text x="60" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">
       Azure
@@ -199,7 +199,7 @@
   </g>
   
   <!-- AWS -->
-  <g transform="translate(340, 520)">
+  <g transform="translate(340, 470)">
     <rect x="0" y="0" width="120" height="60" rx="8" fill="#FF9900" filter="url(#shadow)"/>
     <text x="60" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">
       AWS
@@ -210,7 +210,7 @@
   </g>
   
   <!-- GCP -->
-  <g transform="translate(480, 520)">
+  <g transform="translate(480, 470)">
     <rect x="0" y="0" width="120" height="60" rx="8" fill="#4285F4" filter="url(#shadow)"/>
     <text x="60" y="25" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">
       GCP
@@ -220,10 +220,21 @@
     </text>
   </g>
   
-  <!-- Connecting lines from Azure services to Multi-Cloud -->
-  <path d="M175 390 L175 480 L260 480 L260 520" stroke="#323130" stroke-width="2" fill="none"/>
-  <path d="M355 390 L355 480 L400 480 L400 520" stroke="#323130" stroke-width="2" fill="none"/>
-  <path d="M535 390 L535 480 L540 480 L540 520" stroke="#323130" stroke-width="2" fill="none"/>
+  <!-- Central Hub to show unified monitoring -->
+  <circle cx="500" y="400" r="25" fill="#0078D4" stroke="#FFFFFF" stroke-width="3" filter="url(#shadow)"/>
+  <text x="500" y="407" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">
+    Unified
+  </text>
+  
+  <!-- Connecting lines from Azure services to Central Hub -->
+  <path d="M175 390 L175 400 L475 400" stroke="#323130" stroke-width="2" fill="none"/>
+  <path d="M355 390 L355 400 L475 400" stroke="#323130" stroke-width="2" fill="none"/>
+  <path d="M535 390 L535 400 L525 400" stroke="#323130" stroke-width="2" fill="none"/>
+  
+  <!-- Connecting lines from Central Hub to all cloud providers -->
+  <path d="M500 425 L500 450 L260 450 L260 470" stroke="#323130" stroke-width="2" fill="none"/>
+  <path d="M500 425 L500 450 L400 450 L400 470" stroke="#323130" stroke-width="2" fill="none"/>
+  <path d="M500 425 L500 450 L540 450 L540 470" stroke="#323130" stroke-width="2" fill="none"/>
   
   <!-- Connection to Business Impact -->
   <path d="M715 390 L715 430 L850 430 L850 450" stroke="#323130" stroke-width="2" fill="none"/>
