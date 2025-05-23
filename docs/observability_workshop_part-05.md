@@ -1,7 +1,7 @@
-# Complete Azure Observability Workshop Guide - Part 5
-## Advanced Workshop - Enterprise-Scale Observability Setup (2 hours)
+# 🚀 Complete Azure Observability Workshop Guide - Part 5
+## 🏢 Advanced Workshop - Enterprise-Scale Observability Setup (2 hours)
 
-### Prerequisites Check
+### ✅ Prerequisites Check
 Before starting the Advanced Workshop, ensure you have completed Parts 1-4 and have:
 - ✅ Intermediate Workshop completed successfully with working microservices
 - ✅ Multi-cloud monitoring integration functional (Azure + Datadog + Prometheus)
@@ -9,14 +9,14 @@ Before starting the Advanced Workshop, ensure you have completed Parts 1-4 and h
 - ✅ Security monitoring with Defender and Sentinel integration
 - ✅ Understanding of distributed tracing and enterprise observability patterns
 
-### New Prerequisites for Advanced Level
+### 📋 New Prerequisites for Advanced Level
 - **Multi-Cloud Accounts**: AWS and GCP accounts with credits available
 - **Kubernetes Experience**: Familiarity with K8s concepts and kubectl
 - **Terraform Knowledge**: Infrastructure as Code experience
 - **Enterprise Networking**: Understanding of VPNs, private endpoints, hybrid connectivity
 - **Advanced Security**: Zero-trust principles, compliance requirements (SOC2, GDPR)
 
-### Advanced Workshop Overview
+### 🎯 Advanced Workshop Overview
 This workshop demonstrates enterprise-scale observability solutions used by Fortune 500 companies:
 - **Enterprise-scale architecture** patterns for global organizations
 - **AI-enhanced SRE Agent** implementation with predictive analytics
@@ -27,20 +27,31 @@ This workshop demonstrates enterprise-scale observability solutions used by Fort
 
 ---
 
-## Module 1.1: Multi-Cloud Kubernetes Infrastructure Setup (60 minutes)
+## ☁️ Module 1.1: Multi-Cloud Kubernetes Infrastructure Setup (60 minutes)
 
-### Step 1: Enterprise Infrastructure as Code Setup
+### 🏗️ Step 1: Enterprise Infrastructure as Code Setup
 **Time Required**: 30 minutes
 
-1. **Create Enterprise-Scale Terraform Configuration**:
+1. **📁 Create Enterprise-Scale Terraform Configuration**:
 
 Create the directory structure:
 ```bash
+# 🏗️ Create enterprise infrastructure directory structure
 mkdir -p infrastructure/terraform/{modules,environments}
 cd infrastructure/terraform
+
+# ✅ Verify directory structure
+echo "✅ Created enterprise infrastructure directories:"
+tree . || ls -la
+
+# Expected structure:
+# 📁 infrastructure/
+#   📁 terraform/
+#     📁 modules/
+#     📁 environments/
 ```
 
-Create `main.tf`:
+**📝 Create `main.tf` - Enterprise Multi-Cloud Configuration**:
 ```hcl
 # main.tf - Enterprise Multi-Cloud Kubernetes Setup
 terraform {

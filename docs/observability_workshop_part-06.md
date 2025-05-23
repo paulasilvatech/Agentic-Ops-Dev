@@ -1,7 +1,7 @@
-# Complete Azure Observability Workshop Guide - Part 6
-## Service Mesh & AI-Enhanced SRE Agent (2.5 hours)
+# 🚀 Complete Azure Observability Workshop Guide - Part 6
+## 🤖 Service Mesh & AI-Enhanced SRE Agent (2.5 hours)
 
-### Prerequisites Check
+### ✅ Prerequisites Check
 Before starting Part 6, ensure you have completed Part 5 and have:
 - ✅ Enterprise Kubernetes cluster running (AKS)
 - ✅ Prometheus and Grafana observability stack deployed
@@ -11,35 +11,43 @@ Before starting Part 6, ensure you have completed Part 5 and have:
 
 ---
 
-## Module 1.2: Service Mesh Advanced Observability (75 minutes)
+## 🕸️ Module 1.2: Service Mesh Advanced Observability (75 minutes)
 
-### Step 1: Install and Configure Istio Service Mesh
+### ⚙️ Step 1: Install and Configure Istio Service Mesh
 **Time Required**: 45 minutes
 
-1. **Download and Install Istio**:
+1. **📦 Download and Install Istio**:
 ```bash
-# Download Istio
+# 📦 Download Istio service mesh platform
+echo "📦 Downloading Istio v1.19.0 for enterprise service mesh..."
 curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.19.0 sh -
 cd istio-1.19.0
 export PATH=$PWD/bin:$PATH
 
-# Verify installation
+# ✅ Verify Istio CLI installation
+echo "✅ Verifying Istio installation..."
 istioctl version --remote=false
 
-# Install Istio with enterprise configuration
+# 🏢 Install Istio with enterprise configuration for production
+echo "🏢 Installing Istio with enterprise observability settings..."
 istioctl install --set values.defaultRevision=default \
   --set values.pilot.traceSampling=100.0 \
   --set values.global.meshID=enterprise-mesh \
   --set values.global.network=aks-network \
   --set values.pilot.env.EXTERNAL_ISTIOD=false \
-  --set values.telemetry.v2.prometheus.service_monitor.enabled=true
+  --set values.telemetry.v2.prometheus.service_monitor.enabled=true \
+  --set values.defaultRevision=default
 
-# Verify installation
+# ✅ Verify Istio installation in cluster
+echo "✅ Verifying Istio deployment in Kubernetes..."
 kubectl get pods -n istio-system
 kubectl get svc -n istio-system
+
+# Expected output: istiod and istio-proxy pods running
+echo "✅ Istio service mesh installation completed successfully!"
 ```
 
-2. **Install Istio Observability Add-ons**:
+2. **📊 Install Istio Observability Add-ons**:
 ```bash
 # Install observability add-ons
 kubectl apply -f samples/addons/jaeger.yaml
@@ -591,9 +599,9 @@ echo "Grafana (Metrics Visualization): http://localhost:3000"
 
 ---
 
-## Module 2: AI-Enhanced SRE Agent Implementation (75 minutes)
+## 🤖 Module 2: AI-Enhanced SRE Agent Implementation (75 minutes)
 
-### Step 1: Azure SRE Agent Setup
+### 🎆 Step 1: Azure SRE Agent Setup
 **Time Required**: 45 minutes
 
 1. **Register for Azure SRE Agent Preview**:

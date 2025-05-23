@@ -21,14 +21,16 @@ This comprehensive troubleshooting guide helps you resolve common issues encount
 
 ---
 
-## Prerequisites and Setup Issues
+## ⚙️ Prerequisites and Setup Issues
 
-### Issue: Azure CLI Authentication Failures
+### 🔐 Issue: Azure CLI Authentication Failures
 
-**Symptoms**:
-- `az login` fails or times out
-- "Please run 'az login' to set up account" errors
-- Permission denied errors
+| 🔴 **Symptoms** | 🔍 **Root Cause** | ✅ **Solution Priority** |
+|---|---|---|
+| `az login` fails or times out | Network restrictions, proxy issues | High - blocks all Azure operations |
+| "Please run 'az login' to set up account" errors | Expired authentication tokens | High - required for any Azure CLI commands |
+| Permission denied errors | Insufficient subscription permissions | Critical - contact Azure admin |
+| Browser-based login issues | Corporate firewall/proxy | Medium - use device code alternative |
 
 **Solutions**:
 ```bash

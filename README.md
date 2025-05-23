@@ -57,47 +57,47 @@ The workshop is organized into progressive modules, allowing you to choose the d
 
 ## 🗺️ Learning Path
 
-### 1️⃣ [Introduction to Observability](./observability_introduction.md)
+### 1️⃣ [Introduction to Observability](./docs/observability_introduction.md)
 - Foundation concepts and technologies
 - The three pillars: Metrics, Logs, and Traces
 - Azure observability ecosystem overview
 
-### 2️⃣ [Beginning Your Observability Journey](./observability_workshop_part-01.md)
+### 2️⃣ [Beginning Your Observability Journey](./docs/observability_workshop_part-01.md)
 - Workshop preparation and account setup
 - Creating your first monitoring solution
 - Exploring Azure Monitor fundamentals
 
-### 3️⃣ [Building Dashboards and Alerts](./observability_workshop_part-02.md)
+### 3️⃣ [Building Dashboards and Alerts](./docs/observability_workshop_part-02.md)
 - Creating custom dashboards
 - Setting up intelligent alerts
 - Using GitHub Copilot for monitoring queries
 
-### 4️⃣ [Advanced Application Insights](./observability_workshop_part-03.md)
+### 4️⃣ [Advanced Application Insights](./docs/observability_workshop_part-03.md)
 - Distributed tracing across microservices
 - Custom telemetry and business metrics
 - Advanced performance monitoring
 
-### 5️⃣ [Multi-Cloud Integration](./observability_workshop_part-04.md)
+### 5️⃣ [Multi-Cloud Integration](./docs/observability_workshop_part-04.md)
 - Monitoring across Azure, AWS, and GCP
 - Centralized observability platform
 - Cross-cloud correlation and insights
 
-### 6️⃣ [AI-Enhanced Monitoring](./observability_workshop_part-05.md)
+### 6️⃣ [AI-Enhanced Monitoring](./docs/observability_workshop_part-05.md)
 - Azure SRE Agent implementation
 - Intelligent incident detection and response
 - Predictive analytics and anomaly detection
 
-### 7️⃣ [Enterprise Implementation](./observability_workshop_part-06.md)
+### 7️⃣ [Enterprise Implementation](./docs/observability_workshop_part-06.md)
 - Scalable observability architecture
 - Governance and compliance monitoring
 - Cost optimization strategies
 
-### 8️⃣ [Hands-On Challenge Labs](./observability_workshop_part-07.md)
+### 8️⃣ [Hands-On Challenge Labs](./docs/observability_workshop_part-07.md)
 - Real-world troubleshooting scenarios
 - End-to-end implementation exercises
 - Performance optimization tasks
 
-### 🧩 [Troubleshooting Guide](./observability_troubleshooting_guide.md)
+### 🧩 [Troubleshooting Guide](./docs/observability_troubleshooting_guide.md)
 - Common issues and solutions
 - Advanced debugging techniques
 - Performance optimization strategies
@@ -128,9 +128,9 @@ The workshop is organized into progressive modules, allowing you to choose the d
    - Complete the Azure SRE Agent preview registration
 
 3. **Follow the Workshop Structure**
-   - Start with [Introduction to Observability](./observability_introduction.md)
+   - Start with [Introduction to Observability](./docs/observability_introduction.md)
    - Progress through the modules based on your experience level
-   - Use the [Troubleshooting Guide](./observability_troubleshooting_guide.md) if needed
+   - Use the [Troubleshooting Guide](./docs/observability_troubleshooting_guide.md) if needed
 
 ## 🌟 Key Features
 
