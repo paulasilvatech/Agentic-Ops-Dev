@@ -33,7 +33,7 @@ DURATION=${1:-300}  # Default 5 minutes
 CONCURRENT_USERS=${2:-5}  # Default 5 concurrent users
 APP_URL="http://localhost:8080"  # Default app URL
 
-log "🚀 Starting load generation for Azure Observability Workshop"
+log "Starting load generation for Azure Observability Workshop"
 log "Duration: ${DURATION} seconds"
 log "Concurrent users: ${CONCURRENT_USERS}"
 log "Target URL: ${APP_URL}"
@@ -46,7 +46,7 @@ if ! curl -s --connect-timeout 5 "${APP_URL}/health" &> /dev/null; then
     exit 1
 fi
 
-log "✅ Application is accessible"
+log "Application is accessible"
 
 # Function to generate realistic user behavior
 generate_user_traffic() {
@@ -101,22 +101,22 @@ done
 start_time=$(date +%s)
 while [ $(($(date +%s) - start_time)) -lt $DURATION ]; do
     remaining=$((DURATION - ($(date +%s) - start_time)))
-    log "🔄 Load generation in progress... ${remaining}s remaining"
+    log "Load generation in progress... ${remaining}s remaining"
     sleep 30
 done
 
 # Wait for all background processes to complete
 wait
 
-log "🎉 Load generation completed successfully!"
+log "Load generation completed successfully!"
 log ""
-log "📊 What to check now:"
+log "What to check now:"
 log "  1. Grafana dashboards: http://localhost:3000"
 log "  2. Prometheus metrics: http://localhost:9090"
 log "  3. Jaeger traces: http://localhost:16686"
 log "  4. Azure Monitor logs and metrics in Azure Portal"
 log ""
-log "🔍 Interesting metrics to explore:"
+log "Interesting metrics to explore:"
 log "  - Request rate and response times"
 log "  - Error rates and patterns"
 log "  - Service dependencies"

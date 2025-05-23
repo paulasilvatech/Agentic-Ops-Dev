@@ -1,9 +1,9 @@
-# 🚀 Complete Azure Observability Workshop Guide - Part 4
-## 🔒 Intermediate Workshop - CI/CD Integration & Security Monitoring
+#  Complete Azure Observability Workshop Guide - Part 4
+##  Intermediate Workshop - CI/CD Integration & Security Monitoring
 
 ### 🤖 DevSecOps Automation
 
-**⚡ Deploy secure monitoring with CI/CD integration:**
+** Deploy secure monitoring with CI/CD integration:**
 
 ```bash
 # Complete DevSecOps automation
@@ -21,25 +21,25 @@ cd resources/
 # Security dashboards available at http://localhost:3000
 ```
 
-**📊 Security Templates**: Pre-configured monitoring for compliance and threat detection.
+** Security Templates**: Pre-configured monitoring for compliance and threat detection.
 
 ---
 
 ### 🔗 Continuing from Part 3
 **Prerequisites**: You should have completed Parts 1-3 and have:
-- ✅ Microservices running with distributed tracing
-- ✅ Multi-cloud monitoring integration (Azure + Datadog + Prometheus/Grafana)
-- ✅ Unified dashboard displaying metrics from multiple sources
-- ✅ Understanding of advanced observability patterns
+-  Microservices running with distributed tracing
+-  Multi-cloud monitoring integration (Azure + Datadog + Prometheus/Grafana)
+-  Unified dashboard displaying metrics from multiple sources
+-  Understanding of advanced observability patterns
 
 ---
 
-## 🔄 Module 3: CI/CD Integration with Observability (60 minutes)
+##  Module 3: CI/CD Integration with Observability (60 minutes)
 
-### 🛠️ 3.1 GitHub Actions with Monitoring Integration
+###  3.1 GitHub Actions with Monitoring Integration
 **Time Required**: 30 minutes
 
-1. **📋 Create GitHub Repository for Workshop**:
+1. ** Create GitHub Repository for Workshop**:
 ```bash
 # 📂 Initialize git in your microservices project
 cd azure-monitoring-workshop/microservices
@@ -54,7 +54,7 @@ git commit -m "🎆 Initial microservices setup with observability
 - Configured OpenTelemetry and Application Insights
 - Implemented custom telemetry processors"
 
-# 🚀 Create GitHub repository (replace YOUR_USERNAME with actual username)
+#  Create GitHub repository (replace YOUR_USERNAME with actual username)
 gh repo create azure-observability-microservices --public --description "Enterprise observability workshop with microservices"
 
 # 🔗 Configure remote repository
@@ -62,12 +62,12 @@ git remote add origin https://github.com/YOUR_USERNAME/azure-observability-micro
 git branch -M main
 git push -u origin main
 
-# ✅ Verify repository creation
-echo "✅ Repository created successfully at:"
+#  Verify repository creation
+echo " Repository created successfully at:"
 echo "https://github.com/YOUR_USERNAME/azure-observability-microservices"
 ```
 
-2. **🛠️ Create Comprehensive CI/CD Pipeline** - Create `.github/workflows/ci-cd-observability.yml`:
+2. ** Create Comprehensive CI/CD Pipeline** - Create `.github/workflows/ci-cd-observability.yml`:
 ```yaml
 name: CI/CD with Integrated Observability
 
@@ -611,14 +611,14 @@ jobs:
           }'
 ```
 
-| ✅ **Checkpoint Validation** | **Expected Outcome** |
+|  **Checkpoint Validation** | **Expected Outcome** |
 |---|---|
 | **GitHub Actions Pipeline** | CI/CD workflow runs successfully with monitoring integration |
 | **Application Insights Events** | Build, test, and deployment events appear in telemetry |
 | **Deployment Annotations** | Release markers visible in Application Insights timeline |
 | **Health Checks** | Automated deployment validation and rollback capability |
 
-**🔍 Quick Verification**:
+** Quick Verification**:
 ```bash
 # Trigger a test deployment
 git commit -m "Test: Trigger CI/CD pipeline" --allow-empty
@@ -628,7 +628,7 @@ git push origin main
 gh run list --limit 1
 
 # Verify Application Insights events (wait 2-3 minutes)
-echo "✅ Expected: CI/CD events should appear in Application Insights"
+echo " Expected: CI/CD events should appear in Application Insights"
 ```
 
 ### 🛡️ 3.2 Deployment Monitoring and Release Gates
@@ -1081,26 +1081,26 @@ curl -X POST "http://localhost:5001/api/deployment/validate?deploymentId=test-12
 curl "http://localhost:5001/api/deployment/status/test-123" | jq
 ```
 
-| ✅ **Checkpoint Validation** | **Expected Outcome** |
+|  **Checkpoint Validation** | **Expected Outcome** |
 |---|---|
 | **Health Validation API** | `/api/deployment/validate` endpoint responds successfully |
 | **Multi-Service Checks** | Basic health, performance, business functionality validated |
 | **Cross-Service Communication** | Service-to-service connectivity verified |
 | **Deployment Status API** | Real-time deployment status tracking available |
 
-**🔍 Quick Verification**:
+** Quick Verification**:
 ```bash
 # Test deployment validation endpoint
 curl -X POST "http://localhost:5001/api/deployment/validate?deploymentId=test-$(date +%s)" \
   -H "Content-Type: application/json" \
   -d '["http://localhost:5001", "http://localhost:5002"]' | jq
 
-echo "✅ Expected: Comprehensive health validation results"
+echo " Expected: Comprehensive health validation results"
 ```
 
 ---
 
-## 🔒 Module 4: Security Monitoring Integration (45 minutes)
+##  Module 4: Security Monitoring Integration (45 minutes)
 
 ### 🛡️ 4.1 Microsoft Defender for Cloud Setup
 **Time Required**: 20 minutes
@@ -1669,9 +1669,9 @@ builder.Services.AddSingleton<SecurityMonitoringService>();
 app.UseMiddleware<SecurityMonitoringMiddleware>();
 ```
 
-**✅ Checkpoint**: Security monitoring should track authentication events, data access, and potential security violations
+** Checkpoint**: Security monitoring should track authentication events, data access, and potential security violations
 
-### 📊 4.2 Microsoft Sentinel Integration
+###  4.2 Microsoft Sentinel Integration
 **Time Required**: 25 minutes
 
 1. **Create Microsoft Sentinel Workspace**:
@@ -2026,19 +2026,19 @@ app.MapGet("/api/security/dashboard", async (SecurityMonitoringService securityS
 });
 ```
 
-**✅ Checkpoint**: Security monitoring should be integrated with Sentinel, creating alerts and automated responses for security events
+** Checkpoint**: Security monitoring should be integrated with Sentinel, creating alerts and automated responses for security events
 
 ---
 
 ## Intermediate Workshop Wrap-up (10 minutes)
 
 ### What You've Accomplished Today
-✅ **Built enterprise-grade microservices** with comprehensive distributed tracing  
-✅ **Integrated multi-cloud monitoring** (Azure + Datadog + Prometheus/Grafana)  
-✅ **Implemented CI/CD pipelines** with deployment monitoring and automated rollback  
-✅ **Established security monitoring** with Defender for Cloud and Sentinel integration  
-✅ **Created unified observability** across platforms and tools  
-✅ **Automated incident response** workflows with intelligent detection  
+ **Built enterprise-grade microservices** with comprehensive distributed tracing  
+ **Integrated multi-cloud monitoring** (Azure + Datadog + Prometheus/Grafana)  
+ **Implemented CI/CD pipelines** with deployment monitoring and automated rollback  
+ **Established security monitoring** with Defender for Cloud and Sentinel integration  
+ **Created unified observability** across platforms and tools  
+ **Automated incident response** workflows with intelligent detection  
 
 ### Advanced Concepts Mastered
 1. **Distributed Tracing**: End-to-end request flow visibility with rich context
@@ -2065,12 +2065,12 @@ app.MapGet("/api/security/dashboard", async (SecurityMonitoringService securityS
 
 ### Ready for Advanced Workshop?
 You're ready for the **Advanced Workshop (Parts 4-5)** if you can:
-- ✅ Configure and troubleshoot distributed tracing across microservices
-- ✅ Integrate multiple monitoring platforms effectively
-- ✅ Build CI/CD pipelines with comprehensive monitoring and rollback
-- ✅ Set up security monitoring with automated detection and response
-- ✅ Create unified dashboards combining multiple data sources
-- ✅ Understand enterprise observability patterns and best practices
+-  Configure and troubleshoot distributed tracing across microservices
+-  Integrate multiple monitoring platforms effectively
+-  Build CI/CD pipelines with comprehensive monitoring and rollback
+-  Set up security monitoring with automated detection and response
+-  Create unified dashboards combining multiple data sources
+-  Understand enterprise observability patterns and best practices
 
 ### Next Steps - Advanced Workshop Preview
 **Parts 4-5 - Advanced Workshop** will cover:

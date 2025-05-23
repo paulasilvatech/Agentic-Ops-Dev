@@ -1,12 +1,12 @@
-# 🔍 Azure Observability Workshop - Introduction to Concepts and Technologies
+#  Azure Observability Workshop - Introduction to Concepts and Technologies
 
-## 🌟 Welcome to Modern Observability
+##  Welcome to Modern Observability
 
 In today's complex, distributed, and cloud-native world, understanding what's happening inside your applications and infrastructure is more critical than ever. This introduction will guide you through the fundamental concepts, technologies, and practices that form the foundation of modern observability.
 
 ---
 
-## 📖 Table of Contents
+##  Table of Contents
 
 1. [What is Observability?](#what-is-observability)
 2. [The Three Pillars of Observability](#the-three-pillars-of-observability)
@@ -21,17 +21,17 @@ In today's complex, distributed, and cloud-native world, understanding what's ha
 
 ---
 
-## 🎯 What is Observability?
+##  What is Observability?
 
-### 📖 Definition
+###  Definition
 **Observability** is the ability to understand the internal state of a system by examining its external outputs. In software systems, it's the practice of collecting, processing, and analyzing data about your applications and infrastructure to understand their behavior, performance, and health.
 
-### 💡 Core Concept
+###  Core Concept
 > *"Observability is not about the data you collect, but about the questions you can answer with that data."*
 
 Unlike traditional monitoring, which tells you *what* is wrong, observability helps you understand *why* something is wrong and *how* to fix it.
 
-### 🚀 Why Observability Matters
+###  Why Observability Matters
 
 #### 🏗️ **Modern System Complexity**
 - **Microservices Architecture**: Applications are distributed across dozens or hundreds of services
@@ -39,7 +39,7 @@ Unlike traditional monitoring, which tells you *what* is wrong, observability he
 - **Polyglot Environments**: Multiple languages, frameworks, and technologies
 - **Multi-Cloud Strategies**: Services running across different cloud providers
 
-#### 🚀 **Business Impact**
+####  **Business Impact**
 - **Faster Time to Resolution**: Reduce mean time to recovery (MTTR) from hours to minutes
 - **Proactive Issue Detection**: Find problems before customers do
 - **Performance Optimization**: Understand and improve user experience
@@ -59,8 +59,8 @@ Modern observability is built on three fundamental data types, often called the 
 
 ```mermaid
 graph TB
-    A[🔍 Complete Observability] --> B[📊 Metrics]
-    A --> C[📝 Logs] 
+    A[ Complete Observability] --> B[ Metrics]
+    A --> C[ Logs] 
     A --> D[🔗 Traces]
     
     B --> B1[Time-series Data]
@@ -78,15 +78,15 @@ graph TB
     D --> D3[Latency Analysis]
     D --> D4[Error Attribution]
     
-    B1 --> E[📈 Dashboards & Alerts]
+    B1 --> E[ Dashboards & Alerts]
     C1 --> E
     D1 --> E
     
-    B2 --> F[🔍 Root Cause Analysis]
+    B2 --> F[ Root Cause Analysis]
     C2 --> F
     D2 --> F
     
-    B3 --> G[🎯 Performance Optimization]
+    B3 --> G[ Performance Optimization]
     C3 --> G
     D3 --> G
     
@@ -99,7 +99,7 @@ graph TB
     style G fill:#e0f2f1
 ```
 
-### 1. 📊 Metrics (What happened?)
+### 1.  Metrics (What happened?)
 
 **Definition**: Numerical measurements of your system's behavior over time.
 
@@ -109,7 +109,7 @@ graph TB
 - **Low storage cost**: Efficient to store and query
 - **Real-time**: Near-instantaneous collection and alerting
 
-**📊 Metric Examples:**
+** Metric Examples:**
 ```bash
 # System Performance Metrics
 CPU_UTILIZATION=75%                    # Current processor usage
@@ -134,7 +134,7 @@ DATABASE_CONNECTIONS=45/100            # Active DB connection pool
 - **Capacity planning**: Understand resource utilization patterns
 - **SLA monitoring**: Track service level objectives and error budgets
 
-### 2. 📝 Logs (What exactly happened?)
+### 2.  Logs (What exactly happened?)
 
 **Definition**: Discrete events that occurred in your system with detailed context.
 
@@ -144,7 +144,7 @@ DATABASE_CONNECTIONS=45/100            # Active DB connection pool
 - **Searchable**: Full-text search capabilities
 - **High volume**: Can generate large amounts of data
 
-**📝 Structured Log Examples:**
+** Structured Log Examples:**
 ```json
 // INFO: Successful user authentication
 {
@@ -266,16 +266,16 @@ Span Duration: 847ms total
 
 Understanding the differences between these approaches is crucial for implementing effective observability strategies.
 
-| Aspect | 📊 Traditional Monitoring | 📝 Modern Logging | 🔍 Modern Observability |
+| Aspect |  Traditional Monitoring |  Modern Logging |  Modern Observability |
 |--------|---------------------------|-------------------|-------------------------|
-| **🎯 Focus** | Predefined metrics and known failure modes | Collecting and searching event data | Understanding system behavior through comprehensive data |
-| **🔍 Approach** | "Known unknowns" - monitoring what you expect to break | Reactive debugging and forensic analysis | "Unknown unknowns" - discovering what you didn't know could break |
-| **🛠️ Primary Tools** | Nagios, Zabbix, SCOM | ELK Stack, Splunk, Fluentd | Azure Monitor, Datadog, New Relic, Honeycomb |
-| **✅ Best Use Cases** | Infrastructure monitoring, basic health checks | Detailed investigation, audit trails, compliance | Complex distributed systems, proactive detection |
-| **⚡ Response Type** | Reactive alerts | Reactive investigation | Proactive insights |
-| **📊 Data Types** | Simple metrics | Event logs | Metrics, logs, traces, and correlations |
+| ** Focus** | Predefined metrics and known failure modes | Collecting and searching event data | Understanding system behavior through comprehensive data |
+| ** Approach** | "Known unknowns" - monitoring what you expect to break | Reactive debugging and forensic analysis | "Unknown unknowns" - discovering what you didn't know could break |
+| ** Primary Tools** | Nagios, Zabbix, SCOM | ELK Stack, Splunk, Fluentd | Azure Monitor, Datadog, New Relic, Honeycomb |
+| ** Best Use Cases** | Infrastructure monitoring, basic health checks | Detailed investigation, audit trails, compliance | Complex distributed systems, proactive detection |
+| ** Response Type** | Reactive alerts | Reactive investigation | Proactive insights |
+| ** Data Types** | Simple metrics | Event logs | Metrics, logs, traces, and correlations |
 
-### 📊 Traditional Monitoring Examples
+###  Traditional Monitoring Examples
 ```bash
 # Basic threshold alerts
 CPU_USAGE > 80% → ALERT
@@ -284,13 +284,13 @@ SERVICE_STATUS = DOWN → ALERT
 RESPONSE_TIME > 2000ms → ALERT
 ```
 
-**⚠️ Limitations:**
+** Limitations:**
 - Only catches anticipated problems
 - Limited troubleshooting context
 - High false positive rates
 - Poor correlation across systems
 
-### 📝 Modern Logging Examples
+###  Modern Logging Examples
 ```json
 {
   "timestamp": "2025-01-15T14:30:45Z",
@@ -305,13 +305,13 @@ RESPONSE_TIME > 2000ms → ALERT
 }
 ```
 
-**⚠️ Limitations:**
+** Limitations:**
 - Requires knowing what to search for
 - Expensive at scale
 - Difficult cross-system correlation
 - Primarily reactive approach
 
-### 🔍 Modern Observability Examples
+###  Modern Observability Examples
 ```yaml
 # Intelligent correlation and insights
 Automated Discovery:
@@ -330,7 +330,7 @@ Cross-Signal Correlation:
   - Root cause identification
 ```
 
-**✅ Advantages:**
+** Advantages:**
 - Discovers unexpected failure modes
 - Rich troubleshooting context
 - Proactive optimization capabilities
@@ -338,11 +338,11 @@ Cross-Signal Correlation:
 
 ---
 
-## 🛠️ Key Technologies and Tools
+##  Key Technologies and Tools
 
-### 🌐 Open Source Ecosystem
+###  Open Source Ecosystem
 
-#### 📊 **Prometheus & Grafana**
+####  **Prometheus & Grafana**
 - **Prometheus**: Time-series database and monitoring system
 - **Grafana**: Visualization and dashboarding platform
 - **Use Case**: Infrastructure and application metrics monitoring
@@ -356,7 +356,7 @@ rate(http_requests_total[5m])
 histogram_quantile(0.95, http_request_duration_seconds_bucket)
 ```
 
-#### 🔍 **Jaeger & Zipkin**
+####  **Jaeger & Zipkin**
 - **Jaeger**: Distributed tracing system (CNCF project)
 - **Zipkin**: Distributed tracing system (originated at Twitter)
 - **Use Case**: Request tracing across microservices
@@ -376,13 +376,13 @@ Example Trace Span:
 }
 ```
 
-#### 📝 **ELK Stack (Elasticsearch, Logstash, Kibana)**
+####  **ELK Stack (Elasticsearch, Logstash, Kibana)**
 - **Elasticsearch**: Search and analytics engine
 - **Logstash**: Log processing pipeline
 - **Kibana**: Data visualization platform
 - **Use Case**: Centralized logging and log analytics
 
-#### 🌐 **OpenTelemetry**
+####  **OpenTelemetry**
 - **Purpose**: Vendor-neutral observability framework
 - **Components**: APIs, SDKs, and tools for collecting telemetry
 - **Benefit**: Standardized instrumentation across languages and vendors
@@ -454,9 +454,9 @@ flowchart TD
 
 Microsoft Azure provides a comprehensive set of observability services that work together to provide end-to-end visibility into your applications and infrastructure.
 
-### 📊 Core Azure Monitor Services
+###  Core Azure Monitor Services
 
-#### 🔧 **Azure Monitor**
+####  **Azure Monitor**
 **Purpose**: Central hub for all monitoring data in Azure
 **Capabilities**:
 - Metrics collection and storage
@@ -465,7 +465,7 @@ Microsoft Azure provides a comprehensive set of observability services that work
 - Workbooks and dashboards
 
 ```kusto
-// 📊 Azure Monitor KQL Query - Request Analysis
+//  Azure Monitor KQL Query - Request Analysis
 // Purpose: Analyze API request patterns and performance over the last hour
 
 requests                                    // Query the requests table
@@ -480,8 +480,8 @@ requests                                    // Query the requests table
 | order by RequestCount desc               // Sort by most frequent operations
 | take 20                                  // Limit to top 20 results
 
-// 💡 Copy this query to Azure Monitor Log Analytics to run
-// 🔍 Expected output: Table showing top API operations with performance metrics
+//  Copy this query to Azure Monitor Log Analytics to run
+//  Expected output: Table showing top API operations with performance metrics
 ```
 
 #### 📱 **Application Insights**
@@ -493,7 +493,7 @@ requests                                    // Query the requests table
 - Dependency tracking and application maps
 
 ```csharp
-// 🔧 Application Insights Integration - Order Processing Controller
+//  Application Insights Integration - Order Processing Controller
 // Purpose: Comprehensive telemetry collection for e-commerce order creation
 
 using Microsoft.ApplicationInsights;
@@ -520,7 +520,7 @@ public class OrderController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateOrder([FromBody] Order order)
     {
-        // 🔍 Start distributed tracing operation
+        //  Start distributed tracing operation
         using var operation = _telemetryClient.StartOperation<RequestTelemetry>("CreateOrder");
         operation.Telemetry.Properties["UserId"] = order.UserId.ToString();
         operation.Telemetry.Properties["OrderValue"] = order.TotalAmount.ToString("C");
@@ -529,7 +529,7 @@ public class OrderController : Controller
         
         try
         {
-            // 📊 Track custom metric for order attempts
+            //  Track custom metric for order attempts
             _telemetryClient.TrackMetric("Order.Attempts", 1, 
                 new Dictionary<string, string> 
                 {
@@ -541,7 +541,7 @@ public class OrderController : Controller
             var result = await _orderService.ProcessOrder(order);
             stopwatch.Stop();
             
-            // ✅ Track successful order creation event
+            //  Track successful order creation event
             _telemetryClient.TrackEvent("OrderCreated", 
                 properties: new Dictionary<string, string> 
                 {
@@ -556,7 +556,7 @@ public class OrderController : Controller
                     {"ProcessingTimeMs", stopwatch.ElapsedMilliseconds}
                 });
             
-            // 📈 Track business KPI
+            //  Track business KPI
             _telemetryClient.TrackMetric("Revenue.OrderValue", (double)order.TotalAmount);
             
             _logger.LogInformation("Order {OrderId} created successfully for user {UserId}", 
@@ -566,7 +566,7 @@ public class OrderController : Controller
         }
         catch (ValidationException ex)
         {
-            // ⚠️ Track validation errors separately
+            //  Track validation errors separately
             _telemetryClient.TrackException(ex, 
                 new Dictionary<string, string>
                 {
@@ -594,7 +594,7 @@ public class OrderController : Controller
     }
 }
 
-// 💡 Key Telemetry Features:
+//  Key Telemetry Features:
 // - Distributed tracing with StartOperation
 // - Custom events with properties and metrics  
 // - Business KPI tracking (revenue, conversion rates)
@@ -603,7 +603,7 @@ public class OrderController : Controller
 // - Structured logging integration
 ```
 
-#### 📊 **Container Insights**
+####  **Container Insights**
 **Purpose**: Monitoring for Azure Kubernetes Service (AKS) and containers
 **Capabilities**:
 - Node and pod performance monitoring
@@ -619,7 +619,7 @@ public class OrderController : Controller
 - Compliance monitoring and reporting
 - Integration with Azure security services
 
-### 🚀 Advanced Azure Observability Features
+###  Advanced Azure Observability Features
 
 #### 🤖 **Azure SRE Agent (Preview)**
 **Purpose**: AI-powered Site Reliability Engineering automation
@@ -629,7 +629,7 @@ public class OrderController : Controller
 - Predictive analytics and anomaly detection
 - Integration with development workflows
 
-#### 📈 **Azure Metrics Advisor**
+####  **Azure Metrics Advisor**
 **Purpose**: AI-powered anomaly detection for business metrics
 **Capabilities**:
 - Automatic anomaly detection
@@ -637,7 +637,7 @@ public class OrderController : Controller
 - Business intelligence integration
 - Custom metric monitoring
 
-#### 🔍 **Azure Service Map**
+####  **Azure Service Map**
 **Purpose**: Automatic discovery and mapping of application dependencies
 **Capabilities**:
 - Real-time service topology
@@ -647,7 +647,7 @@ public class OrderController : Controller
 
 ---
 
-## 🔄 Modern Observability Patterns
+##  Modern Observability Patterns
 
 ### 1. **Shift-Left Observability**
 **Concept**: Integrate observability into the development process from the beginning
@@ -716,14 +716,14 @@ resource "azurerm_monitor_metric_alert" "high_response_time" {
 
 ---
 
-## 🎯 Site Reliability Engineering (SRE) and Observability
+##  Site Reliability Engineering (SRE) and Observability
 
-### 📊 SRE Principles
+###  SRE Principles
 **Site Reliability Engineering** is a discipline that applies software engineering approaches to infrastructure and operations problems.
 
 #### Key SRE Concepts:
 
-##### 🎯 **Service Level Objectives (SLOs)**
+#####  **Service Level Objectives (SLOs)**
 Quantitative measures of service reliability
 
 ```yaml
@@ -734,11 +734,11 @@ Example SLO:
 - Error Rate: Less than 0.1% of requests result in errors
 ```
 
-##### 📊 **Service Level Indicators (SLIs)**
+#####  **Service Level Indicators (SLIs)**
 Metrics that measure SLO compliance
 
 ```kusto
-// 🎯 SLI Calculation - Service Availability Measurement
+//  SLI Calculation - Service Availability Measurement
 // Purpose: Calculate availability SLI over 30-day rolling window for SLO compliance
 
 requests                                          // Query application requests table
@@ -762,14 +762,14 @@ requests                                          // Query application requests 
     ErrorRate,
     ServerErrorRate,
     SLOTarget = 99.9,                             // Target SLO: 99.9% availability
-    SLOCompliance = iff(AvailabilityPercentage >= 99.9, "✅ Meeting SLO", "❌ Below SLO")
+    SLOCompliance = iff(AvailabilityPercentage >= 99.9, " Meeting SLO", " Below SLO")
 
-// 💡 Expected Results:
+//  Expected Results:
 // - Availability: 99.95% (above 99.9% target)
 // - Error Rate: 0.05% (within acceptable limits)  
 // - SLO Status: Meeting target
 // 
-// 📊 Copy to Azure Monitor to track your SLIs
+//  Copy to Azure Monitor to track your SLIs
 ```
 
 ##### ⚖️ **Error Budgets**
@@ -782,7 +782,7 @@ Error Budget Calculation:
 - Current Usage: 15 minutes (34.7% of budget consumed)
 ```
 
-### 🔄 SRE Observability Practices
+###  SRE Observability Practices
 
 #### 🚨 **Smart Alerting**
 Alerts should be actionable, meaningful, and urgent
@@ -798,7 +798,7 @@ Bad Alert:
 - Problem: May not indicate user impact, too sensitive
 ```
 
-#### 🔄 **Incident Response Integration**
+####  **Incident Response Integration**
 Observability tools should integrate with incident management
 
 ```yaml
@@ -873,15 +873,15 @@ if prediction.cpu_usage > 80:
 
 ---
 
-## 🌐 Multi-Cloud and Hybrid Observability
+##  Multi-Cloud and Hybrid Observability
 
-### ⚠️ Challenges in Multi-Cloud Environments
+###  Challenges in Multi-Cloud Environments
 
 #### 🔗 **Data Silos**
 Different cloud providers use different monitoring systems
 **Solution**: Centralized observability platform that aggregates data from all clouds
 
-#### 🌐 **Network Complexity**
+####  **Network Complexity**
 Services communicate across cloud boundaries with varying latencies
 **Solution**: Distributed tracing with cross-cloud correlation
 
@@ -893,9 +893,9 @@ Different security models and compliance requirements across clouds
 Complex billing and resource optimization across providers
 **Solution**: Multi-cloud cost monitoring and optimization
 
-### 🛠️ Multi-Cloud Observability Strategies
+###  Multi-Cloud Observability Strategies
 
-#### 🎯 **Hub and Spoke Model**
+####  **Hub and Spoke Model**
 Choose one cloud as the central observability hub
 
 ```yaml
@@ -911,7 +911,7 @@ Spoke Clouds (AWS, GCP):
 - Local emergency monitoring
 ```
 
-#### 🔄 **Federation Model**
+####  **Federation Model**
 Federate data between cloud-native monitoring systems
 
 ```yaml
@@ -934,11 +934,11 @@ Examples:
 
 ---
 
-## 🚀 Getting Started: Your Observability Journey
+##  Getting Started: Your Observability Journey
 
-### 📊 Assessment: Where Are You Now?
+###  Assessment: Where Are You Now?
 
-#### 🔍 **Level 1: Basic Monitoring**
+####  **Level 1: Basic Monitoring**
 **Characteristics**:
 - Simple uptime checks and basic metrics
 - Manual log searching
@@ -947,7 +947,7 @@ Examples:
 
 **Next Steps**: Implement centralized logging and basic APM
 
-#### 📊 **Level 2: Comprehensive Monitoring**
+####  **Level 2: Comprehensive Monitoring**
 **Characteristics**:
 - Structured logging and metrics collection
 - Basic application performance monitoring
@@ -956,7 +956,7 @@ Examples:
 
 **Next Steps**: Add distributed tracing and custom business metrics
 
-#### 🎯 **Level 3: Full Observability**
+####  **Level 3: Full Observability**
 **Characteristics**:
 - Metrics, logs, and traces integrated
 - Custom telemetry for business KPIs
@@ -965,7 +965,7 @@ Examples:
 
 **Next Steps**: Implement SRE practices and AI-enhanced monitoring
 
-#### 🚀 **Level 4: Observability Excellence**
+####  **Level 4: Observability Excellence**
 **Characteristics**:
 - AI-powered insights and automation
 - Predictive analytics and self-healing systems
@@ -1000,15 +1000,15 @@ Examples:
 3. **Innovation adoption** (AI, machine learning)
 4. **Industry best practice** implementation
 
-### ✅ Best Practices for Getting Started
+###  Best Practices for Getting Started
 
-#### 🎯 **Start Small, Think Big**
+####  **Start Small, Think Big**
 - Begin with critical applications and services
 - Use pilot projects to prove value
 - Scale gradually as expertise grows
 - Plan for enterprise-wide adoption
 
-#### 📊 **Focus on Value, Not Vanity Metrics**
+####  **Focus on Value, Not Vanity Metrics**
 - Measure what matters to the business
 - Align metrics with user experience
 - Avoid metric overload
@@ -1020,7 +1020,7 @@ Examples:
 - Create communication channels for observability insights
 - Regular retrospectives and improvements
 
-#### 🔄 **Embrace Continuous Learning**
+####  **Embrace Continuous Learning**
 - Stay current with observability trends
 - Participate in community forums and conferences
 - Share experiences and learn from others
@@ -1028,7 +1028,7 @@ Examples:
 
 ---
 
-## 🚀 Ready to Begin?
+##  Ready to Begin?
 
 Congratulations! You now have a solid foundation in modern observability concepts and technologies. This knowledge will serve as your guide throughout the Azure Observability Workshop.
 
@@ -1036,9 +1036,9 @@ Congratulations! You now have a solid foundation in modern observability concept
 
 Before diving into the hands-on workshop, know that we've provided **complete automation** to make your learning experience smooth and efficient! All scripts, templates, and deployment automation are available in the `resources/` directory.
 
-#### ⚡ Quick Start Options
+####  Quick Start Options
 
-**🎯 Option 1: One-Command Deployment (Recommended for Students)**
+** Option 1: One-Command Deployment (Recommended for Students)**
 ```bash
 # Navigate to the resources directory
 cd resources/
@@ -1050,7 +1050,7 @@ cd resources/
 ./quick-start.sh start
 ```
 
-**🔧 Option 2: Step-by-Step with Full Control**
+** Option 2: Step-by-Step with Full Control**
 ```bash
 # Use the comprehensive deployment script with optional parameters
 ./deploy-workshop.sh YOUR_SUBSCRIPTION_ID
@@ -1065,14 +1065,14 @@ cd resources/
 
 The `resources/` directory contains everything you need:
 
-- **🚀 `quick-start.sh`** - One-command deployment and management
+- ** `quick-start.sh`** - One-command deployment and management
 - **🏗️ `deploy-workshop.sh`** - Complete environment setup
 - **☁️ `terraform/`** - Infrastructure as Code for AKS, monitoring, and Azure resources
 - **⚓ `kubernetes/`** - Kubernetes manifests for Prometheus, Grafana, and sample apps
-- **💻 `applications/`** - Sample .NET, Python, and Node.js applications with telemetry
-- **🔧 `scripts/`** - Individual deployment scripts and helper utilities
+- ** `applications/`** - Sample .NET, Python, and Node.js applications with telemetry
+- ** `scripts/`** - Individual deployment scripts and helper utilities
 
-#### 🌐 What Gets Deployed Automatically
+####  What Gets Deployed Automatically
 
 When you use our automation, you'll get:
 
@@ -1084,20 +1084,20 @@ When you use our automation, you'll get:
 
 ### ➡️ What's Next?
 1. **🤖 Use automation for quick setup** - Deploy in minutes with `./quick-start.sh`
-2. **🎯 Choose your learning track** based on your current skill level
+2. ** Choose your learning track** based on your current skill level
 3. **📚 Follow the workshop modules** with hands-on exercises
-4. **🔍 Explore the pre-deployed environment** with real telemetry data
-5. **🛠️ Experiment and customize** using the provided templates
-6. **📖 Apply what you learn** in your own environments
-7. **🌟 Share your success** and help others on their observability journey
+4. ** Explore the pre-deployed environment** with real telemetry data
+5. ** Experiment and customize** using the provided templates
+6. ** Apply what you learn** in your own environments
+7. ** Share your success** and help others on their observability journey
 
-### 📝 Remember:
+###  Remember:
 - **Observability is a journey, not a destination**
 - **Start with the basics and build complexity gradually**
 - **Focus on solving real problems and providing business value**
 - **Learn from failures and continuously improve**
 
-Welcome to the world of modern observability! Let's build better, more reliable systems together. 🎉
+Welcome to the world of modern observability! Let's build better, more reliable systems together. 
 
 ---
 
@@ -1105,7 +1105,7 @@ Welcome to the world of modern observability! Let's build better, more reliable 
 
 ### 🗺️ Workshop Learning Path Summary
 
-| 📖 **Workshop Part** | ⏱️ **Duration** | 🎯 **Target Level** | 🛠️ **Key Technologies** | 🎓 **Learning Outcomes** |
+|  **Workshop Part** | ⏱️ **Duration** |  **Target Level** |  **Key Technologies** | 🎓 **Learning Outcomes** |
 |---|---|---|---|---|
 | **Part 1**: Introduction | 30 min | All Levels | Concepts, Fundamentals | Understanding of observability principles |
 | **Part 2**: Basic Setup | 2 hours | Beginner | Azure Monitor, App Insights | Functional monitoring setup |
@@ -1116,18 +1116,18 @@ Welcome to the world of modern observability! Let's build better, more reliable 
 | **Troubleshooting Guide** | Reference | All Levels | Debugging, Problem Resolution | Independent troubleshooting capability |
 | **Workshop Structure** | Reference | Instructors | Training Delivery, Assessment | Effective workshop facilitation |
 
-### 🎯 Skill Progression Matrix
+###  Skill Progression Matrix
 
-| 🔢 **Level** | 🏷️ **Title** | 📊 **Capabilities After Completion** | 🏢 **Suitable For** |
+| 🔢 **Level** | 🏷️ **Title** |  **Capabilities After Completion** | 🏢 **Suitable For** |
 |---|---|---|---|
 | **Level 1** | **Observability Novice** | Basic monitoring setup, simple dashboards, alert creation | Individual developers, small teams |
 | **Level 2** | **Monitoring Practitioner** | Distributed tracing, custom metrics, CI/CD integration | Development teams, DevOps engineers |
 | **Level 3** | **Observability Engineer** | Multi-cloud integration, security monitoring, automation | Platform teams, SRE teams |
 | **Level 4** | **Enterprise Architect** | AI-enhanced monitoring, compliance frameworks, mentoring | Enterprise organizations, consultants |
 
-### ⚡ Quick Start Recommendations
+###  Quick Start Recommendations
 
-| ⏰ **Available Time** | 🎯 **Recommended Path** | 🏆 **Expected Outcome** |
+| ⏰ **Available Time** |  **Recommended Path** | 🏆 **Expected Outcome** |
 |---|---|---|
 | **90 minutes** | Parts 1-2 (Basic Setup) | Functional monitoring for single application |
 | **Half Day (4 hours)** | Parts 1-4 (Through CI/CD) | Production-ready observability with automation |
@@ -1138,7 +1138,7 @@ Welcome to the world of modern observability! Let's build better, more reliable 
 
 ## 📚 Additional Resources and References
 
-### 📝 Documentation
+###  Documentation
 - [Azure Monitor Documentation](https://docs.microsoft.com/en-us/azure/azure-monitor/)
 - [OpenTelemetry Specification](https://opentelemetry.io/docs/)
 - [SRE Book by Google](https://sre.google/sre-book/table-of-contents/)
@@ -1150,7 +1150,7 @@ Welcome to the world of modern observability! Let's build better, more reliable 
 - [Azure Monitor UserVoice](https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4)
 - [Observability Slack Communities](https://observability.slack.com/)
 
-### 🛠️ Tools and Platforms
+###  Tools and Platforms
 - [Azure Monitor](https://azure.microsoft.com/en-us/services/monitor/)
 - [Prometheus](https://prometheus.io/)
 - [Grafana](https://grafana.com/)

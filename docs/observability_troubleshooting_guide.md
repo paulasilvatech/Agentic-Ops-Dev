@@ -1,4 +1,4 @@
-# 🔧 Azure Observability Workshop - Troubleshooting Guide
+#  Azure Observability Workshop - Troubleshooting Guide
 
 ## 🆘 Quick Reference for Common Issues
 
@@ -6,16 +6,16 @@ This comprehensive troubleshooting guide helps you resolve common issues encount
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 1. [⚙️ Prerequisites and Setup Issues](#prerequisites-and-setup-issues)
 2. [☁️ Azure Resource Deployment Problems](#azure-resource-deployment-problems)
-3. [🚀 Kubernetes and Container Issues](#kubernetes-and-container-issues)
-4. [🌐 Service Mesh (Istio) Problems](#service-mesh-istio-problems)
-5. [📊 Monitoring Stack Issues](#monitoring-stack-issues)
+3. [ Kubernetes and Container Issues](#kubernetes-and-container-issues)
+4. [ Service Mesh (Istio) Problems](#service-mesh-istio-problems)
+5. [ Monitoring Stack Issues](#monitoring-stack-issues)
 6. [📱 Application and Connectivity Problems](#application-and-connectivity-problems)
-7. [⚡ Performance and Resource Issues](#performance-and-resource-issues)
-8. [🌐 Multi-Cloud Integration Problems](#multi-cloud-integration-problems)
+7. [ Performance and Resource Issues](#performance-and-resource-issues)
+8. [ Multi-Cloud Integration Problems](#multi-cloud-integration-problems)
 9. [Security and Compliance Issues](#security-and-compliance-issues)
 10. [Emergency Recovery Procedures](#emergency-recovery-procedures)
 
@@ -25,7 +25,7 @@ This comprehensive troubleshooting guide helps you resolve common issues encount
 
 ### 🔐 Issue: Azure CLI Authentication Failures
 
-| 🔴 **Symptoms** | 🔍 **Root Cause** | ✅ **Solution Priority** |
+| 🔴 **Symptoms** |  **Root Cause** |  **Solution Priority** |
 |---|---|---|
 | `az login` fails or times out | Network restrictions, proxy issues | High - blocks all Azure operations |
 | "Please run 'az login' to set up account" errors | Expired authentication tokens | High - required for any Azure CLI commands |
@@ -47,23 +47,23 @@ echo "🔐 Starting device code authentication..."
 az login --use-device-code         # Follow the URL and enter the code displayed
 
 # Step 3: Verify subscription access and permissions
-echo "📋 Verifying subscription access..."
+echo " Verifying subscription access..."
 az account list --output table     # List all accessible subscriptions
 
 # Step 4: Set the correct subscription context
-echo "🎯 Setting subscription context..."
+echo " Setting subscription context..."
 az account set --subscription "YOUR_SUBSCRIPTION_ID"  # Replace with your subscription ID
 
 # Step 5: Validate authentication status
-echo "✅ Validating authentication..."
+echo " Validating authentication..."
 az account show --output table     # Display current account context
 
-# 💡 Expected Output:
+#  Expected Output:
 # - Account list shows your subscription(s)
 # - Current account shows correct user and subscription
 # - No authentication errors in subsequent commands
 
-# 🔍 If still failing, check:
+#  If still failing, check:
 # - Subscription permissions (Owner/Contributor required)
 # - Corporate proxy settings
 # - Azure service outages at status.azure.com
@@ -856,7 +856,7 @@ kubectl cluster-info dump > cluster-info-$(date +%Y%m%d-%H%M%S).txt
 
 ---
 
-## 📝 Prevention Best Practices
+##  Prevention Best Practices
 
 1. **Always verify prerequisites** before starting each module
 2. **Save working configurations** after successful deployments

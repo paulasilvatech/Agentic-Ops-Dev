@@ -1,9 +1,9 @@
-# 🚀 Complete Azure Observability Workshop Guide - Part 6
+#  Complete Azure Observability Workshop Guide - Part 6
 ## 🤖 Service Mesh & AI-Enhanced SRE Agent (2.5 hours)
 
 ### 🤖 AI & Service Mesh Automation
 
-**⚡ Deploy AI-enhanced service mesh observability:**
+** Deploy AI-enhanced service mesh observability:**
 
 ```bash
 # AI-enhanced service mesh deployment
@@ -25,13 +25,13 @@ cd resources/
 
 ---
 
-### ✅ Prerequisites Check
+###  Prerequisites Check
 Before starting Part 6, ensure you have completed Part 5 and have:
-- ✅ Enterprise Kubernetes cluster running (AKS)
-- ✅ Prometheus and Grafana observability stack deployed
-- ✅ Azure Monitor integration configured
-- ✅ All pods in `observability` namespace are running
-- ✅ Port forwards active for Prometheus (9090) and Grafana (3000)
+-  Enterprise Kubernetes cluster running (AKS)
+-  Prometheus and Grafana observability stack deployed
+-  Azure Monitor integration configured
+-  All pods in `observability` namespace are running
+-  Port forwards active for Prometheus (9090) and Grafana (3000)
 
 ---
 
@@ -40,16 +40,16 @@ Before starting Part 6, ensure you have completed Part 5 and have:
 ### ⚙️ Step 1: Install and Configure Istio Service Mesh
 **Time Required**: 45 minutes
 
-1. **📦 Download and Install Istio**:
+1. ** Download and Install Istio**:
 ```bash
-# 📦 Download Istio service mesh platform
-echo "📦 Downloading Istio v1.19.0 for enterprise service mesh..."
+#  Download Istio service mesh platform
+echo " Downloading Istio v1.19.0 for enterprise service mesh..."
 curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.19.0 sh -
 cd istio-1.19.0
 export PATH=$PWD/bin:$PATH
 
-# ✅ Verify Istio CLI installation
-echo "✅ Verifying Istio installation..."
+#  Verify Istio CLI installation
+echo " Verifying Istio installation..."
 istioctl version --remote=false
 
 # 🏢 Install Istio with enterprise configuration for production
@@ -62,16 +62,16 @@ istioctl install --set values.defaultRevision=default \
   --set values.telemetry.v2.prometheus.service_monitor.enabled=true \
   --set values.defaultRevision=default
 
-# ✅ Verify Istio installation in cluster
-echo "✅ Verifying Istio deployment in Kubernetes..."
+#  Verify Istio installation in cluster
+echo " Verifying Istio deployment in Kubernetes..."
 kubectl get pods -n istio-system
 kubectl get svc -n istio-system
 
 # Expected output: istiod and istio-proxy pods running
-echo "✅ Istio service mesh installation completed successfully!"
+echo " Istio service mesh installation completed successfully!"
 ```
 
-2. **📊 Install Istio Observability Add-ons**:
+2. ** Install Istio Observability Add-ons**:
 ```bash
 # Install observability add-ons
 kubectl apply -f samples/addons/jaeger.yaml
@@ -619,7 +619,7 @@ echo "Jaeger (Distributed Tracing): http://localhost:16686"
 echo "Grafana (Metrics Visualization): http://localhost:3000"
 ```
 
-**✅ Checkpoint**: Service mesh should show distributed tracing and advanced traffic management
+** Checkpoint**: Service mesh should show distributed tracing and advanced traffic management
 
 ---
 
@@ -1179,7 +1179,7 @@ kubectl port-forward -n observability svc/prometheus 9090:9090 &
 curl http://localhost:9090/api/v1/rules | jq '.data.groups[].rules[] | select(.type=="alerting") | .name'
 ```
 
-**✅ Checkpoint**: Service mesh and AI-enhanced monitoring should be operational with intelligent alerting
+** Checkpoint**: Service mesh and AI-enhanced monitoring should be operational with intelligent alerting
 
 ---
 

@@ -23,7 +23,7 @@ warn() {
     echo -e "${YELLOW}[$(date +'%Y-%m-%d %H:%M:%S')] WARNING: $1${NC}"
 }
 
-log "🔍 Starting Jaeger port forwarding..."
+log "Starting Jaeger port forwarding..."
 
 # Check if kubectl is configured
 if ! kubectl cluster-info &> /dev/null; then
@@ -45,16 +45,16 @@ kubectl wait --for=condition=Ready pod -l app.kubernetes.io/name=jaeger -n monit
 
 # Start port forwarding
 log "Starting port forwarding for Jaeger..."
-log "🌐 Jaeger will be accessible at: http://localhost:16686"
-log "📋 Use the web UI to explore distributed traces"
+log "Jaeger will be accessible at: http://localhost:16686"
+log "Use the web UI to explore distributed traces"
 log ""
-log "💡 Features to explore:"
+log "Features to explore:"
 log "  - Search traces by service name"
 log "  - View trace timelines and spans"
 log "  - Analyze service dependencies"
 log "  - Compare trace performance"
 log ""
-log "💡 To stop port forwarding, press Ctrl+C"
+log "To stop port forwarding, press Ctrl+C"
 log ""
 
 # Port forward (this will run in foreground)

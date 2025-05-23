@@ -23,7 +23,7 @@ warn() {
     echo -e "${YELLOW}[$(date +'%Y-%m-%d %H:%M:%S')] WARNING: $1${NC}"
 }
 
-log "📊 Starting Prometheus port forwarding..."
+log "Starting Prometheus port forwarding..."
 
 # Check if kubectl is configured
 if ! kubectl cluster-info &> /dev/null; then
@@ -45,15 +45,15 @@ kubectl wait --for=condition=Ready pod -l app.kubernetes.io/name=prometheus -n m
 
 # Start port forwarding
 log "Starting port forwarding for Prometheus..."
-log "🌐 Prometheus will be accessible at: http://localhost:9090"
-log "📋 Use the web UI to explore metrics and run PromQL queries"
+log "Prometheus will be accessible at: http://localhost:9090"
+log "Use the web UI to explore metrics and run PromQL queries"
 log ""
-log "💡 Example queries to try:"
+log "Example queries to try:"
 log "  - up (show all targets status)"
 log "  - rate(http_requests_total[5m]) (request rate)"
 log "  - container_memory_usage_bytes (memory usage)"
 log ""
-log "💡 To stop port forwarding, press Ctrl+C"
+log "To stop port forwarding, press Ctrl+C"
 log ""
 
 # Port forward (this will run in foreground)

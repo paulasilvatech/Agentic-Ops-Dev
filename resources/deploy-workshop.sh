@@ -355,7 +355,7 @@ echo "4. Experiment with the KQL queries in Azure Monitor"
 echo "5. Explore distributed traces in Jaeger"
 echo ""
 
-echo -e "${GREEN}Happy learning! 🚀${NC}"
+echo -e "${GREEN}Happy learning!${NC}"
 echo ""
 
 # Cleanup function for graceful exit

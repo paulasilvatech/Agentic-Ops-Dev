@@ -3,7 +3,7 @@
 
 ### 🤖 Multi-Cloud Automation
 
-**⚡ Deploy multi-cloud observability instantly:**
+** Deploy multi-cloud observability instantly:**
 
 ```bash
 # Multi-cloud environment setup
@@ -20,17 +20,17 @@ cd resources/
 ./scripts/helpers/start-workshop-env.sh
 ```
 
-**🌐 Cloud Native**: Pre-configured templates for AWS and GCP integration.
+** Cloud Native**: Pre-configured templates for AWS and GCP integration.
 
 ---
 
 ### Prerequisites Check
 Before starting Part 7, ensure you have completed Parts 5-6 and have:
-- ✅ Enterprise Kubernetes cluster with Istio service mesh running
-- ✅ Prometheus, Grafana, Jaeger, and Kiali operational
-- ✅ Azure Monitor integration configured
-- ✅ SRE Agent simulator deployed
-- ✅ Intelligent alerting rules configured and active
+-  Enterprise Kubernetes cluster with Istio service mesh running
+-  Prometheus, Grafana, Jaeger, and Kiali operational
+-  Azure Monitor integration configured
+-  SRE Agent simulator deployed
+-  Intelligent alerting rules configured and active
 
 ---
 
@@ -828,7 +828,7 @@ curl -H "Host: api.multicloud.enterprise.local" \
      http://$INGRESS_IP/
 ```
 
-**✅ Checkpoint**: Multi-cloud integration should show cross-cloud metrics and routing
+** Checkpoint**: Multi-cloud integration should show cross-cloud metrics and routing
 
 ---
 
@@ -1254,7 +1254,7 @@ echo "- Tags: error=true"
 echo "- Min Duration: 1000ms (to find slow traces)"
 ```
 
-**✅ Checkpoint**: Troubleshooting scenarios should be generating observable issues
+** Checkpoint**: Troubleshooting scenarios should be generating observable issues
 
 ---
 

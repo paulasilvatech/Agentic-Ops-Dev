@@ -3,7 +3,7 @@
 
 ### 🤖 Compliance & Challenges Automation
 
-**⚡ Deploy compliance monitoring and challenge scenarios:**
+** Deploy compliance monitoring and challenge scenarios:**
 
 ```bash
 # Complete workshop finale setup
@@ -20,7 +20,7 @@ cd resources/
 ./scripts/helpers/start-workshop-env.sh
 ```
 
-**📋 Workshop Complete**: All automation available for future reference and customization.
+** Workshop Complete**: All automation available for future reference and customization.
 
 ### 🧹 Easy Cleanup
 
@@ -35,11 +35,11 @@ When you're finished with the workshop:
 
 ### Prerequisites Check
 Before starting Part 8, ensure you have completed Parts 5-7 and have:
-- ✅ Multi-cloud observability platform operational
-- ✅ Cross-cloud service mesh with advanced routing
-- ✅ Troubleshooting scenarios generating observable issues
-- ✅ Azure Monitor, Prometheus, Grafana, Jaeger, and Kiali accessible
-- ✅ SRE Agent simulation running with intelligent alerting
+-  Multi-cloud observability platform operational
+-  Cross-cloud service mesh with advanced routing
+-  Troubleshooting scenarios generating observable issues
+-  Azure Monitor, Prometheus, Grafana, Jaeger, and Kiali accessible
+-  SRE Agent simulation running with intelligent alerting
 
 ---
 
@@ -688,7 +688,7 @@ kubectl describe limitrange production-limits -n production
 kubectl get prometheusrules governance-alerts -n observability
 ```
 
-**✅ Checkpoint**: Compliance and governance monitoring should be active
+** Checkpoint**: Compliance and governance monitoring should be active
 
 ---
 
@@ -907,7 +907,7 @@ echo "Monitor latency improvements across clouds"
 kubectl logs -n istio-system deployment/istio-proxy | grep "optimized.enterprise.local"
 ```
 
-**✅ Challenge Checkpoint**: Performance optimization should show improved response times
+** Challenge Checkpoint**: Performance optimization should show improved response times
 
 ---
 
@@ -915,19 +915,19 @@ kubectl logs -n istio-system deployment/istio-proxy | grep "optimized.enterprise
 
 ### Key Takeaways
 
-**🎯 Enterprise Observability Architecture**:
+** Enterprise Observability Architecture**:
 - **Centralized Monitoring**: Azure Monitor as the hub for multi-cloud observability
 - **Service Mesh Integration**: Istio for advanced traffic management and observability
 - **AI-Enhanced Operations**: SRE Agent for intelligent incident response
 - **Cross-Cloud Correlation**: Unified dashboards across Azure, AWS, and GCP
 
-**🔒 Security and Compliance**:
+** Security and Compliance**:
 - **Policy Enforcement**: Network policies and security standards
 - **Compliance Monitoring**: Automated compliance checking and reporting
 - **Audit Trails**: Comprehensive logging for regulatory requirements
 - **Governance Controls**: Resource quotas and limit ranges
 
-**🚀 Performance Optimization**:
+** Performance Optimization**:
 - **Intelligent Routing**: Performance-based traffic distribution
 - **Predictive Scaling**: AI-driven capacity planning
 - **Multi-Cloud Load Balancing**: Optimal resource utilization
@@ -977,10 +977,10 @@ curl -s http://localhost:9090/api/v1/alerts | jq '.data.alerts | length'
 curl -H "Host: api.multicloud.enterprise.local" -H "x-target-cloud: aws" http://$INGRESS_IP/
 
 echo "=== Workshop Complete! ==="
-echo "✅ Multi-cloud observability platform operational"
-echo "✅ AI-enhanced monitoring and alerting active"
-echo "✅ Security and compliance monitoring enabled"
-echo "✅ Advanced troubleshooting capabilities deployed"
+echo " Multi-cloud observability platform operational"
+echo " AI-enhanced monitoring and alerting active"
+echo " Security and compliance monitoring enabled"
+echo " Advanced troubleshooting capabilities deployed"
 ```
 
 ### Clean-up (Optional)
@@ -998,16 +998,16 @@ terraform destroy -auto-approve
 
 ---
 
-## 🎉 Congratulations!
+##  Congratulations!
 
 You have successfully completed the **Advanced Azure Observability Workshop**! You now have:
 
-- ✅ **Enterprise-scale observability** across multiple clouds
-- ✅ **AI-enhanced monitoring** with intelligent alerting and automation
-- ✅ **Advanced service mesh** with sophisticated traffic management
-- ✅ **Comprehensive security** and compliance monitoring
-- ✅ **Multi-cloud integration** with centralized observability
-- ✅ **Advanced troubleshooting** skills with distributed tracing
+-  **Enterprise-scale observability** across multiple clouds
+-  **AI-enhanced monitoring** with intelligent alerting and automation
+-  **Advanced service mesh** with sophisticated traffic management
+-  **Comprehensive security** and compliance monitoring
+-  **Multi-cloud integration** with centralized observability
+-  **Advanced troubleshooting** skills with distributed tracing
 
 Your enterprise observability platform is ready for production deployment and can scale to support large, complex, multi-cloud environments.
 

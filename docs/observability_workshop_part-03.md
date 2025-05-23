@@ -1,9 +1,9 @@
-# 🚀 Complete Azure Observability Workshop Guide - Part 3
-## 🔧 Intermediate Workshop (4 hours)
+#  Complete Azure Observability Workshop Guide - Part 3
+##  Intermediate Workshop (4 hours)
 
 ### 🤖 Quick Setup with Automation
 
-**⚡ Accelerate your intermediate learning** with our complete automation:
+** Accelerate your intermediate learning** with our complete automation:
 
 ```bash
 # Deploy advanced monitoring stack instantly
@@ -23,22 +23,22 @@ cd resources/
 
 ---
 
-### ✅ Prerequisites Check
+###  Prerequisites Check
 Before starting the Intermediate Workshop, ensure you have completed Parts 1-2 and have:
-- ✅ Beginner Workshop completed successfully
-- ✅ Application running in Azure with telemetry flowing to Application Insights
-- ✅ Basic dashboards and alerts configured and tested
-- ✅ GitHub Copilot working reliably for KQL queries
-- ✅ Understanding of Azure Monitor, Application Insights, and basic observability concepts
+-  Beginner Workshop completed successfully
+-  Application running in Azure with telemetry flowing to Application Insights
+-  Basic dashboards and alerts configured and tested
+-  GitHub Copilot working reliably for KQL queries
+-  Understanding of Azure Monitor, Application Insights, and basic observability concepts
 
-### 📋 New Prerequisites for Intermediate Level
+###  New Prerequisites for Intermediate Level
 - **CI/CD Experience**: Basic understanding of deployment pipelines
 - **Microservices Knowledge**: Understanding of distributed systems concepts
 - **Container Basics**: Familiarity with Docker and containerization
 - **Security Awareness**: Basic cloud security concepts
 - **Third-party Tool Access**: Datadog account (free trial) - optional but recommended
 
-### 🎯 Intermediate Workshop Overview
+###  Intermediate Workshop Overview
 This workshop builds on the foundation from the beginner level and introduces:
 - **Distributed tracing** across multiple microservices
 - **Multi-cloud monitoring integration** with third-party tools
@@ -48,7 +48,7 @@ This workshop builds on the foundation from the beginner level and introduces:
 
 ---
 
-## 📊 Module 1: Advanced Application Insights and Distributed Tracing (60 minutes)
+##  Module 1: Advanced Application Insights and Distributed Tracing (60 minutes)
 
 ### 🏗️ 1.1 Microservices Architecture Setup
 **Time Required**: 30 minutes
@@ -66,8 +66,8 @@ cd microservices
 mkdir user-service order-service notification-service api-gateway
 mkdir shared/contracts shared/infrastructure
 
-# ✅ Verify structure creation
-echo "✅ Created microservices project structure successfully"
+#  Verify structure creation
+echo " Created microservices project structure successfully"
 ls -la
 
 # Expected output:
@@ -78,7 +78,7 @@ ls -la
 # 📁 shared/
 ```
 
-2. **🔧 Build User Service with Distributed Tracing**:
+2. ** Build User Service with Distributed Tracing**:
 ```bash
 # 📂 Navigate to user service directory
 cd user-service
@@ -87,7 +87,7 @@ cd user-service
 dotnet new webapi --name UserService --framework net8.0
 cd UserService
 
-# 📦 Add required packages for advanced distributed tracing
+#  Add required packages for advanced distributed tracing
 # Core Application Insights integration
 dotnet add package Microsoft.ApplicationInsights.AspNetCore --version 2.21.0
 
@@ -102,9 +102,9 @@ dotnet add package OpenTelemetry.Instrumentation.AspNetCore --version 1.5.1-beta
 dotnet add package OpenTelemetry.Instrumentation.Http --version 1.5.1-beta.1
 dotnet add package OpenTelemetry.Exporter.Console --version 1.6.0
 
-# ✅ Verify packages were added successfully
+#  Verify packages were added successfully
 dotnet list package
-echo "✅ All distributed tracing packages installed successfully"
+echo " All distributed tracing packages installed successfully"
 ```
 
 3. **⚙️ Create User Service with Advanced Tracing** - Replace `Program.cs`:
@@ -619,14 +619,14 @@ curl -X POST http://localhost:5002/api/order \
   -d '{"userId": 999, "total": 50.00, "items": []}'  # Should fail user validation
 ```
 
-| ✅ **Checkpoint Validation** | **Expected Outcome** |
+|  **Checkpoint Validation** | **Expected Outcome** |
 |---|---|
 | **Distributed Traces** | Complete request flow visible from Order Service → User Service in Application Insights |
 | **Telemetry Data** | Custom events, metrics, and traces appearing in Azure Monitor |
 | **Cross-Service Calls** | HTTP calls between services properly correlated with trace IDs |
 | **Performance Metrics** | Response times and dependency calls tracked accurately |
 
-**🔍 Quick Verification**:
+** Quick Verification**:
 ```bash
 # Verify services are running with tracing
 curl http://localhost:5001/api/user/123
@@ -635,7 +635,7 @@ curl -X POST http://localhost:5002/api/order \
   -d '{"userId": 123, "total": 99.99}'
 
 # Check Application Insights for traces (within 2-5 minutes)
-echo "✅ Expected: Traces should appear in Application Insights with correlated IDs"
+echo " Expected: Traces should appear in Application Insights with correlated IDs"
 ```
 
 ### 🤖 1.2 Advanced Telemetry Configuration and Custom Instrumentation
@@ -947,14 +947,14 @@ wait
 curl http://localhost:5001/api/user/123?slow=true
 ```
 
-| ✅ **Checkpoint Validation** | **Expected Outcome** |
+|  **Checkpoint Validation** | **Expected Outcome** |
 |---|---|
 | **Custom Properties** | All telemetry enriched with business context (Environment, MachineName, ServiceVersion) |
 | **Performance Categories** | Requests categorized as Fast/Medium/Slow based on response times |
 | **Business Domain Tags** | Commerce and Identity domains properly tagged |
 | **Sampling Configuration** | High-volume events properly sampled, critical events preserved |
 
-**🔍 Quick Verification**:
+** Quick Verification**:
 ```bash
 # Generate test traffic with custom headers
 for i in {1..10}; do
@@ -965,7 +965,7 @@ for i in {1..10}; do
 done
 
 # Expected: Custom properties should appear in Application Insights telemetry
-echo "✅ Check Application Insights for enriched telemetry data"
+echo " Check Application Insights for enriched telemetry data"
 ```
 
 ---
@@ -1253,9 +1253,9 @@ for i in {1..20}; do
 done
 ```
 
-**✅ Checkpoint**: Metrics should appear in both Azure Application Insights and Datadog dashboards
+** Checkpoint**: Metrics should appear in both Azure Application Insights and Datadog dashboards
 
-### 📊 2.2 Prometheus and Grafana Setup
+###  2.2 Prometheus and Grafana Setup
 **Time Required**: 30 minutes
 
 1. **Create Docker Compose for Monitoring Stack**:
@@ -1510,9 +1510,9 @@ echo "  User Service: http://localhost:5001/metrics"
 echo "  Order Service: http://localhost:5002/metrics"
 ```
 
-**✅ Checkpoint**: You should see metrics in Prometheus and visualizations in Grafana
+** Checkpoint**: You should see metrics in Prometheus and visualizations in Grafana
 
-### 📊 2.3 Unified Dashboard Creation
+###  2.3 Unified Dashboard Creation
 **Time Required**: 30 minutes
 
 1. **Create Multi-Source Dashboard Service** - Create `shared/infrastructure/DashboardService.cs`:
@@ -1797,7 +1797,7 @@ done
 curl http://localhost:5001/api/dashboard/health | jq
 ```
 
-**✅ Checkpoint**: You should have a unified dashboard that combines metrics from Azure Monitor, Prometheus, and calculated derived metrics
+** Checkpoint**: You should have a unified dashboard that combines metrics from Azure Monitor, Prometheus, and calculated derived metrics
 
 ---
 

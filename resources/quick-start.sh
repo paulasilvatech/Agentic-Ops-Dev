@@ -23,7 +23,7 @@ print_banner() {
     ║              Azure Observability Workshop                       ║
     ║                     Quick Start                                  ║
     ║                                                                  ║
-    ║        🚀 Complete deployment in just a few minutes!           ║
+    ║        Complete deployment in just a few minutes!              ║
     ║                                                                  ║
     ╚══════════════════════════════════════════════════════════════════╝
 EOF
@@ -103,7 +103,7 @@ check_prerequisites() {
         error "Missing required tools: ${missing_tools[*]}"
     fi
     
-    log "✅ All prerequisites satisfied!"
+    log "All prerequisites satisfied!"
 }
 
 # Deploy function
@@ -119,14 +119,14 @@ deploy_workshop() {
     SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
     
     # Run the main deployment script
-    log "🚀 Running complete deployment script..."
+    log "Running complete deployment script..."
     chmod +x "$SCRIPT_DIR/deploy-workshop.sh"
     "$SCRIPT_DIR/deploy-workshop.sh" "$subscription_id"
     
-    log "✅ Workshop deployment completed!"
+    log "Workshop deployment completed!"
     
     # Automatically start the environment
-    log "🔄 Starting workshop environment..."
+    log "Starting workshop environment..."
     start_environment
 }
 
@@ -144,7 +144,7 @@ start_environment() {
     fi
     
     # Start the environment
-    log "🌐 Starting all services..."
+    log "Starting all services..."
     chmod +x "$SCRIPT_DIR/scripts/helpers/start-workshop-env.sh"
     "$SCRIPT_DIR/scripts/helpers/start-workshop-env.sh"
 }
@@ -157,7 +157,7 @@ check_status() {
     
     # Check if outputs file exists
     if [ ! -f "$SCRIPT_DIR/workshop-outputs.env" ]; then
-        warn "❌ Workshop not deployed"
+        warn "Workshop not deployed"
         echo "Run: $0 deploy <subscription-id>"
         exit 1
     fi
@@ -165,7 +165,7 @@ check_status() {
     # Source outputs
     source "$SCRIPT_DIR/workshop-outputs.env"
     
-    log "✅ Workshop is deployed!"
+    log "Workshop is deployed!"
     echo ""
     echo -e "${BLUE}Deployment Information:${NC}"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -177,7 +177,7 @@ check_status() {
     
     # Check if kubectl is configured
     if kubectl cluster-info &> /dev/null; then
-        log "✅ kubectl is configured"
+        log "kubectl is configured"
         
         # Check cluster status
         echo -e "${BLUE}Cluster Status:${NC}"
@@ -194,7 +194,7 @@ check_status() {
         echo ""
         
     else
-        warn "❌ kubectl not configured for this cluster"
+        warn "kubectl not configured for this cluster"
         echo "Run: az aks get-credentials --resource-group $RESOURCE_GROUP --name $AKS_CLUSTER"
     fi
     
@@ -221,7 +221,7 @@ cleanup_workshop() {
     source "$SCRIPT_DIR/workshop-outputs.env"
     
     # Confirm deletion
-    echo -e "${YELLOW}⚠️  This will delete ALL workshop resources including:${NC}"
+    echo -e "${YELLOW}This will delete ALL workshop resources including:${NC}"
     echo "• Resource Group: ${RESOURCE_GROUP:-Unknown}"
     echo "• AKS Cluster: ${AKS_CLUSTER:-Unknown}"
     echo "• All data, dashboards, and configurations"
@@ -234,20 +234,20 @@ cleanup_workshop() {
     fi
     
     # Kill any running port forwards
-    log "🛑 Stopping port forwarding..."
+    log "Stopping port forwarding..."
     pkill -f "kubectl port-forward" 2>/dev/null || true
     
     # Delete resource group (this will delete everything)
     if [ -n "${RESOURCE_GROUP:-}" ]; then
-        log "🗑️ Deleting resource group: $RESOURCE_GROUP"
+        log "Deleting resource group: $RESOURCE_GROUP"
         az group delete --name "$RESOURCE_GROUP" --yes --no-wait
-        log "✅ Resource group deletion initiated"
+        log "Resource group deletion initiated"
     fi
     
     # Clean up local files
     if [ -f "$SCRIPT_DIR/workshop-outputs.env" ]; then
         rm "$SCRIPT_DIR/workshop-outputs.env"
-        log "✅ Cleaned up local configuration files"
+        log "Cleaned up local configuration files"
     fi
     
     # Clean up terraform state
@@ -256,11 +256,11 @@ cleanup_workshop() {
         if [ -f "terraform.tfstate" ]; then
             rm -f terraform.tfstate*
             rm -f tfplan
-            log "✅ Cleaned up Terraform state"
+            log "Cleaned up Terraform state"
         fi
     fi
     
-    log "🎉 Cleanup completed!"
+    log "Cleanup completed!"
     log "Note: Resource deletion may take several minutes to complete in Azure"
 }
 

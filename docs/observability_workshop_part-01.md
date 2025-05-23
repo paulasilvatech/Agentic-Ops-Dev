@@ -1,16 +1,16 @@
-# 🚀 Complete Azure Observability Workshop Guide - Part 1
-## 🌟 From Zero to AI-Enhanced Multi-Cloud Monitoring
+#  Complete Azure Observability Workshop Guide - Part 1
+##  From Zero to AI-Enhanced Multi-Cloud Monitoring
 
-### 📖 Table of Contents - Complete Workshop Series
+###  Table of Contents - Complete Workshop Series
 
-**🎯 Part 1** - Setup and Beginner Foundation (This Document)
+** Part 1** - Setup and Beginner Foundation (This Document)
 - [Pre-Workshop Preparation](#-pre-workshop-preparation)
 - [Step 1: Create Required Accounts](#-step-1-create-required-accounts)
 - [Step 2: Install Required Tools](#-step-2-install-required-tools)
 - [Beginner Workshop Introduction](#-beginner-workshop-2-hours)
 - [Module 1: Setting Up Your First Monitoring Solution](#-module-1-setting-up-your-first-monitoring-solution-30-minutes)
 
-**📊 Part 2** - Beginner Workshop Modules 2-5
+** Part 2** - Beginner Workshop Modules 2-5
 - Module 2: Creating Your First Dashboard and Alerts
 - Module 3: AI-Assisted Troubleshooting with GitHub Copilot
 - Module 4: Implementing Proactive Monitoring
@@ -22,22 +22,22 @@
 - Module 3: CI/CD Integration with Observability
 - Module 4: Security Monitoring Integration
 
-**🔧 Part 4** - Advanced Workshop Part 1 (3-4 hours)
+** Part 4** - Advanced Workshop Part 1 (3-4 hours)
 - Module 1: Enterprise-Scale Observability Architecture
 - Module 2: AI-Enhanced SRE Agent Implementation
 
-**🚀 Part 5** - Advanced Workshop Part 2 (3-4 hours)
+** Part 5** - Advanced Workshop Part 2 (3-4 hours)
 - Module 3: Infrastructure as Code with Observability
 - Multi-Cloud Challenge Labs
 - Final Integration and Wrap-up
 
 ---
 
-## 🎯 Pre-Workshop Preparation
+##  Pre-Workshop Preparation
 
 ### 🤖 Quick Start: Skip Manual Setup with Automation!
 
-**⚡ Want to jump straight to learning?** Our complete automation can deploy everything for you:
+** Want to jump straight to learning?** Our complete automation can deploy everything for you:
 
 ```bash
 # Navigate to the automation resources
@@ -54,53 +54,53 @@ cd resources/
 
 ### 🎓 What You'll Learn
 By completing these workshops, you will:
-- **🔍 Master Azure observability fundamentals** and advanced techniques
+- ** Master Azure observability fundamentals** and advanced techniques
 - **🤖 Implement AI-powered monitoring** with Azure SRE Agent and GitHub Copilot
 - **☁️ Deploy and monitor applications** across Azure, AWS, and Google Cloud
-- **📊 Create unified dashboards** combining Azure Monitor, Datadog, and Prometheus
-- **⚡ Establish automated incident response** with intelligent agents
+- ** Create unified dashboards** combining Azure Monitor, Datadog, and Prometheus
+- ** Establish automated incident response** with intelligent agents
 - **🏢 Build enterprise-scale observability solutions**
 - **🔐 Integrate security monitoring** with Microsoft Defender and Sentinel
 
-### 🛠️ Automation Resources Available
+###  Automation Resources Available
 All manual steps in this workshop have automated alternatives in the `resources/` directory:
 - **🏗️ Infrastructure**: `./scripts/deploy-infrastructure.sh`
-- **📊 Monitoring Stack**: `./scripts/deploy-monitoring.sh`
-- **🚀 Applications**: `./scripts/deploy-applications.sh`
-- **🔧 Helper Tools**: `./scripts/helpers/` (port forwarding, load generation, etc.)
+- ** Monitoring Stack**: `./scripts/deploy-monitoring.sh`
+- ** Applications**: `./scripts/deploy-applications.sh`
+- ** Helper Tools**: `./scripts/helpers/` (port forwarding, load generation, etc.)
 
-### 🌟 Workshop Overview and AI-Enhanced Features
+###  Workshop Overview and AI-Enhanced Features
 
-#### 🔍 What is Modern Observability?
-| **📊 Traditional Monitoring** | **🔍 Modern Observability** | **🤖 AI-Enhanced Observability** |
+####  What is Modern Observability?
+| ** Traditional Monitoring** | ** Modern Observability** | **🤖 AI-Enhanced Observability** |
 |------------------------------|------------------------------|----------------------------------|
 | Reactive alerts when something breaks | Proactive insights into system behavior through metrics, logs, and traces | Intelligent agents that monitor, analyze, predict, and respond automatically |
 
-#### 🛠️ Key Technologies We'll Use
+####  Key Technologies We'll Use
 - **🤖 Azure SRE Agent**: NEW AI-powered site reliability engineering (BUILD 2025 launch)
-- **👨‍💻 GitHub Copilot**: AI pair programmer for monitoring queries and troubleshooting
+- **👨‍ GitHub Copilot**: AI pair programmer for monitoring queries and troubleshooting
 - **🧠 Azure AI Foundry**: Advanced AI analysis for code and infrastructure
-- **🌐 Multi-Cloud Integration**: Azure Monitor as central hub for AWS and GCP telemetry
+- ** Multi-Cloud Integration**: Azure Monitor as central hub for AWS and GCP telemetry
 - **🤖 Agentic DevOps**: Where AI agents work as team members in development lifecycle
 
 ### ⏰ Time Investment
-| **📚 Workshop Track** | **⏱️ Duration** | **🎯 Target Audience** |
+| **📚 Workshop Track** | **⏱️ Duration** | ** Target Audience** |
 |----------------------|----------------|----------------------|
-| **🎯 Preparation** | 45-60 minutes | All participants |
-| **📊 Beginner Workshop** | 2 hours | New to observability |
+| ** Preparation** | 45-60 minutes | All participants |
+| ** Beginner Workshop** | 2 hours | New to observability |
 | **🎓 Intermediate Workshop** | 4 hours | Some monitoring experience |
-| **🚀 Advanced Workshop** | 6-8 hours | Senior practitioners |
+| ** Advanced Workshop** | 6-8 hours | Senior practitioners |
 
 ---
 
-## 🔧 Step 1: Create Required Accounts
+##  Step 1: Create Required Accounts
 
 ### 1.1 ☁️ Azure Account Setup
 **⏱️ Time Required**: 10 minutes
 
-#### 📝 Create Azure Free Account
+####  Create Azure Free Account
 ```bash
-# 🌐 Navigate to Azure signup page
+#  Navigate to Azure signup page
 # Purpose: Set up your Azure subscription for the workshop
 # Expected outcome: Active Azure subscription with free credits
 
@@ -115,9 +115,9 @@ https://azure.microsoft.com/free
 # Step 5: Complete identity verification process
 ```
 
-#### ✅ Verify Azure Subscription
+####  Verify Azure Subscription
 ```bash
-# 🔍 Verify your Azure subscription is active
+#  Verify your Azure subscription is active
 # Purpose: Ensure you have access to Azure services
 # Expected outcome: View active subscription details
 
@@ -134,21 +134,21 @@ az account show --query "{SubscriptionId:id, Name:name, State:state}"
 ```
 
 #### 💰 Check Free Tier Limits
-| **🔧 Service** | **📊 Free Tier Allocation** | **📝 Description** |
+| ** Service** | ** Free Tier Allocation** | ** Description** |
 |---------------|----------------------------|-------------------|
 | **📱 Application Insights** | 1 GB per month | APM and telemetry collection |
-| **📊 Log Analytics** | 5 GB per month | Centralized logging and queries |
-| **📈 Azure Monitor** | Basic metrics included | Infrastructure monitoring |
-| **🌐 App Service** | 60 CPU minutes per day | Web application hosting |
+| ** Log Analytics** | 5 GB per month | Centralized logging and queries |
+| ** Azure Monitor** | Basic metrics included | Infrastructure monitoring |
+| ** App Service** | 60 CPU minutes per day | Web application hosting |
 
-**✅ Checkpoint**: You should be able to access Azure Portal and see your subscription
+** Checkpoint**: You should be able to access Azure Portal and see your subscription
 
-### 1.2 👨‍💻 GitHub Account and Copilot Setup
+### 1.2 👨‍ GitHub Account and Copilot Setup
 **⏱️ Time Required**: 10 minutes
 
 #### 🔑 Create/Verify GitHub Account
 ```bash
-# 🌐 GitHub account setup process
+#  GitHub account setup process
 # Purpose: Access GitHub Copilot AI assistance for monitoring queries
 # Expected outcome: Active GitHub account with 2FA enabled
 
@@ -164,7 +164,7 @@ https://github.com
 
 #### 🤖 Get GitHub Copilot Access
 ```bash
-# 🚀 GitHub Copilot subscription setup
+#  GitHub Copilot subscription setup
 # Purpose: Enable AI-powered code assistance for workshop
 # Expected outcome: Active Copilot subscription
 
@@ -177,12 +177,12 @@ https://github.com/features/copilot
 # Step 5: Verify activation at: https://github.com/settings/copilot
 ```
 
-**✅ Checkpoint**: GitHub Copilot trial should be active and ready for VS Code integration
+** Checkpoint**: GitHub Copilot trial should be active and ready for VS Code integration
 
 ### 1.3 🤖 Azure SRE Agent Preview Registration
 **⏱️ Time Required**: 5 minutes
 
-#### 📝 Register for Preview Access
+####  Register for Preview Access
 ```bash
 # 🔬 Azure SRE Agent preview registration
 # Purpose: Get early access to AI-powered SRE capabilities
@@ -215,9 +215,9 @@ Workshop SRE Agent Simulation:
   - GitHub Actions: CI/CD integration with monitoring
 ```
 
-**✅ Checkpoint**: Registration submitted (access will be verified in advanced modules)
+** Checkpoint**: Registration submitted (access will be verified in advanced modules)
 
-### 1.4 🌐 Multi-Cloud Accounts (For Advanced Workshop Only)
+### 1.4  Multi-Cloud Accounts (For Advanced Workshop Only)
 **⏱️ Time Required**: 15 minutes
 
 #### 🔶 AWS Account Setup (Advanced Workshop Only)
@@ -261,21 +261,21 @@ https://cloud.google.com/free
 https://console.cloud.google.com
 ```
 
-#### 📊 Free Tier Resources Summary
-| **☁️ Cloud Provider** | **🎁 Free Tier Highlights** | **📊 Monitoring Allowances** |
+####  Free Tier Resources Summary
+| **☁️ Cloud Provider** | **🎁 Free Tier Highlights** | ** Monitoring Allowances** |
 |----------------------|---------------------------|------------------------------|
 | **🔷 Azure** | $200 credit for 30 days | 1GB App Insights, 5GB Log Analytics |
 | **🔶 AWS** | 12 months free tier | 10 custom metrics, 5GB CloudWatch logs |
 | **🔵 Google Cloud** | $300 credit for 90 days | Basic monitoring included |
 
-**✅ Checkpoint**: For advanced workshop, you should have access to AWS and GCP consoles
+** Checkpoint**: For advanced workshop, you should have access to AWS and GCP consoles
 
-### 1.5 🔧 Optional Third-Party Accounts
+### 1.5  Optional Third-Party Accounts
 **⏱️ Time Required**: 10 minutes
 
 #### 🐕 Datadog Free Trial (Intermediate/Advanced Workshops)
 ```bash
-# 📊 Datadog monitoring platform trial
+#  Datadog monitoring platform trial
 # Purpose: Experience enterprise monitoring platform integration
 # Expected outcome: 14-day trial with full feature access
 
@@ -307,18 +307,18 @@ https://developer.pagerduty.com
 # Step 4: Note integration key for webhook setup
 ```
 
-**✅ Checkpoint**: Third-party accounts ready for integration exercises
+** Checkpoint**: Third-party accounts ready for integration exercises
 
 ---
 
-## 🛠️ Step 2: Install Required Tools
+##  Step 2: Install Required Tools
 
-### 2.1 ⚡ Install Azure CLI
+### 2.1  Install Azure CLI
 **⏱️ Time Required**: 10 minutes
 
 #### 🪟 Windows Installation
 ```powershell
-# 🔧 Azure CLI installation on Windows
+#  Azure CLI installation on Windows
 # Purpose: Command-line access to Azure services
 # Expected outcome: Functional Azure CLI with authentication
 
@@ -340,7 +340,7 @@ az extension list                     # List installed extensions
 
 #### 🍎 macOS Installation
 ```bash
-# 🔧 Azure CLI installation on macOS
+#  Azure CLI installation on macOS
 # Purpose: Command-line access to Azure services
 # Expected outcome: Functional Azure CLI with authentication
 
@@ -358,7 +358,7 @@ which az                            # Confirm installation location
 
 #### 🐧 Linux Installation (Ubuntu/Debian)
 ```bash
-# 🔧 Azure CLI installation on Linux
+#  Azure CLI installation on Linux
 # Purpose: Command-line access to Azure services
 # Expected outcome: Functional Azure CLI with authentication
 
@@ -384,7 +384,7 @@ sudo apt-get update                  # Update with new repository
 sudo apt-get install azure-cli      # Install Azure CLI package
 ```
 
-#### ✅ Verify Installation and Login
+####  Verify Installation and Login
 ```bash
 # 🔐 Azure CLI verification and authentication
 # Purpose: Confirm installation and establish Azure connection
@@ -409,12 +409,12 @@ az account show --output table      # Shows currently active subscription
 az account show --query "{SubscriptionId:id, Name:name, TenantId:tenantId}"
 ```
 
-**✅ Checkpoint**: `az --version` should show Azure CLI version and you should be logged in
+** Checkpoint**: `az --version` should show Azure CLI version and you should be logged in
 
-### 2.2 💻 Install Visual Studio Code and Extensions
+### 2.2  Install Visual Studio Code and Extensions
 **⏱️ Time Required**: 15 minutes
 
-#### 🔧 Install VS Code
+####  Install VS Code
 ```bash
 # 💾 Visual Studio Code installation
 # Purpose: Primary development environment for workshop
@@ -440,7 +440,7 @@ sudo apt install code
 
 #### 🔌 Install Essential Extensions
 ```bash
-# 🚀 VS Code extensions for Azure development and monitoring
+#  VS Code extensions for Azure development and monitoring
 # Purpose: Enable Azure development and AI assistance capabilities
 # Expected outcome: Fully configured development environment
 
@@ -521,7 +521,7 @@ code .
 # You should see Copilot suggestions appear automatically
 ```
 
-**✅ Checkpoint**: You should see Azure resources in VS Code Azure extension and Copilot should be active
+** Checkpoint**: You should see Azure resources in VS Code Azure extension and Copilot should be active
 
 ### 2.3 🐳 Install Docker Desktop
 **⏱️ Time Required**: 15 minutes
@@ -582,9 +582,9 @@ sudo usermod -aG docker $USER                   # Add user to docker group
 newgrp docker                                   # Apply group changes immediately
 ```
 
-#### ✅ Verify Docker Installation
+####  Verify Docker Installation
 ```bash
-# 🔍 Docker installation verification
+#  Docker installation verification
 # Purpose: Confirm Docker is running and accessible
 # Expected outcome: Docker responsive with version information
 
@@ -605,16 +605,16 @@ docker images                                   # List downloaded images (should
 docker compose version                          # Should show version if available
 ```
 
-**✅ Checkpoint**: Docker should be running and `docker --version` should work without sudo
+** Checkpoint**: Docker should be running and `docker --version` should work without sudo
 
 ### 2.4 ⚙️ Install Programming Language Support
 
-#### 🔧 Option A: Install .NET 8 SDK (Recommended for this workshop)
+####  Option A: Install .NET 8 SDK (Recommended for this workshop)
 **⏱️ Time Required**: 10 minutes
 
 ##### 🪟 Windows Installation
 ```powershell
-# 🚀 .NET 8 SDK installation on Windows
+#  .NET 8 SDK installation on Windows
 # Purpose: Primary development platform for workshop applications
 # Expected outcome: .NET 8 SDK ready for web application development
 
@@ -636,7 +636,7 @@ dotnet --info                                   # Detailed installation informat
 
 ##### 🍎 macOS Installation
 ```bash
-# 🚀 .NET 8 SDK installation on macOS
+#  .NET 8 SDK installation on macOS
 # Purpose: Primary development platform for workshop applications
 # Expected outcome: .NET 8 SDK ready for web application development
 
@@ -657,7 +657,7 @@ which dotnet                                    # Show installation path
 
 ##### 🐧 Linux Installation
 ```bash
-# 🚀 .NET 8 SDK installation on Linux
+#  .NET 8 SDK installation on Linux
 # Purpose: Primary development platform for workshop applications
 # Expected outcome: .NET 8 SDK ready for web application development
 
@@ -678,9 +678,9 @@ dotnet --version                                # Should show 8.0.x
 dotnet --info                                  # Detailed installation information
 ```
 
-##### ✅ Verify .NET Installation
+#####  Verify .NET Installation
 ```bash
-# 🔍 .NET SDK verification and testing
+#  .NET SDK verification and testing
 # Purpose: Confirm .NET development environment is ready
 # Expected outcome: Functional .NET development environment
 
@@ -704,7 +704,7 @@ cd ../..                                       # Return to original directory
 rm -rf dotnet-test                            # Remove test directory
 ```
 
-**✅ Checkpoint**: `dotnet --version` should show 8.0.x and test app should compile/run
+** Checkpoint**: `dotnet --version` should show 8.0.x and test app should compile/run
 
 #### 🐍 Option B: Install Python 3.9+ (Alternative)
 **⏱️ Time Required**: 10 minutes
@@ -780,7 +780,7 @@ python3.11 --version                          # Should show 3.11.x
 pip3.11 --version                            # Package manager version
 ```
 
-##### 🌐 Create Python Virtual Environment
+#####  Create Python Virtual Environment
 ```bash
 # 🏗️ Python virtual environment setup for workshop
 # Purpose: Isolated Python environment for workshop dependencies
@@ -812,14 +812,14 @@ pip freeze > requirements.txt                 # Save installed packages
 cat requirements.txt                          # Display installed packages
 ```
 
-**✅ Checkpoint**: Either `dotnet --version` or `python3 --version` should work properly
+** Checkpoint**: Either `dotnet --version` or `python3 --version` should work properly
 
-### 2.5 📝 Install Git and Configure
+### 2.5  Install Git and Configure
 **⏱️ Time Required**: 10 minutes
 
-#### 🛠️ Git Installation by Platform
+####  Git Installation by Platform
 ```bash
-# 📝 Git version control installation
+#  Git version control installation
 # Purpose: Source code management and collaboration
 # Expected outcome: Functional Git with user configuration
 
@@ -847,7 +847,7 @@ sudo pacman -S git                             # Pacman package manager
 
 #### ⚙️ Configure Git for Development
 ```bash
-# 🔧 Git global configuration setup
+#  Git global configuration setup
 # Purpose: Configure Git for development workflow
 # Expected outcome: Git ready for commits and collaboration
 
@@ -884,15 +884,15 @@ git config user.name                                    # Verify name setting
 git config user.email                                   # Verify email setting
 ```
 
-**✅ Checkpoint**: `git --version` should show version and configuration should be set
+** Checkpoint**: `git --version` should show version and configuration should be set
 
-### 2.6 🛠️ Workshop-Specific Tools Setup
+### 2.6  Workshop-Specific Tools Setup
 
-#### ⚡ Install Azure Functions Core Tools
+####  Install Azure Functions Core Tools
 **⏱️ Time Required**: 5 minutes
 
 ```bash
-# 🔧 Azure Functions Core Tools installation
+#  Azure Functions Core Tools installation
 # Purpose: Local development and deployment of Azure Functions
 # Expected outcome: Functional Azure Functions development environment
 
@@ -944,9 +944,9 @@ npm --version                                         # Should show npm version
 npx --version                                         # Should show npx version
 ```
 
-#### ✅ Final Tools Verification
+####  Final Tools Verification
 ```bash
-# 🔍 Complete development environment verification
+#  Complete development environment verification
 # Purpose: Ensure all tools are installed and functional
 # Expected outcome: All development tools ready for workshop
 
@@ -977,39 +977,39 @@ echo "# Azure Observability Workshop" > README.md  # Create README
 git add README.md                                   # Stage README
 git commit -m "Initial commit: workshop setup"     # Create initial commit
 
-echo "✅ Development environment setup complete!"
+echo " Development environment setup complete!"
 echo "📁 Workshop workspace: $(pwd)"
-echo "🚀 Ready to begin Azure Observability Workshop!"
+echo " Ready to begin Azure Observability Workshop!"
 ```
 
-**✅ Checkpoint**: All development tools should be installed and working
+** Checkpoint**: All development tools should be installed and working
 
 ---
 
-## 🎯 Beginner Workshop (2 hours)
+##  Beginner Workshop (2 hours)
 
-### 🌟 Introduction: Modern Cloud Observability and Agentic DevOps (15 minutes)
+###  Introduction: Modern Cloud Observability and Agentic DevOps (15 minutes)
 
-#### 📈 The Evolution of Monitoring
+####  The Evolution of Monitoring
 
-| **🕰️ Era** | **📊 Monitoring Approach** | **⚡ Detection Time** | **🛠️ Characteristics** |
+| **🕰️ Era** | ** Monitoring Approach** | ** Detection Time** | ** Characteristics** |
 |------------|---------------------------|---------------------|------------------------|
 | **📟 Traditional IT (1990s-2000s)** | Server room with blinking lights, manual log checking | Hours to days | Reactive alerts: "Server is down!" |
 | **☁️ Cloud Monitoring (2010s)** | Dashboard-driven monitoring, automated metrics | Minutes to hours | Proactive alerts: "CPU usage high" |
-| **🔍 Modern Observability (2020s)** | Three pillars: Metrics, Logs, Traces | Seconds to minutes | Context-aware: "Customer checkout failing" |
+| ** Modern Observability (2020s)** | Three pillars: Metrics, Logs, Traces | Seconds to minutes | Context-aware: "Customer checkout failing" |
 | **🤖 AI-Enhanced (2024+)** | Intelligent agents, predictive detection | Predictive | Self-healing before issues occur |
 
 #### 🤖 What is Agentic DevOps?
 
-**📊 Traditional DevOps**:
+** Traditional DevOps**:
 > "Union of people, process, and technology to enable continuous delivery"
 
-**🚀 Agentic DevOps**:
+** Agentic DevOps**:
 > "AI-powered agents operating as members of your dev and ops teams, automating, optimizing, and accelerating every stage of the software lifecycle"
 
 #### 🏛️ The Three Pillars of Observability
 
-##### 1. 📊 Metrics (What happened?)
+##### 1.  Metrics (What happened?)
 ```yaml
 Characteristics:
   - Numerical measurements over time
@@ -1018,7 +1018,7 @@ Characteristics:
   - Storage: Efficient time-series databases
 ```
 
-##### 2. 📝 Logs (What happened in detail?)
+##### 2.  Logs (What happened in detail?)
 ```yaml
 Characteristics:
   - Text records of discrete events
@@ -1040,13 +1040,13 @@ Characteristics:
 
 ```mermaid
 graph TB
-    AM[Azure Monitor<br/>🔍 Central Platform] --> AI[Application Insights<br/>📱 APM]
-    AM --> LA[Log Analytics<br/>📊 Logs & Queries]
+    AM[Azure Monitor<br/> Central Platform] --> AI[Application Insights<br/>📱 APM]
+    AM --> LA[Log Analytics<br/> Logs & Queries]
     AM --> AS[Azure SRE Agent<br/>🤖 AI-Powered Response]
     
-    AI --> MC[Metrics Collection<br/>📈 Performance Data]
+    AI --> MC[Metrics Collection<br/> Performance Data]
     LA --> AQ[Alerts & Actions<br/>🚨 Automated Response]
-    AS --> DW[Dashboards & Workbooks<br/>📊 Visualization]
+    AS --> DW[Dashboards & Workbooks<br/> Visualization]
     
     style AM fill:#0078d4,stroke:#fff,color:#fff
     style AI fill:#00bcf2,stroke:#fff,color:#fff
@@ -1054,32 +1054,32 @@ graph TB
     style AS fill:#ffb900,stroke:#fff,color:#fff
 ```
 
-#### 🛠️ Key Technologies We'll Use Today
+####  Key Technologies We'll Use Today
 
-| **🔧 Technology** | **🎯 Purpose** | **💡 Capability** |
+| ** Technology** | ** Purpose** | ** Capability** |
 |------------------|---------------|------------------|
-| **📊 Azure Monitor** | Central telemetry platform | Collect and analyze all observability data |
+| ** Azure Monitor** | Central telemetry platform | Collect and analyze all observability data |
 | **📱 Application Insights** | Application performance monitoring | Real-time APM with automatic instrumentation |
-| **📊 Log Analytics** | Query and analyze logs | KQL-based log analytics and alerting |
+| ** Log Analytics** | Query and analyze logs | KQL-based log analytics and alerting |
 | **🤖 Azure SRE Agent** | AI-powered site reliability | Automated incident detection and response |
-| **👨‍💻 GitHub Copilot** | AI coding assistant | Smart query writing and troubleshooting |
+| **👨‍ GitHub Copilot** | AI coding assistant | Smart query writing and troubleshooting |
 
-#### 🎯 Workshop Goals
+####  Workshop Goals
 By the end of today's beginner workshop, you'll have:
-- ✅ **Set up comprehensive monitoring** for a cloud application
-- ✅ **Created intelligent alerts** and custom dashboards
-- ✅ **Used AI assistance** for writing monitoring queries
-- ✅ **Implemented proactive health checks** with automated responses
-- ✅ **Built automated incident response** workflows
-- ✅ **Understood foundations** of modern observability
+-  **Set up comprehensive monitoring** for a cloud application
+-  **Created intelligent alerts** and custom dashboards
+-  **Used AI assistance** for writing monitoring queries
+-  **Implemented proactive health checks** with automated responses
+-  **Built automated incident response** workflows
+-  **Understood foundations** of modern observability
 
 ---
 
-## 🔧 Module 1: Setting Up Your First Monitoring Solution (30 minutes)
+##  Module 1: Setting Up Your First Monitoring Solution (30 minutes)
 
 ### 🤖 Automation Alternative: Complete Setup in 5 Minutes
 
-**⚡ Skip manual setup?** Use our automation to deploy everything instantly:
+** Skip manual setup?** Use our automation to deploy everything instantly:
 
 ```bash
 # Option 1: Complete automated deployment (recommended)
@@ -1093,11 +1093,11 @@ cd resources/
 **📚 Continue with manual steps below** if you want to understand the detailed setup process.
 
 ### 1.1 🏗️ Create Resource Group and Basic Resources
-**⏱️ Time Required**: 15 minutes (⚡ *or 2 minutes with automation*)
+**⏱️ Time Required**: 15 minutes ( *or 2 minutes with automation*)
 
-#### 🔧 Set up Workshop Environment
+####  Set up Workshop Environment
 ```bash
-# 🌟 Workshop environment variables setup
+#  Workshop environment variables setup
 # Purpose: Configure consistent naming and location for workshop resources
 # Expected outcome: Environment variables ready for resource creation
 
@@ -1110,7 +1110,7 @@ YOUR_EMAIL="your.email@example.com"                # Your email for notification
 # Display configuration for verification
 echo "🏷️  Resource Group: $RESOURCE_GROUP"
 echo "📍 Location: $LOCATION"
-echo "🚀 App Name: $APP_NAME"
+echo " App Name: $APP_NAME"
 echo "📧 Your Email: $YOUR_EMAIL"
 
 # Save configuration to file for later reference
@@ -1127,7 +1127,7 @@ echo "💾 Variables saved to workshop-vars.sh"
 
 #### 🏗️ Create Azure Resource Group
 ```bash
-# 📦 Create Azure resource group for workshop resources
+#  Create Azure resource group for workshop resources
 # Purpose: Logical container for all workshop Azure resources
 # Expected outcome: Resource group ready for resource deployment
 
@@ -1144,13 +1144,13 @@ az group create \
 az group show --name $RESOURCE_GROUP --output table
 
 # Display resource group details
-echo "✅ Resource group created successfully:"
+echo " Resource group created successfully:"
 az group show --name $RESOURCE_GROUP --query "{Name:name, Location:location, ProvisioningState:properties.provisioningState}"
 ```
 
-#### 📊 Create Log Analytics Workspace
+####  Create Log Analytics Workspace
 ```bash
-# 📊 Create Log Analytics workspace for centralized logging
+#  Create Log Analytics workspace for centralized logging
 # Purpose: Central platform for log collection, storage, and analysis
 # Expected outcome: Log Analytics workspace ready for telemetry ingestion
 
@@ -1164,7 +1164,7 @@ az monitor log-analytics workspace create \
     --tags Purpose="Centralized Logging" \
            Workshop="Azure Observability"
 
-echo "📊 Log Analytics workspace created: ${APP_NAME}-logs"
+echo " Log Analytics workspace created: ${APP_NAME}-logs"
 
 # Retrieve workspace ID and shared key for later use
 WORKSPACE_ID=$(az monitor log-analytics workspace show \
@@ -1253,21 +1253,21 @@ CONNECTION_STRING=$CONNECTION_STRING
 EOF
 
 echo "📁 Configuration saved to workshop-config.txt"
-echo "🔒 Security reminder: Keep configuration file secure"
+echo " Security reminder: Keep configuration file secure"
 
 # Display configuration summary
-echo "📋 Workshop Configuration Summary:"
+echo " Workshop Configuration Summary:"
 cat workshop-config.txt | grep -E "^(RESOURCE_GROUP|LOCATION|APP_NAME)="
 ```
 
-**✅ Checkpoint**: You should see both Application Insights and Log Analytics workspace in Azure Portal under your resource group
+** Checkpoint**: You should see both Application Insights and Log Analytics workspace in Azure Portal under your resource group
 
-### 1.2 🚀 Deploy Sample Application with Monitoring
-**⏱️ Time Required**: 15 minutes (⚡ *or 3 minutes with automation*)
+### 1.2  Deploy Sample Application with Monitoring
+**⏱️ Time Required**: 15 minutes ( *or 3 minutes with automation*)
 
 #### 🤖 Automation Alternative: Pre-Built Applications
 
-**⚡ Skip application development?** Use our pre-built, fully instrumented sample applications:
+** Skip application development?** Use our pre-built, fully instrumented sample applications:
 
 ```bash
 # Deploy all sample applications with telemetry
@@ -1284,11 +1284,11 @@ cd resources/
 ./scripts/helpers/start-workshop-env.sh
 ```
 
-**🌐 Access Pre-Deployed Applications:**
-- **🚀 .NET Sample App**: http://localhost:8080
-- **📊 Grafana Dashboards**: http://localhost:3000 (admin/ObservabilityWorkshop@2024!)
-- **📈 Prometheus**: http://localhost:9090
-- **🔍 Jaeger Tracing**: http://localhost:16686
+** Access Pre-Deployed Applications:**
+- ** .NET Sample App**: http://localhost:8080
+- ** Grafana Dashboards**: http://localhost:3000 (admin/ObservabilityWorkshop@2024!)
+- ** Prometheus**: http://localhost:9090
+- ** Jaeger Tracing**: http://localhost:16686
 
 **📚 Continue with manual development below** if you want to build the application step-by-step.
 
@@ -1309,7 +1309,7 @@ mkdir -p src/MonitoringApp tests docs scripts
 cat > README.md << EOF
 # Azure Observability Workshop Application
 
-## 🎯 Purpose
+##  Purpose
 Sample web application demonstrating comprehensive Azure monitoring integration.
 
 ## 🏗️ Structure
@@ -1318,12 +1318,12 @@ Sample web application demonstrating comprehensive Azure monitoring integration.
 - \`docs/\` - Documentation and guides
 - \`scripts/\` - Deployment and utility scripts
 
-## 🚀 Getting Started
+##  Getting Started
 1. Navigate to \`src/MonitoringApp/\`
 2. Run \`dotnet run\`
 3. Visit endpoints to generate telemetry
 
-## 🔍 Monitoring Endpoints
+##  Monitoring Endpoints
 - \`/health\` - Health check endpoint
 - \`/api/test\` - Test endpoint for basic functionality
 - \`/api/slow\` - Simulates slow operations
@@ -1334,9 +1334,9 @@ EOF
 echo "📁 Project structure created successfully"
 ```
 
-#### 🔧 Create .NET Web API with Comprehensive Monitoring
+####  Create .NET Web API with Comprehensive Monitoring
 ```bash
-# 🔧 Create .NET web API project with monitoring capabilities
+#  Create .NET web API project with monitoring capabilities
 # Purpose: Build sample application with full observability instrumentation
 # Expected outcome: .NET web API project ready for monitoring integration
 
@@ -1357,11 +1357,11 @@ dotnet add package Microsoft.ApplicationInsights.DependencyCollector --version 2
 dotnet add package Microsoft.Extensions.Diagnostics.HealthChecks --version 8.0.0
 dotnet add package AspNetCore.HealthChecks.UI.Client --version 7.1.0
 
-echo "🔧 .NET packages added successfully"
+echo " .NET packages added successfully"
 dotnet list package  # Show installed packages
 ```
 
-#### 💻 Create Comprehensive Program.cs
+####  Create Comprehensive Program.cs
 ```csharp
 // 📱 Create Program.cs with comprehensive monitoring integration
 // Purpose: Configure web application with full observability capabilities
@@ -1375,7 +1375,7 @@ using System.Text.Json;
 var builder = WebApplication.CreateBuilder(args);
 
 // ========================================
-// 🔧 Service Configuration
+//  Service Configuration
 // ========================================
 
 // Add standard web API services
@@ -1384,7 +1384,7 @@ builder.Services.AddEndpointsApiExplorer();          // Enable API exploration
 builder.Services.AddSwaggerGen();                    // Enable Swagger documentation
 
 // ========================================
-// 📊 Application Insights Configuration
+//  Application Insights Configuration
 // ========================================
 
 // Get Application Insights connection string from environment or configuration
@@ -1417,7 +1417,7 @@ builder.Services.AddHealthChecks()
     .AddCheck("disk-space", () => CheckDiskSpace());
 
 // ========================================
-// 🚀 Application Pipeline Configuration
+//  Application Pipeline Configuration
 // ========================================
 
 var app = builder.Build();
@@ -1470,12 +1470,12 @@ app.MapHealthChecks("/health/ready", new HealthCheckOptions
 });
 
 // ========================================
-// 🔍 Monitoring and Testing Endpoints
+//  Monitoring and Testing Endpoints
 // ========================================
 
 // Root endpoint with application information
 app.MapGet("/", () => new { 
-    Status = "✅ Running",
+    Status = " Running",
     Application = "Azure Observability Workshop",
     Timestamp = DateTime.UtcNow,
     Version = "1.0.0",
@@ -1487,10 +1487,10 @@ app.MapGet("/", () => new {
 // Test endpoint for basic functionality verification
 app.MapGet("/api/test", () => {
     var requestId = Activity.Current?.Id ?? Guid.NewGuid().ToString();
-    Console.WriteLine($"🔍 Test endpoint called - RequestId: {requestId}");
+    Console.WriteLine($" Test endpoint called - RequestId: {requestId}");
     
     return new { 
-        Message = "✅ Test endpoint working correctly",
+        Message = " Test endpoint working correctly",
         RequestId = requestId,
         MachineName = Environment.MachineName,
         Timestamp = DateTime.UtcNow,
@@ -1505,10 +1505,10 @@ app.MapGet("/api/slow", async () => {
     
     Console.WriteLine($"⏱️ Slow operation started - RequestId: {requestId}, Delay: {delay}ms");
     await Task.Delay(delay);
-    Console.WriteLine($"✅ Slow operation completed - RequestId: {requestId}");
+    Console.WriteLine($" Slow operation completed - RequestId: {requestId}");
     
     return new { 
-        Message = "✅ Slow operation completed successfully",
+        Message = " Slow operation completed successfully",
         DelayMs = delay,
         RequestId = requestId,
         Timestamp = DateTime.UtcNow
@@ -1522,13 +1522,13 @@ app.MapGet("/api/error", () => {
     
     if (shouldError)
     {
-        Console.WriteLine($"❌ Simulated error - RequestId: {requestId}");
+        Console.WriteLine($" Simulated error - RequestId: {requestId}");
         throw new InvalidOperationException($"Simulated error for monitoring testing - RequestId: {requestId}");
     }
     
-    Console.WriteLine($"✅ Success response - RequestId: {requestId}");
+    Console.WriteLine($" Success response - RequestId: {requestId}");
     return new { 
-        Message = "✅ Operation completed successfully",
+        Message = " Operation completed successfully",
         RequestId = requestId,
         Timestamp = DateTime.UtcNow
     };
@@ -1539,7 +1539,7 @@ app.MapGet("/api/memory", () => {
     var process = Process.GetCurrentProcess();
     var requestId = Activity.Current?.Id ?? Guid.NewGuid().ToString();
     
-    Console.WriteLine($"📊 Memory info requested - RequestId: {requestId}");
+    Console.WriteLine($" Memory info requested - RequestId: {requestId}");
     
     return new {
         RequestId = requestId,
@@ -1563,7 +1563,7 @@ app.MapGet("/api/load", async () => {
     var requestId = Activity.Current?.Id ?? Guid.NewGuid().ToString();
     var operations = Random.Shared.Next(5, 20);
     
-    Console.WriteLine($"🔄 Load test started - RequestId: {requestId}, Operations: {operations}");
+    Console.WriteLine($" Load test started - RequestId: {requestId}, Operations: {operations}");
     
     // Simulate CPU-intensive work
     var tasks = new List<Task>();
@@ -1578,10 +1578,10 @@ app.MapGet("/api/load", async () => {
     }
     
     await Task.WhenAll(tasks);
-    Console.WriteLine($"✅ Load test completed - RequestId: {requestId}");
+    Console.WriteLine($" Load test completed - RequestId: {requestId}");
     
     return new {
-        Message = "✅ Load test completed",
+        Message = " Load test completed",
         Operations = operations,
         RequestId = requestId,
         Timestamp = DateTime.UtcNow
@@ -1589,11 +1589,11 @@ app.MapGet("/api/load", async () => {
 });
 
 // ========================================
-// 🚀 Start Application
+//  Start Application
 // ========================================
 
-Console.WriteLine("🚀 Starting Azure Observability Workshop Application...");
-Console.WriteLine($"🔗 Application Insights: {(connectionString.Contains("YOUR_CONNECTION_STRING") ? "⚠️  Not configured" : "✅ Configured")}");
+Console.WriteLine(" Starting Azure Observability Workshop Application...");
+Console.WriteLine($"🔗 Application Insights: {(connectionString.Contains("YOUR_CONNECTION_STRING") ? "  Not configured" : " Configured")}");
 Console.WriteLine($"🌍 Environment: {app.Environment.EnvironmentName}");
 
 app.Run();
@@ -1701,9 +1701,9 @@ EOF
 echo "⚙️ Configuration files created successfully"
 ```
 
-#### 🚀 Build and Test Application
+####  Build and Test Application
 ```bash
-# 🚀 Build and test the monitoring application
+#  Build and test the monitoring application
 # Purpose: Verify application compiles and runs correctly
 # Expected outcome: Running web application with telemetry enabled
 
@@ -1729,14 +1729,14 @@ dotnet build --configuration Release
 
 # Check for build errors
 if [ $? -eq 0 ]; then
-    echo "✅ Application built successfully"
+    echo " Application built successfully"
 else
-    echo "❌ Build failed - check for errors above"
+    echo " Build failed - check for errors above"
     exit 1
 fi
 
 # Run the application in background
-echo "🚀 Starting application..."
+echo " Starting application..."
 dotnet run --urls "http://localhost:5000" &
 APP_PID=$!
 
@@ -1760,50 +1760,50 @@ echo "🏥 Testing detailed health endpoint..."
 curl -s http://localhost:5000/health/ready | jq '.' || echo "Response received"
 
 # Test API endpoints
-echo "🔍 Testing API endpoints..."
+echo " Testing API endpoints..."
 curl -s http://localhost:5000/api/test | jq '.' || echo "Response received"
 curl -s http://localhost:5000/api/memory | jq '.' || echo "Response received"
 
 # Generate traffic for monitoring
 echo "🚄 Generating traffic for telemetry..."
 for i in {1..10}; do
-    echo "📊 Request $i/10"
+    echo " Request $i/10"
     curl -s http://localhost:5000/api/test > /dev/null
     curl -s http://localhost:5000/api/slow > /dev/null
     curl -s http://localhost:5000/api/error > /dev/null
     sleep 1
 done
 
-echo "✅ Application testing completed"
-echo "🔍 Check Application Insights in Azure Portal for telemetry data"
-echo "🌐 Application running at: http://localhost:5000"
+echo " Application testing completed"
+echo " Check Application Insights in Azure Portal for telemetry data"
+echo " Application running at: http://localhost:5000"
 echo "📚 Swagger documentation: http://localhost:5000/swagger"
 echo "🏥 Health checks: http://localhost:5000/health"
 
 # Keep application running for manual testing
-echo "💡 Application is running. Press Ctrl+C to stop."
+echo " Application is running. Press Ctrl+C to stop."
 wait $APP_PID
 ```
 
-#### ✅ Verify Telemetry in Azure Portal
+####  Verify Telemetry in Azure Portal
 ```bash
-# ✅ Azure Portal verification checklist
+#  Azure Portal verification checklist
 # Purpose: Confirm telemetry is flowing to Application Insights
 # Expected outcome: Visible telemetry data in Azure Portal
 
-echo "🔍 Telemetry Verification Steps:"
-echo "1. 🌐 Navigate to Azure Portal: https://portal.azure.com"
+echo " Telemetry Verification Steps:"
+echo "1.  Navigate to Azure Portal: https://portal.azure.com"
 echo "2. 📱 Go to Application Insights resource: ${APP_NAME}-insights"
 echo "3. ⏱️  Wait 2-3 minutes for telemetry to appear"
-echo "4. 📊 Check 'Live Metrics' - should show real-time data"
+echo "4.  Check 'Live Metrics' - should show real-time data"
 echo "5. 🗺️  Check 'Application Map' - shows application topology"
-echo "6. ⚡ Check 'Performance' - shows response times and throughput"
-echo "7. 📝 Check 'Logs' - query telemetry with KQL"
+echo "6.  Check 'Performance' - shows response times and throughput"
+echo "7.  Check 'Logs' - query telemetry with KQL"
 
 echo ""
-echo "🔍 Quick KQL Queries to Try:"
+echo " Quick KQL Queries to Try:"
 echo "---"
-echo "// 📊 Request telemetry from last hour"
+echo "//  Request telemetry from last hour"
 echo "requests"
 echo "| where timestamp > ago(1h)"
 echo "| summarize count() by name"
@@ -1814,64 +1814,64 @@ echo "exceptions"
 echo "| where timestamp > ago(1h)"
 echo "| project timestamp, type, outerMessage"
 echo ""
-echo "// 📈 Performance metrics"
+echo "//  Performance metrics"
 echo "performanceCounters"
 echo "| where timestamp > ago(1h)"
 echo "| where category == 'Process'"
 echo "| project timestamp, name, value"
 ```
 
-**✅ Checkpoint**: 
-- ✅ Your application should be running locally
-- ✅ Telemetry should appear in Application Insights Live Metrics
-- ✅ Health checks should return successful responses
-- ✅ API endpoints should respond correctly
-- ✅ Swagger documentation should be accessible
+** Checkpoint**: 
+-  Your application should be running locally
+-  Telemetry should appear in Application Insights Live Metrics
+-  Health checks should return successful responses
+-  API endpoints should respond correctly
+-  Swagger documentation should be accessible
 
-### 📋 Workshop Progress Check
+###  Workshop Progress Check
 At this point, you have accomplished:
 
-| **✅ Achievement** | **📊 Status** | **🔍 Verification** |
+| ** Achievement** | ** Status** | ** Verification** |
 |-------------------|---------------|-------------------|
 | **🏗️ Azure Infrastructure** | Complete | Resource group with Log Analytics and Application Insights |
 | **📱 Sample Application** | Complete | .NET web API with comprehensive telemetry |
-| **📊 Telemetry Flow** | Complete | Live Metrics showing real-time data |
+| ** Telemetry Flow** | Complete | Live Metrics showing real-time data |
 | **🏥 Health Monitoring** | Complete | Multiple health check endpoints |
-| **🔍 API Testing** | Complete | All endpoints responding correctly |
+| ** API Testing** | Complete | All endpoints responding correctly |
 
-**🚀 Continue to Part 2** for:
-- 📊 Creating custom dashboards and intelligent alerts
+** Continue to Part 2** for:
+-  Creating custom dashboards and intelligent alerts
 - 🤖 AI-assisted troubleshooting with GitHub Copilot  
-- ⚡ Proactive monitoring implementation
+-  Proactive monitoring implementation
 - 🤖 Introduction to Azure SRE Agent
 
 ---
 
 ## ➡️ Next Steps
 
-**📊 Part 2 - Beginner Workshop Modules 2-5** will cover:
-- **📊 Module 2**: Creating Your First Dashboard and Alerts (25 minutes)
+** Part 2 - Beginner Workshop Modules 2-5** will cover:
+- ** Module 2**: Creating Your First Dashboard and Alerts (25 minutes)
 - **🤖 Module 3**: AI-Assisted Troubleshooting with GitHub Copilot (30 minutes)
-- **⚡ Module 4**: Implementing Proactive Monitoring (35 minutes)
+- ** Module 4**: Implementing Proactive Monitoring (35 minutes)
 - **🤖 Module 5**: Introduction to Azure SRE Agent (15 minutes)
 
-### 🎯 Ready for Part 2? Ensure you have:
-- ✅ **Application running** and sending telemetry to Azure Monitor
-- ✅ **Azure resources** created successfully and accessible
-- ✅ **GitHub Copilot** active and working in VS Code
-- ✅ **Basic understanding** of observability concepts and workshop goals
+###  Ready for Part 2? Ensure you have:
+-  **Application running** and sending telemetry to Azure Monitor
+-  **Azure resources** created successfully and accessible
+-  **GitHub Copilot** active and working in VS Code
+-  **Basic understanding** of observability concepts and workshop goals
 
-### 🛠️ Troubleshooting
+###  Troubleshooting
 If you encounter issues:
-1. **📋 Check configuration**: Review values in your `workshop-config.txt` file
+1. ** Check configuration**: Review values in your `workshop-config.txt` file
 2. **🔗 Verify connection**: Ensure `CONNECTION_STRING` is properly set
-3. **📊 Check Azure Portal**: Confirm resources are created and accessible
-4. **🔍 Review logs**: Check application output for any error messages
-5. **📖 Consult documentation**: Reference troubleshooting section in Part 5
+3. ** Check Azure Portal**: Confirm resources are created and accessible
+4. ** Review logs**: Check application output for any error messages
+5. ** Consult documentation**: Reference troubleshooting section in Part 5
 
-**🎉 Congratulations!** You've successfully completed Part 1 of the Azure Observability Workshop. Your foundation is now ready for advanced monitoring scenarios.
+** Congratulations!** You've successfully completed Part 1 of the Azure Observability Workshop. Your foundation is now ready for advanced monitoring scenarios.
 
-### 🚀 Quick Reference: Automation Resources
+###  Quick Reference: Automation Resources
 
 Remember, all the manual steps you've learned are automated in the `resources/` directory:
 
@@ -1891,9 +1891,9 @@ Remember, all the manual steps you've learned are automated in the `resources/` 
 ./resources/scripts/helpers/start-workshop-env.sh
 ```
 
-### 📖 Automation Resources Reference
+###  Automation Resources Reference
 
-| **🔧 Script** | **📋 Purpose** | **⏱️ Time Saved** |
+| ** Script** | ** Purpose** | **⏱️ Time Saved** |
 |--------------|-------------|----------------|
 | `quick-start.sh` | Complete workshop deployment and management | 45+ minutes |
 | `deploy-infrastructure.sh` | Azure resources (AKS, monitoring, storage) | 20 minutes |
@@ -1901,7 +1901,7 @@ Remember, all the manual steps you've learned are automated in the `resources/` 
 | `deploy-applications.sh` | Sample apps with full telemetry | 10 minutes |
 | Helper scripts | Port forwarding, load generation, utilities | 5+ minutes |
 
-**💡 Pro Tip**: Use the automation for quick setup, then customize the generated configurations to match your specific requirements!
+** Pro Tip**: Use the automation for quick setup, then customize the generated configurations to match your specific requirements!
 
 ---
 

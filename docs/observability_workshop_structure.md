@@ -6,7 +6,7 @@ This document provides a comprehensive overview of the Azure Observability Works
 
 ---
 
-## 🎯 Workshop Overview
+##  Workshop Overview
 
 ### Mission Statement
 Transform participants from basic monitoring users to enterprise-scale observability experts capable of implementing comprehensive, AI-enhanced monitoring solutions across multi-cloud environments.
@@ -14,9 +14,9 @@ Transform participants from basic monitoring users to enterprise-scale observabi
 ### 🤖 Complete Automation Included
 This workshop includes **full automation** to eliminate setup overhead and maximize learning time. Every exercise can be deployed instantly using our comprehensive automation resources in the `resources/` directory.
 
-#### ⚡ Quick Deployment Options
-- **🚀 One-Command Setup**: `./resources/quick-start.sh deploy YOUR_SUBSCRIPTION_ID`
-- **🔧 Modular Deployment**: Individual scripts for each workshop component
+####  Quick Deployment Options
+- ** One-Command Setup**: `./resources/quick-start.sh deploy YOUR_SUBSCRIPTION_ID`
+- ** Modular Deployment**: Individual scripts for each workshop component
 - **☁️ Infrastructure as Code**: Complete Terraform configurations
 - **⚓ Kubernetes Ready**: Pre-configured manifests for all services
 
@@ -29,7 +29,7 @@ This workshop includes **full automation** to eliminate setup overhead and maxim
 
 ---
 
-## 📋 Learning Paths and Tracks
+##  Learning Paths and Tracks
 
 ### 🔰 Beginner Track (2 hours)
 **Target**: New to cloud monitoring and Azure observability
@@ -57,7 +57,7 @@ This workshop includes **full automation** to eliminate setup overhead and maxim
 3. **Simple Alerting and Dashboards** (30 min) - *Pre-configured templates available*
 4. **Basic Troubleshooting** (15 min) - *Using automated sample apps*
 
-### 🔄 Intermediate Track (4 hours)
+###  Intermediate Track (4 hours)
 **Target**: Some cloud experience, ready for advanced configurations
 
 **Prerequisites**:
@@ -78,7 +78,7 @@ This workshop includes **full automation** to eliminate setup overhead and maxim
 3. **Custom Metrics & Business KPIs** (60 min)
 4. **CI/CD Integration** (45 min)
 
-### 🚀 Advanced Track (6-8 hours)
+###  Advanced Track (6-8 hours)
 **Target**: Experienced professionals managing complex environments
 
 **Prerequisites**:
@@ -105,7 +105,7 @@ This workshop includes **full automation** to eliminate setup overhead and maxim
 ## 🗓️ Detailed Module Breakdown
 
 ### Part 1: Foundation (Beginner)
-**Duration**: 2 hours | **Difficulty**: ⭐☆☆☆☆
+**Duration**: 2 hours | **Difficulty**: ☆☆☆☆
 
 #### Module 1.1: Azure Monitor Fundamentals (30 min)
 - **Concepts**: Metrics, Logs, Traces, Dashboards
@@ -132,7 +132,7 @@ This workshop includes **full automation** to eliminate setup overhead and maxim
 - **Outcome**: Basic troubleshooting skills
 
 ### Part 2: Practical Implementation (Intermediate)
-**Duration**: 4 hours | **Difficulty**: ⭐⭐⭐☆☆
+**Duration**: 4 hours | **Difficulty**: ☆☆
 
 #### Module 2.1: Advanced Application Insights (60 min)
 - **Concepts**: Custom telemetry, Sampling, Processors
@@ -159,7 +159,7 @@ This workshop includes **full automation** to eliminate setup overhead and maxim
 - **Outcome**: Integrated DevOps observability
 
 ### Part 3: Enterprise Scale (Intermediate Continued)
-**Duration**: 2 hours | **Difficulty**: ⭐⭐⭐⭐☆
+**Duration**: 2 hours | **Difficulty**: ☆
 
 #### Module 3.1: Security & Defender Integration (60 min)
 - **Concepts**: Security monitoring, Threat detection, Compliance
@@ -174,7 +174,7 @@ This workshop includes **full automation** to eliminate setup overhead and maxim
 - **Outcome**: Multi-vendor monitoring ecosystem
 
 ### Part 4: Professional Mastery (Advanced - Part 1)
-**Duration**: 2 hours | **Difficulty**: ⭐⭐⭐⭐⭐
+**Duration**: 2 hours | **Difficulty**: 
 
 #### Module 4.1: Enterprise Infrastructure (60 min)
 - **Concepts**: Infrastructure as Code, Multi-cloud architecture
@@ -189,7 +189,7 @@ This workshop includes **full automation** to eliminate setup overhead and maxim
 - **Outcome**: Complete container platform monitoring
 
 ### Part 5: Expert Implementation (Advanced - Part 2)
-**Duration**: 2.5 hours | **Difficulty**: ⭐⭐⭐⭐⭐
+**Duration**: 2.5 hours | **Difficulty**: 
 
 #### Module 5.1: Service Mesh Observability (75 min)
 - **Concepts**: Istio service mesh, Traffic management, Security policies
@@ -204,7 +204,7 @@ This workshop includes **full automation** to eliminate setup overhead and maxim
 - **Outcome**: Intelligent, self-healing monitoring system
 
 ### Part 6: Multi-Cloud Mastery (Advanced - Part 3)
-**Duration**: 2.5 hours | **Difficulty**: ⭐⭐⭐⭐⭐
+**Duration**: 2.5 hours | **Difficulty**: 
 
 #### Module 6.1: Cross-Cloud Integration (90 min)
 - **Concepts**: Multi-cloud architecture, Federation, Cross-cloud correlation
@@ -219,7 +219,7 @@ This workshop includes **full automation** to eliminate setup overhead and maxim
 - **Outcome**: Expert-level troubleshooting skills
 
 ### Part 7: Governance & Excellence (Advanced - Part 4)
-**Duration**: 2 hours | **Difficulty**: ⭐⭐⭐⭐⭐
+**Duration**: 2 hours | **Difficulty**: 
 
 #### Module 7.1: Compliance & Governance (45 min)
 - **Concepts**: Security compliance, Audit trails, Policy enforcement
@@ -368,7 +368,7 @@ This workshop includes **full automation** to eliminate setup overhead and maxim
 
 ---
 
-## 📊 Assessment and Validation
+##  Assessment and Validation
 
 ### Skill Validation Methods
 
@@ -393,20 +393,20 @@ This workshop includes **full automation** to eliminate setup overhead and maxim
 ### Success Metrics
 
 #### Individual Participant
-- ✅ Successfully deployed monitoring solutions
-- ✅ Demonstrated troubleshooting capabilities
-- ✅ Created custom business-relevant dashboards
-- ✅ Integrated monitoring into development workflow
+-  Successfully deployed monitoring solutions
+-  Demonstrated troubleshooting capabilities
+-  Created custom business-relevant dashboards
+-  Integrated monitoring into development workflow
 
 #### Team/Organization
-- ✅ Established enterprise monitoring standards
-- ✅ Implemented comprehensive observability strategy
-- ✅ Reduced incident response times
-- ✅ Improved application performance visibility
+-  Established enterprise monitoring standards
+-  Implemented comprehensive observability strategy
+-  Reduced incident response times
+-  Improved application performance visibility
 
 ---
 
-## 🛠️ Workshop Delivery Requirements
+##  Workshop Delivery Requirements
 
 ### Technical Prerequisites
 
@@ -444,7 +444,7 @@ This workshop includes **full automation** to eliminate setup overhead and maxim
 
 ---
 
-## 📈 Continuous Improvement
+##  Continuous Improvement
 
 ### Feedback Collection
 - **Real-time Polls**: Immediate understanding and pacing feedback

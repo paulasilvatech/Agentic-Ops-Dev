@@ -1,9 +1,9 @@
-# 🚀 Complete Azure Observability Workshop Guide - Part 5
+#  Complete Azure Observability Workshop Guide - Part 5
 ## 🏢 Advanced Workshop - Enterprise-Scale Observability Setup (2 hours)
 
 ### 🤖 Enterprise Automation
 
-**⚡ Deploy enterprise-scale observability instantly:**
+** Deploy enterprise-scale observability instantly:**
 
 ```bash
 # Enterprise-grade deployment
@@ -25,22 +25,22 @@ cd resources/
 
 ---
 
-### ✅ Prerequisites Check
+###  Prerequisites Check
 Before starting the Advanced Workshop, ensure you have completed Parts 1-4 and have:
-- ✅ Intermediate Workshop completed successfully with working microservices
-- ✅ Multi-cloud monitoring integration functional (Azure + Datadog + Prometheus)
-- ✅ CI/CD pipelines with deployment monitoring and rollback capabilities
-- ✅ Security monitoring with Defender and Sentinel integration
-- ✅ Understanding of distributed tracing and enterprise observability patterns
+-  Intermediate Workshop completed successfully with working microservices
+-  Multi-cloud monitoring integration functional (Azure + Datadog + Prometheus)
+-  CI/CD pipelines with deployment monitoring and rollback capabilities
+-  Security monitoring with Defender and Sentinel integration
+-  Understanding of distributed tracing and enterprise observability patterns
 
-### 📋 New Prerequisites for Advanced Level
+###  New Prerequisites for Advanced Level
 - **Multi-Cloud Accounts**: AWS and GCP accounts with credits available
 - **Kubernetes Experience**: Familiarity with K8s concepts and kubectl
 - **Terraform Knowledge**: Infrastructure as Code experience
 - **Enterprise Networking**: Understanding of VPNs, private endpoints, hybrid connectivity
 - **Advanced Security**: Zero-trust principles, compliance requirements (SOC2, GDPR)
 
-### 🎯 Advanced Workshop Overview
+###  Advanced Workshop Overview
 This workshop demonstrates enterprise-scale observability solutions used by Fortune 500 companies:
 - **Enterprise-scale architecture** patterns for global organizations
 - **AI-enhanced SRE Agent** implementation with predictive analytics
@@ -64,8 +64,8 @@ Create the directory structure:
 mkdir -p infrastructure/terraform/{modules,environments}
 cd infrastructure/terraform
 
-# ✅ Verify directory structure
-echo "✅ Created enterprise infrastructure directories:"
+#  Verify directory structure
+echo " Created enterprise infrastructure directories:"
 tree . || ls -la
 
 # Expected structure:
@@ -75,7 +75,7 @@ tree . || ls -la
 #     📁 environments/
 ```
 
-**📝 Create `main.tf` - Enterprise Multi-Cloud Configuration**:
+** Create `main.tf` - Enterprise Multi-Cloud Configuration**:
 ```hcl
 # main.tf - Enterprise Multi-Cloud Kubernetes Setup
 terraform {
@@ -737,7 +737,7 @@ sed -i "s/connection-string: .*/connection-string: $CONNECTION_STRING_B64/" azur
 kubectl apply -f azure-monitor-integration.yaml
 ```
 
-**✅ Checkpoint**: Enterprise Kubernetes cluster should be running with comprehensive monitoring stack
+** Checkpoint**: Enterprise Kubernetes cluster should be running with comprehensive monitoring stack
 
 ---
 

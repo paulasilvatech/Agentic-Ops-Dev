@@ -1,8 +1,8 @@
-# 🚀 Azure Observability Workshop - Resources & Automation
+#  Azure Observability Workshop - Resources & Automation
 
 This directory contains all the automation scripts, templates, and resources needed to run the complete Azure Observability Workshop. Everything is designed to be executed with minimal configuration - just provide your Azure subscription ID!
 
-## 🎯 Quick Start
+##  Quick Start
 
 The easiest way to get started is with the quick-start script:
 
@@ -20,22 +20,22 @@ The easiest way to get started is with the quick-start script:
 ./quick-start.sh cleanup
 ```
 
-## 📁 Directory Structure
+##  Directory Structure
 
 ```
 resources/
-├── quick-start.sh              # 🎯 Main entry point for students
-├── deploy-workshop.sh          # 🚀 Complete workshop deployment
-├── terraform/                  # ☁️ Infrastructure as Code
+├── quick-start.sh              #  Main entry point for students
+├── deploy-workshop.sh          #  Complete workshop deployment
+├── terraform/                  #  Infrastructure as Code
 │   ├── main.tf                # Main Terraform configuration
 │   ├── aks.tf                 # AKS cluster configuration
 │   ├── outputs.tf             # Output values
 │   └── variables.tf           # Input variables
-├── scripts/                    # 🔧 Deployment scripts
+├── scripts/                    #  Deployment scripts
 │   ├── deploy-infrastructure.sh # Azure infrastructure
 │   ├── deploy-monitoring.sh    # Monitoring stack
 │   ├── deploy-applications.sh  # Sample applications
-│   └── helpers/               # 🛠️ Utility scripts
+│   └── helpers/               #  Utility scripts
 │       ├── start-workshop-env.sh    # Start all services
 │       ├── port-forward-grafana.sh  # Grafana access
 │       ├── port-forward-prometheus.sh # Prometheus access
@@ -45,13 +45,13 @@ resources/
 │   ├── prometheus/            # Prometheus configuration
 │   ├── grafana/               # Grafana dashboards
 │   └── applications/          # Sample app deployments
-└── applications/              # 💻 Sample applications
+└── applications/              #  Sample applications
     ├── dotnet-sample/         # .NET Core sample app
     ├── user-service/          # User microservice
     └── order-service/         # Order microservice
 ```
 
-## 🛠️ Prerequisites
+##  Prerequisites
 
 Before running the workshop automation, ensure you have:
 
@@ -86,7 +86,7 @@ brew install kubernetes-cli
 # Download from https://docker.com/products/docker-desktop
 ```
 
-## 🚀 Deployment Options
+##  Deployment Options
 
 ### Option 1: Quick Start (Recommended for Students)
 ```bash
@@ -129,26 +129,26 @@ The automation uses these standard settings (no configuration needed):
 | Component | Configuration | Value |
 |-----------|--------------|-------|
 | **🌍 Region** | Azure Region | East US 2 |
-| **📦 Resource Group** | Name Pattern | `rg-obs-workshop` |
+| ** Resource Group** | Name Pattern | `rg-obs-workshop` |
 | **⚓ AKS Cluster** | Name Pattern | `aks-obs-workshop` |
-| **📊 Log Analytics** | Retention | 90 days |
+| ** Log Analytics** | Retention | 90 days |
 | **🔐 Grafana Credentials** | Username/Password | `admin` / `ObservabilityWorkshop@2024!` |
-| **🌐 Container Registry** | SKU | Premium |
-| **🏗️ Node Size** | AKS Default Pool | Standard_D4s_v3 |
+| ** Container Registry** | SKU | Premium |
+| ** Node Size** | AKS Default Pool | Standard_D4s_v3 |
 
-## 🌐 Access URLs
+##  Access URLs
 
 After deployment and starting the environment:
 
 | Service | URL | Credentials |
 |---------|-----|-------------|
-| **📊 Grafana** | http://localhost:3000 | admin / ObservabilityWorkshop@2024! |
-| **📈 Prometheus** | http://localhost:9090 | None required |
-| **🔍 Jaeger** | http://localhost:16686 | None required |
-| **🚀 Sample App** | http://localhost:8080 | None required |
+| ** Grafana** | http://localhost:3000 | admin / ObservabilityWorkshop@2024! |
+| ** Prometheus** | http://localhost:9090 | None required |
+| ** Jaeger** | http://localhost:16686 | None required |
+| ** Sample App** | http://localhost:8080 | None required |
 | **🚨 AlertManager** | http://localhost:9093 | None required |
 
-## 📊 What Gets Deployed
+##  What Gets Deployed
 
 ### Azure Infrastructure
 - **Resource Group**: Centralized resource management
@@ -181,7 +181,7 @@ After deployment and starting the environment:
 - **Service Mesh Ready**: Istio preparation
 - **Monitoring Integration**: Built-in observability
 
-## 🔧 Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 
@@ -284,14 +284,14 @@ rm -f terraform/terraform.tfstate*
 
 This automation supports all workshop modules:
 
-- **Part 1**: Basic Azure Monitor setup ✅
-- **Part 2**: Dashboards and alerting ✅  
-- **Part 3**: Advanced Application Insights ✅
-- **Part 4**: Multi-cloud integration ✅
-- **Part 5**: AI-enhanced monitoring ✅
-- **Part 6**: Service mesh observability ✅
-- **Part 7**: Challenge labs ✅
-- **Part 8**: Enterprise implementation ✅
+- **Part 1**: Basic Azure Monitor setup 
+- **Part 2**: Dashboards and alerting   
+- **Part 3**: Advanced Application Insights 
+- **Part 4**: Multi-cloud integration 
+- **Part 5**: AI-enhanced monitoring 
+- **Part 6**: Service mesh observability 
+- **Part 7**: Challenge labs 
+- **Part 8**: Enterprise implementation 
 
 ## 🤝 Contributing
 
@@ -314,7 +314,7 @@ For workshop automation issues:
 
 ---
 
-## 🎉 Ready to Start?
+##  Ready to Start?
 
 ```bash
 # Clone the repository
@@ -328,4 +328,4 @@ cd Agentic-Ops-Dev/resources
 ./quick-start.sh start
 ```
 
-**Happy learning!** 🚀
+**Happy learning!** 

@@ -48,21 +48,21 @@ print_banner
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-log "🚀 Starting Azure Observability Workshop Environment"
+log "Starting Azure Observability Workshop Environment"
 
 # Check if kubectl is configured
 if ! kubectl cluster-info &> /dev/null; then
     error "kubectl is not configured or cluster is not accessible"
 fi
 
-log "✅ Kubernetes cluster is accessible"
+log "Kubernetes cluster is accessible"
 
 # Check if monitoring namespace exists
 if ! kubectl get namespace monitoring &> /dev/null; then
     error "Monitoring namespace not found. Please deploy the monitoring stack first."
 fi
 
-log "✅ Monitoring namespace exists"
+log "Monitoring namespace exists"
 
 # Check if applications namespace exists
 if ! kubectl get namespace applications &> /dev/null; then
@@ -95,16 +95,16 @@ start_port_forward() {
     
     # Verify port forward is working
     if curl -s --connect-timeout 5 "http://localhost:${local_port}" &> /dev/null; then
-        log "✅ ${description} is accessible at http://localhost:${local_port}"
+        log "${description} is accessible at http://localhost:${local_port}"
         return 0
     else
-        warn "❌ ${description} port forward may not be working properly"
+        warn "${description} port forward may not be working properly"
         return 1
     fi
 }
 
 # Start all port forwards
-log "🔄 Starting port forwarding for all services..."
+log "Starting port forwarding for all services..."
 
 # Grafana (Monitoring Dashboard)
 start_port_forward "grafana" "monitoring" "3000" "3000" "Grafana Dashboard"
@@ -131,21 +131,21 @@ if kubectl get svc alertmanager -n monitoring &> /dev/null; then
     start_port_forward "alertmanager" "monitoring" "9093" "9093" "AlertManager"
 fi
 
-log "🎉 Workshop environment is ready!"
+log "Workshop environment is ready!"
 echo ""
 
 # Display access information
-echo -e "${BLUE}🌐 Access URLs:${NC}"
+echo -e "${BLUE}Access URLs:${NC}"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "• 📊 Grafana Dashboard:     http://localhost:3000"
+echo "Grafana Dashboard:     http://localhost:3000"
 echo "  └── Credentials: admin / ObservabilityWorkshop@2024!"
-echo "• 📈 Prometheus Metrics:    http://localhost:9090"
-echo "• 🔍 Jaeger Tracing:        http://localhost:16686"
-echo "• 🚀 Sample Application:    http://localhost:8080"
-echo "• 🚨 AlertManager:          http://localhost:9093"
+echo "Prometheus Metrics:    http://localhost:9090"
+echo "Jaeger Tracing:        http://localhost:16686"
+echo "Sample Application:    http://localhost:8080"
+echo "AlertManager:          http://localhost:9093"
 echo ""
 
-echo -e "${BLUE}🛠️ Useful Commands:${NC}"
+echo -e "${BLUE}Useful Commands:${NC}"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "• Generate load: ${SCRIPT_DIR}/generate-load.sh"
 echo "• View pods:     kubectl get pods --all-namespaces"
@@ -153,7 +153,7 @@ echo "• View logs:     kubectl logs -n applications deployment/dotnet-sample-a
 echo "• Stop all:      pkill -f 'kubectl port-forward'"
 echo ""
 
-echo -e "${BLUE}📚 Workshop Documentation:${NC}"
+echo -e "${BLUE}Workshop Documentation:${NC}"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "• Introduction:  docs/observability_introduction.md"
 echo "• Part 1:        docs/observability_workshop_part-01.md"
@@ -161,7 +161,7 @@ echo "• Part 2:        docs/observability_workshop_part-02.md"
 echo "• Troubleshoot:  docs/observability_troubleshooting_guide.md"
 echo ""
 
-echo -e "${YELLOW}💡 Tips:${NC}"
+echo -e "${YELLOW}Tips:${NC}"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "• Wait a few minutes for metrics to start appearing"
 echo "• Generate some traffic to see interesting data"
@@ -171,16 +171,16 @@ echo ""
 
 # Cleanup function
 cleanup() {
-    log "🛑 Cleaning up port forwarding processes..."
+    log "Cleaning up port forwarding processes..."
     pkill -f "kubectl port-forward" 2>/dev/null || true
-    log "✅ Cleanup completed"
+    log "Cleanup completed"
 }
 
 # Handle script termination
 trap cleanup EXIT
 
 # Keep script running
-log "🔄 Workshop environment is running. Press Ctrl+C to stop all port forwards."
+log "Workshop environment is running. Press Ctrl+C to stop all port forwards."
 while true; do
     sleep 30
     # Check if any port forwards died and restart them

@@ -23,7 +23,7 @@ warn() {
     echo -e "${YELLOW}[$(date +'%Y-%m-%d %H:%M:%S')] WARNING: $1${NC}"
 }
 
-log "🎨 Starting Grafana port forwarding..."
+log "Starting Grafana port forwarding..."
 
 # Check if kubectl is configured
 if ! kubectl cluster-info &> /dev/null; then
@@ -45,10 +45,10 @@ kubectl wait --for=condition=Ready pod -l app.kubernetes.io/name=grafana -n moni
 
 # Start port forwarding
 log "Starting port forwarding for Grafana..."
-log "🌐 Grafana will be accessible at: http://localhost:3000"
-log "📋 Default credentials: admin / ObservabilityWorkshop@2024!"
+log "Grafana will be accessible at: http://localhost:3000"
+log "Default credentials: admin / ObservabilityWorkshop@2024!"
 log ""
-log "💡 To stop port forwarding, press Ctrl+C"
+log "To stop port forwarding, press Ctrl+C"
 log ""
 
 # Port forward (this will run in foreground)

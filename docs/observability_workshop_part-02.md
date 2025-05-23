@@ -1,23 +1,23 @@
-# 📊 Complete Azure Observability Workshop Guide - Part 2
-## 🎯 Beginner Workshop Modules 2-5
+#  Complete Azure Observability Workshop Guide - Part 2
+##  Beginner Workshop Modules 2-5
 
-### 🔄 Continuing from Part 1
-| 📋 **Prerequisites** | ✅ **Status** | 📝 **Description** |
+###  Continuing from Part 1
+|  **Prerequisites** |  **Status** |  **Description** |
 |----------------------|---------------|---------------------|
 | **🏃 Application Running** | Required | Application running locally and sending telemetry to Application Insights |
 | **☁️ Azure Resources** | Required | Resource Group, Log Analytics, Application Insights created |
 | **🤖 GitHub Copilot** | Required | Active in VS Code for enhanced productivity |
 | **📄 Configuration** | Required | Values saved in `workshop-config.txt` |
 | **⏱️ Estimated Time** | 25 minutes | Complete dashboard and alerting setup |
-| **🎯 Skill Level** | Beginner | Basic Azure Portal navigation required |
+| ** Skill Level** | Beginner | Basic Azure Portal navigation required |
 
 ---
 
-## 📈 Module 2: Creating Your First Dashboard and Alerts (25 minutes)
+##  Module 2: Creating Your First Dashboard and Alerts (25 minutes)
 
 ### 🤖 Automation Alternative: Pre-Built Dashboards
 
-**⚡ Skip manual dashboard creation?** Our automation includes ready-to-use dashboards:
+** Skip manual dashboard creation?** Our automation includes ready-to-use dashboards:
 
 ```bash
 # Access pre-configured Grafana dashboards with sample data
@@ -38,8 +38,8 @@ cd resources/
 
 **📚 Continue with manual creation below** to understand dashboard design principles.
 
-### 🎨 2.1 Build Custom Dashboard in Azure Portal
-**Time Required**: 15 minutes (⚡ *or instant with pre-built dashboards*)
+###  2.1 Build Custom Dashboard in Azure Portal
+**Time Required**: 15 minutes ( *or instant with pre-built dashboards*)
 
 #### 📱 1. Access Application Insights Data
    - **Go to Azure Portal** (`portal.azure.com`)
@@ -47,11 +47,11 @@ cd resources/
    - **Click "Overview"** to see basic metrics
    - **Wait 5-10 minutes** if you don't see data yet (telemetry has some delay)
 
-#### ⚡ 2. Explore Live Metrics
+####  2. Explore Live Metrics
    - **Click "Live Metrics"** in the left menu
    - **Generate traffic** by running these commands in a new terminal:
    ```bash
-   # 🚀 Traffic Generator - Live Metrics Demo
+   #  Traffic Generator - Live Metrics Demo
    # Purpose: Generate realistic traffic patterns for observing live metrics
    
    # Execute this command in a new terminal window
@@ -65,7 +65,7 @@ cd resources/
      echo "Generated request batch $i/50"  # Progress indicator
    done
    
-   # 💡 Expected Results:
+   #  Expected Results:
    # - Live Metrics will show incoming requests in real-time
    # - You'll see request rate, response times, and failure rate
    # - Different colored metrics for successful vs failed requests
@@ -73,13 +73,13 @@ cd resources/
    ```
    - **Observe**: Real-time request rates, response times, and failures
 
-#### 🎨 3. Create Custom Dashboard
+####  3. Create Custom Dashboard
    - **In Azure Portal, click "Dashboard"** (top menu)
    - **Click "New dashboard"**
    - **Name**: "Workshop Observability Dashboard"
    - **Click "Done customizing"**, then **"Edit"** to add tiles
 
-#### 📊 4. Add Essential Monitoring Tiles
+####  4. Add Essential Monitoring Tiles
 
 **Request Rate Tile**:
    - **Click "Add tile"** → **"Metrics"**
@@ -136,7 +136,7 @@ cd resources/
    - **Click "Save"**
    - **Share dashboard** with your team (optional)
 
-**✅ Checkpoint**: Your dashboard should show real-time metrics with multiple visualizations
+** Checkpoint**: Your dashboard should show real-time metrics with multiple visualizations
 
 ### 2.2 Configure Intelligent Alerts
 **Time Required**: 10 minutes
@@ -219,7 +219,7 @@ cd resources/
    done
    ```
 
-**✅ Checkpoint**: You should receive alert notifications within 5-10 minutes
+** Checkpoint**: You should receive alert notifications within 5-10 minutes
 
 ---
 
@@ -252,7 +252,7 @@ cd resources/
    - **Enter your Application Insights connection details**
    - **Test connection**
 
-**✅ Checkpoint**: You should be able to execute KQL queries from VS Code
+** Checkpoint**: You should be able to execute KQL queries from VS Code
 
 ### 3.2 AI-Assisted Query Building with GitHub Copilot
 **Time Required**: 20 minutes
@@ -392,7 +392,7 @@ cd resources/
    - **Or copy to Azure Portal** → **Application Insights** → **Logs**
    - **Verify results make sense** with your test data
 
-**✅ Checkpoint**: All queries should execute successfully and return meaningful data
+** Checkpoint**: All queries should execute successfully and return meaningful data
 
 ---
 
@@ -642,7 +642,7 @@ cd resources/
    curl http://localhost:5000/health/live | jq
    ```
 
-**✅ Checkpoint**: You should see detailed health information with multiple checks and rich metadata
+** Checkpoint**: You should see detailed health information with multiple checks and rich metadata
 
 ### 4.2 Availability Monitoring Setup
 **Time Required**: 10 minutes
@@ -724,7 +724,7 @@ cd resources/
      2. GET /api/test
      3. GET /health/detailed
 
-**✅ Checkpoint**: Your application should be accessible via Azure URL and availability tests should be running
+** Checkpoint**: Your application should be accessible via Azure URL and availability tests should be running
 
 ### 4.3 Custom Metrics and Business KPIs
 **Time Required**: 10 minutes
@@ -918,7 +918,7 @@ cd resources/
      - Business.Users.Registered
    - **Create charts** with different aggregations (sum, count, average)
 
-**✅ Checkpoint**: Custom business metrics should appear in Application Insights within 5-10 minutes
+** Checkpoint**: Custom business metrics should appear in Application Insights within 5-10 minutes
 
 ---
 
@@ -1109,25 +1109,25 @@ Since Azure SRE Agent is in preview, we'll create a simulation that demonstrates
    **Investigation Duration**: {investigation.Duration.TotalMinutes:F1} minutes  
    **Status**: Under Investigation  
    
-   ## 🔍 Automated Investigation Summary
+   ##  Automated Investigation Summary
    
    ### Investigation Steps Performed
-   {string.Join("\n", investigation.InvestigationSteps.Select(step => $"- ✅ {step}"))}
+   {string.Join("\n", investigation.InvestigationSteps.Select(step => $"-  {step}"))}
    
-   ### 📊 Key Findings
+   ###  Key Findings
    {string.Join("\n", investigation.Findings.Select(finding => $"- 🔸 {finding}"))}
    
-   ### 💡 Recommended Actions
-   {string.Join("\n", investigation.RecommendedActions.Select(action => $"- 🎯 {action}"))}
+   ###  Recommended Actions
+   {string.Join("\n", investigation.RecommendedActions.Select(action => $"-  {action}"))}
    
-   ## 🛠️ Next Steps
+   ##  Next Steps
    - [ ] Review and validate SRE Agent findings
    - [ ] Implement recommended immediate actions
    - [ ] Monitor system recovery
    - [ ] Schedule post-incident review
    - [ ] Update runbooks based on learnings
    
-   ## 📈 Monitoring Links
+   ##  Monitoring Links
    - [Application Insights Dashboard](https://portal.azure.com/#@/resource/subscriptions/.../insights)
    - [Live Metrics Stream](https://portal.azure.com/#@/resource/subscriptions/.../live)
    - [Alert Rules](https://portal.azure.com/#@/resource/subscriptions/.../alerts)
@@ -1215,20 +1215,20 @@ Since Azure SRE Agent is in preview, we'll create a simulation that demonstrates
    curl -X POST "http://localhost:5000/api/sre/investigate?alertType=dependency_failure&severity=medium" | jq
    ```
 
-**✅ Checkpoint**: SRE Agent simulation should provide intelligent incident analysis and GitHub issue content
+** Checkpoint**: SRE Agent simulation should provide intelligent incident analysis and GitHub issue content
 
 ---
 
 ## Beginner Workshop Wrap-up (5 minutes)
 
 ### What You've Accomplished Today
-✅ **Set up comprehensive Azure observability stack** with Application Insights and Log Analytics  
-✅ **Created intelligent dashboards and alerts** with custom KQL queries  
-✅ **Used AI assistance** for building monitoring queries with GitHub Copilot  
-✅ **Implemented proactive health checks** with detailed status reporting  
-✅ **Built custom business metrics** tracking for KPIs  
-✅ **Deployed application to Azure** with availability monitoring  
-✅ **Simulated Azure SRE Agent** workflows and incident response  
+ **Set up comprehensive Azure observability stack** with Application Insights and Log Analytics  
+ **Created intelligent dashboards and alerts** with custom KQL queries  
+ **Used AI assistance** for building monitoring queries with GitHub Copilot  
+ **Implemented proactive health checks** with detailed status reporting  
+ **Built custom business metrics** tracking for KPIs  
+ **Deployed application to Azure** with availability monitoring  
+ **Simulated Azure SRE Agent** workflows and incident response  
 
 ### Key Concepts Mastered
 1. **Three Pillars of Observability**: Metrics, Logs, and Traces in practice
@@ -1246,12 +1246,12 @@ Since Azure SRE Agent is in preview, we'll create a simulation that demonstrates
 
 ### Ready for Intermediate Workshop?
 You're ready for the **Intermediate Workshop (Part 3)** if you can:
-- ✅ Navigate Azure Monitor and Application Insights confidently
-- ✅ Write and modify KQL queries for log analysis
-- ✅ Create custom dashboards and configure intelligent alerts
-- ✅ Use GitHub Copilot effectively for monitoring query assistance
-- ✅ Understand the value of proactive monitoring and custom metrics
-- ✅ Appreciate how AI can enhance operational workflows
+-  Navigate Azure Monitor and Application Insights confidently
+-  Write and modify KQL queries for log analysis
+-  Create custom dashboards and configure intelligent alerts
+-  Use GitHub Copilot effectively for monitoring query assistance
+-  Understand the value of proactive monitoring and custom metrics
+-  Appreciate how AI can enhance operational workflows
 
 ### Next Steps - Intermediate Workshop Preview
 **Part 3 - Intermediate Workshop** will cover:

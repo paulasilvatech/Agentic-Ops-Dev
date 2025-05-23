@@ -1,4 +1,4 @@
-# 🚀 Agentic Operations and Observability
+# Agentic Operations and Observability
 
 Welcome to the **Agentic Operations & Obervability** Workshop! This hands-on workshop guides you through implementing comprehensive observability solutions for cloud applications using Azure Monitor, Application Insights, and new AI-powered tools like Azure SRE Agent.
 
@@ -10,9 +10,9 @@ Welcome to the **Agentic Operations & Obervability** Workshop! This hands-on wor
 
 ![Azure Observability Banner](./images/azure-observability-banner.svg)
 
-## 🌐 Official Workshop Website: [agentic-ops.dev](https://agentic-ops.dev)
+## Official Workshop Website: [agentic-ops.dev](https://agentic-ops.dev)
 
-## 📖 The Journey to AI-Enhanced Observability
+## The Journey to AI-Enhanced Observability
 
 Welcome to the Azure AI Ops Observability Workshop! This repository takes you on a transformative journey from traditional monitoring to the world of AI-assisted observability and agentic DevOps.
 
@@ -27,7 +27,7 @@ This workshop provides hands-on guidance to implement modern observability using
 
 > "Observability is not about the data you collect, but about the questions you can answer with that data."
 
-## ⭐ Business Impact
+## Business Impact
 
 Organizations implementing comprehensive observability report significant benefits:
 
@@ -45,7 +45,7 @@ Advanced observability enables the progression through four maturity stages:
 
 ![Agentic DevOps Workflow](./images/agentic-devops-workflow.svg)
 
-## 📋 Workshop Structure
+## Workshop Structure
 
 The workshop is organized into progressive modules, allowing you to choose the depth of coverage based on your time and experience:
 
@@ -115,9 +115,9 @@ The workshop is organized into progressive modules, allowing you to choose the d
 - Basic understanding of cloud services
 - Familiarity with Azure fundamentals
 
-## 🛠️ Getting Started
+##  Getting Started
 
-### 🚀 Quick Start (Recommended)
+###  Quick Start (Recommended)
 **Want to start learning immediately?** Use our complete automation:
 
 ```bash
@@ -151,13 +151,13 @@ For step-by-step understanding:
    - Access pre-built applications: `./resources/applications/`
    - Deploy with Terraform: `./resources/terraform/`
 
-## 🌟 Key Features
+##  Key Features
 
 - **🤖 Complete Automation**: One-command deployment with `/resources/quick-start.sh`
 - **🏗️ Infrastructure as Code**: Production-ready Terraform configurations in `/resources/terraform/`
-- **💻 Ready-to-Use Applications**: Sample apps with full telemetry in `/resources/applications/`
-- **📊 Pre-Built Dashboards**: Grafana dashboards automatically deployed from `/resources/kubernetes/`
-- **🔧 Helper Scripts**: Port-forwarding, load generation, and utilities in `/resources/scripts/helpers/`
+- ** Ready-to-Use Applications**: Sample apps with full telemetry in `/resources/applications/`
+- ** Pre-Built Dashboards**: Grafana dashboards automatically deployed from `/resources/kubernetes/`
+- ** Helper Scripts**: Port-forwarding, load generation, and utilities in `/resources/scripts/helpers/`
 - **AI-Enhanced Monitoring**: Learn to implement Azure SRE Agent for intelligent observability
 - **Multi-Cloud Coverage**: Build unified monitoring across Azure, AWS, and GCP
 - **Real-World Scenarios**: Practice with authentic production-like challenges
