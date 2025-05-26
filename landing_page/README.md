@@ -8,6 +8,8 @@ A página é automaticamente deployada no GitHub Pages através de GitHub Action
 
 **URL da Página:** https://pauloasilva-ms.github.io/Agentic-Ops-Dev/
 
+> Template atualizado para usar agentic-ops-landing-orange.tsx exato
+
 ## 🛠️ Tecnologias
 
 - **React 18** - Framework UI
