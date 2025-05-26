@@ -4342,6 +4342,7 @@
         "net8.0"
       ],
       "sources": {
+        "/opt/homebrew/Cellar/dotnet/9.0.5/libexec/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4358,7 +4359,7 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
+        "auditMode": "direct"
       },
       "SdkAnalysisLevel": "9.0.100"
     },
@@ -4422,6 +4423,20 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.16, 8.0.16]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.osx-arm64",
+            "version": "[8.0.16, 8.0.16]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.16, 8.0.16]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -4430,7 +4445,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.100-rc.2.24474.11/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/9.0.5/libexec/sdk/9.0.106/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
@@ -4438,7 +4453,7 @@
     {
       "code": "NU1101",
       "level": "Error",
-      "message": "Unable to find package Microsoft.Extensions.Diagnostics.HealthChecks.AspNetCore. No packages exist with this id in source(s): nuget.org",
+      "message": "Unable to find package Microsoft.Extensions.Diagnostics.HealthChecks.AspNetCore. No packages exist with this id in source(s): /opt/homebrew/Cellar/dotnet/9.0.5/libexec/library-packs, nuget.org",
       "libraryId": "Microsoft.Extensions.Diagnostics.HealthChecks.AspNetCore",
       "targetGraphs": [
         "net8.0"
@@ -4460,16 +4475,6 @@
       "warningLevel": 1,
       "message": "Package 'OpenTelemetry.Instrumentation.Http' 1.5.1-beta.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-vh2m-22xx-q94f",
       "libraryId": "OpenTelemetry.Instrumentation.Http",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1904",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Drawing.Common' 4.7.0 has a known critical severity vulnerability, https://github.com/advisories/GHSA-rxg9-xrhp-64gj",
-      "libraryId": "System.Drawing.Common",
       "targetGraphs": [
         "net8.0"
       ]

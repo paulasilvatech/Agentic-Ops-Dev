@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zcG+VaS/zSE=",
+  "dgSpecHash": "wZGCmckxas8=",
   "success": false,
   "projectFilePath": "/Users/paulasilva/Documents/GH Repositories/Agentic-Ops-Dev/resources/applications/dotnet-sample/ObservabilityWorkshop.Sample.csproj",
   "expectedPackageFiles": [
@@ -89,13 +89,16 @@
     "/Users/paulasilva/.nuget/packages/system.threading/4.0.11/system.threading.4.0.11.nupkg.sha512",
     "/Users/paulasilva/.nuget/packages/system.threading.tasks/4.0.11/system.threading.tasks.4.0.11.nupkg.sha512",
     "/Users/paulasilva/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "/Users/paulasilva/.nuget/packages/system.windows.extensions/4.7.0/system.windows.extensions.4.7.0.nupkg.sha512"
+    "/Users/paulasilva/.nuget/packages/system.windows.extensions/4.7.0/system.windows.extensions.4.7.0.nupkg.sha512",
+    "/Users/paulasilva/.nuget/packages/microsoft.netcore.app.ref/8.0.16/microsoft.netcore.app.ref.8.0.16.nupkg.sha512",
+    "/Users/paulasilva/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.16/microsoft.aspnetcore.app.ref.8.0.16.nupkg.sha512",
+    "/Users/paulasilva/.nuget/packages/microsoft.netcore.app.host.osx-arm64/8.0.16/microsoft.netcore.app.host.osx-arm64.8.0.16.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1101",
       "level": "Error",
-      "message": "Unable to find package Microsoft.Extensions.Diagnostics.HealthChecks.AspNetCore. No packages exist with this id in source(s): nuget.org",
+      "message": "Unable to find package Microsoft.Extensions.Diagnostics.HealthChecks.AspNetCore. No packages exist with this id in source(s): /opt/homebrew/Cellar/dotnet/9.0.5/libexec/library-packs, nuget.org",
       "libraryId": "Microsoft.Extensions.Diagnostics.HealthChecks.AspNetCore",
       "targetGraphs": [
         "net8.0"
@@ -117,16 +120,6 @@
       "warningLevel": 1,
       "message": "Package 'OpenTelemetry.Instrumentation.Http' 1.5.1-beta.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-vh2m-22xx-q94f",
       "libraryId": "OpenTelemetry.Instrumentation.Http",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1904",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Drawing.Common' 4.7.0 has a known critical severity vulnerability, https://github.com/advisories/GHSA-rxg9-xrhp-64gj",
-      "libraryId": "System.Drawing.Common",
       "targetGraphs": [
         "net8.0"
       ]
