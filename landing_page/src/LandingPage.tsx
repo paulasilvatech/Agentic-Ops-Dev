@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronRight, Clock, Users, Zap, Check, ExternalLink, Star, Book, Cpu, ArrowRight, Menu, X, Activity, AlertCircle, BarChart3, Cloud, Terminal } from 'lucide-react';
 
-const LandingPage = () => {
+const LandingPage: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
