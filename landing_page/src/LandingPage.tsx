@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, Clock, Users, Zap, Check, ExternalLink, Star, Book, Cpu, ArrowRight, Menu, X, Activity, AlertCircle, BarChart3, Cloud, Terminal } from 'lucide-react';
+import { ChevronRight, Clock, Users, Zap, Check, ExternalLink, Star, Book, Code, Cpu, ArrowRight, Menu, X, Activity, AlertCircle, BarChart3, Cloud, Terminal } from 'lucide-react';
 
-const LandingPage: React.FC = () => {
+const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -488,7 +488,6 @@ const LandingPage: React.FC = () => {
           </p>
         </div>
       </footer>
-
     </div>
   );
 };
