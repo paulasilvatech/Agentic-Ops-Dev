@@ -7,6 +7,6 @@ export default defineConfig({
   base: '/Agentic-Ops-Dev/',
   build: {
     outDir: 'dist',
-    sourcemap: true,
-  }
-}) 
+    assetsDir: 'assets',
+  },
+})

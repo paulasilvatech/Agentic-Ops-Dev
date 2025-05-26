@@ -1,106 +1,115 @@
-# Agentic Operations Landing Page
+# Agentic DevOps Landing Page
 
-This is the landing page for the Agentic Operations Workshop, built with React, TypeScript, and Tailwind CSS.
+Esta é a landing page oficial do workshop Agentic DevOps - Azure Observability, construída com React, TypeScript e Vite.
 
-## 🚀 Quick Start
+## 🚀 Deploy Automático
 
-### Prerequisites
+A página é automaticamente deployada no GitHub Pages através de GitHub Actions sempre que há mudanças no diretório `landing_page/` na branch `main`.
 
-- Node.js 18+ installed
-- npm or yarn package manager
+**URL da Página:** https://pauloasilva-ms.github.io/Agentic-Ops-Dev/
 
-### Development
+## 🛠️ Tecnologias
 
-1. Install dependencies:
+- **React 18** - Framework UI
+- **TypeScript** - Type safety
+- **Vite** - Build tool e dev server
+- **Lucide React** - Ícones
+- **GitHub Actions** - CI/CD
+- **GitHub Pages** - Hospedagem
+
+## 📋 Pré-requisitos para Deploy
+
+### ✅ Já Configurados:
+
+1. **Estrutura do Projeto React**
+   - ✅ `package.json` com dependências corretas
+   - ✅ `index.html` como entry point
+   - ✅ `src/main.tsx` bootstrapping React
+   - ✅ `src/LandingPage.tsx` componente principal
+   - ✅ `vite.config.ts` com configuração para GitHub Pages
+   - ✅ TypeScript configurado
+
+2. **GitHub Actions Workflow**
+   - ✅ `.github/workflows/deploy-landing-page.yml`
+   - ✅ Trigger automático em mudanças na pasta `landing_page/`
+   - ✅ Build e deploy para GitHub Pages
+
+3. **Configurações de Build**
+   - ✅ Base path configurado para `/Agentic-Ops-Dev/`
+   - ✅ Output configurado para `dist/`
+   - ✅ Assets organizados corretamente
+
+### 🔧 Configurações do Repositório GitHub
+
+Para que o deploy funcione completamente, certifique-se de que:
+
+1. **GitHub Pages está habilitado:**
+   - Vá em Settings → Pages
+   - Source: "GitHub Actions"
+
+2. **Permissions do GITHUB_TOKEN:**
+   - Settings → Actions → General
+   - Workflow permissions: "Read and write permissions"
+
+## 🏗️ Desenvolvimento Local
+
 ```bash
+# Instalar dependências
 npm install
-```
 
-2. Start the development server:
-```bash
+# Desenvolvimento
 npm run dev
-```
 
-3. Open [http://localhost:5173](http://localhost:5173) in your browser
-
-### Building for Production
-
-```bash
+# Build para produção
 npm run build
-```
 
-The built files will be in the `dist` directory.
-
-### Local Preview
-
-To preview the production build locally:
-
-```bash
+# Preview do build
 npm run preview
 ```
 
-## 🌐 Deployment
-
-The landing page is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
-
-### Manual Deployment
-
-If you need to deploy manually:
-
-```bash
-npm run deploy
-```
-
-### GitHub Pages Setup
-
-1. Go to your repository settings
-2. Navigate to Pages section
-3. Under "Build and deployment", select "GitHub Actions" as the source
-4. The workflow will automatically deploy on push to main branch
-
-## 📁 Project Structure
+## 📁 Estrutura de Arquivos
 
 ```
 landing_page/
+├── public/
+│   └── vite.svg
 ├── src/
-│   ├── App.tsx          # Main app component
-│   ├── LandingPage.tsx  # Landing page component
-│   ├── main.tsx         # Entry point
-│   └── index.css        # Global styles with Tailwind
-├── index.html           # HTML template
-├── package.json         # Dependencies and scripts
-├── vite.config.ts       # Vite configuration
-├── tailwind.config.js   # Tailwind CSS configuration
-└── tsconfig.json        # TypeScript configuration
+│   ├── LandingPage.tsx    # Componente principal
+│   ├── main.tsx           # Entry point
+│   └── index.css          # Estilos globais
+├── index.html             # HTML template
+├── package.json           # Dependências
+├── vite.config.ts         # Configuração do Vite
+└── tsconfig.json          # Configuração TypeScript
 ```
 
-## 🎨 Customization
+## 🚨 Troubleshooting
 
-### Colors
+### Build falha com erro TypeScript
+- Verifique se todas as dependências estão instaladas
+- Execute `npm run build` localmente para verificar erros
 
-The landing page uses an orange/red gradient theme. To customize colors, edit the Tailwind classes in `LandingPage.tsx`.
+### Deploy não funciona
+- Verifique se GitHub Pages está configurado corretamente
+- Confirme se o workflow tem permissões adequadas
+- Verifique logs do GitHub Actions
 
-### Content
+### Página em branco no GitHub Pages
+- Confirme se o `base` está configurado corretamente no `vite.config.ts`
+- Verifique se os assets estão sendo carregados com o path correto
 
-All content is in the `LandingPage.tsx` file. Update the following arrays to modify content:
-- `modules` - Workshop modules
-- `benefits` - Business impact metrics
-- `maturityStages` - Observability maturity stages
-- `prerequisites` - Required tools and knowledge
-- `keyFeatures` - Key features of the workshop
+## 📝 Como Fazer Deploy
 
-### Animations
+1. **Fazer mudanças** no código da landing page
+2. **Commit e push** para a branch `main`
+3. **GitHub Actions** automaticamente:
+   - Faz build do projeto
+   - Deploy para GitHub Pages
+4. **Verificar** se a página está disponível em: https://pauloasilva-ms.github.io/Agentic-Ops-Dev/
 
-The blob animations are defined in `tailwind.config.js`. You can adjust the animation timing and keyframes there.
+## ⚡ Performance
 
-## 🔧 Technologies
-
-- **React** - UI framework
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Utility-first CSS framework
-- **Vite** - Build tool and dev server
-- **Lucide React** - Icon library
-
-## 📝 License
-
-This project is part of the Agentic-Ops-Dev repository and follows the same MIT license. 
+- Bundle size otimizado com Vite
+- Assets são automaticamente otimizados
+- CSS e JS são minificados no build
+- SVG icons são tree-shaken automaticamente
