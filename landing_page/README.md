@@ -6,7 +6,7 @@ Esta é a landing page oficial do workshop Agentic DevOps - Azure Observability,
 
 A página é automaticamente deployada no GitHub Pages através de GitHub Actions sempre que há mudanças no diretório `landing_page/` na branch `main`.
 
-**URL da Página:** https://pauloasilva-ms.github.io/Agentic-Ops-Dev/
+**URL da Página:** https://paulasilvatech.github.io/Agentic-Ops-Dev/
 
 > Template atualizado para usar agentic-ops-landing-orange.tsx exato
 
