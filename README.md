@@ -39,6 +39,8 @@ The workshop is organized into progressive modules, allowing you to choose the d
 | **Standard** | 4 hours | Complete implementation | Intermediate users, standard workshops |
 | **Advanced** | 8+ hours | Enterprise-scale solutions | Experienced practitioners, deep dives |
 
+
+
 ## 🗺️ Learning Path
 
 ### Module 1: [Introduction to Observability](./docs/observability_introduction.md)
@@ -118,11 +120,11 @@ cd resources
 
 ## 🌟 Key Features
 
-- **🤖 Complete Automation**: One-command deployment with `/resources/quick-start.sh`
-- **🏗️ Infrastructure as Code**: Production-ready Terraform configurations in `/resources/terraform/`
-- ** Ready-to-Use Applications**: Sample apps with full telemetry in `/resources/applications/`
-- ** Pre-Built Dashboards**: Grafana dashboards automatically deployed from `/resources/kubernetes/`
-- ** Helper Scripts**: Port-forwarding, load generation, and utilities in `/resources/scripts/helpers/`
+- **Complete Automation**: One-command deployment with `/resources/quick-start.sh`
+- **Infrastructure as Code**: Production-ready Terraform configurations in `/resources/terraform/`
+- **Ready-to-Use Applications**: Sample apps with full telemetry in `/resources/applications/`
+- **Pre-Built Dashboards**: Grafana dashboards automatically deployed from `/resources/kubernetes/`
+- **Helper Scripts**: Port-forwarding, load generation, and utilities in `/resources/scripts/helpers/`
 - **AI-Enhanced Monitoring**: Learn to implement Azure SRE Agent for intelligent observability
 - **Multi-Cloud Coverage**: Build unified monitoring across Azure, AWS, and GCP
 - **Real-World Scenarios**: Practice with authentic production-like challenges
