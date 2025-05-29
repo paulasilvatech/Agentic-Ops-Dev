@@ -27,22 +27,6 @@ This workshop provides hands-on guidance to implement modern observability using
 
 > "Observability is not about the data you collect, but about the questions you can answer with that data."
 
-## ⭐ Business Impact
-
-Organizations implementing comprehensive observability report significant benefits:
-
-* **Faster Time to Resolution**: Reduce mean time to recovery (MTTR) from hours to minutes
-* **Proactive Issue Detection**: Find problems before customers do
-* **Reduced Alert Fatigue**: 80% reduction in false positives with AI-enhanced alerting
-* **Cost Optimization**: Identify and eliminate waste in cloud resources
-* **Team Efficiency**: Shift from 60% reactive firefighting to 70% proactive improvements
-
-Advanced observability enables the progression through four maturity stages:
-1. **Reactive**: Basic monitoring and alerting
-2. **Proactive**: Trend analysis and capacity planning
-3. **Predictive**: Anomaly detection and forecasting
-4. **Autonomous**: Self-healing and optimization
-
 ![Agentic DevOps Workflow](./images/agentic-devops-workflow.svg)
 
 ## 📋 Workshop Structure
