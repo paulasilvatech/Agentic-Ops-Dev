@@ -1,4 +1,4 @@
-# Agentic Operations and Observability
+# 🚀 Agentic Operations and Observability
 
 Welcome to the **Agentic Operations & Obervability** Workshop! This hands-on workshop guides you through implementing comprehensive observability solutions for cloud applications using Azure Monitor, Application Insights, and new AI-powered tools like Azure SRE Agent.
 
@@ -10,9 +10,9 @@ Welcome to the **Agentic Operations & Obervability** Workshop! This hands-on wor
 
 ![Azure Observability Banner](./images/azure-observability-banner.svg)
 
-## Official Workshop Website: [agentic-ops.dev](https://agentic-ops.dev)
+##  🌐 Official Workshop Website: [agentic-ops.dev](https://agentic-ops.dev)
 
-## The Journey to AI-Enhanced Observability
+## 📖 The Journey to AI-Enhanced Observability
 
 Welcome to the Azure AI Ops Observability Workshop! This repository takes you on a transformative journey from traditional monitoring to the world of AI-assisted observability and agentic DevOps.
 
@@ -27,7 +27,7 @@ This workshop provides hands-on guidance to implement modern observability using
 
 > "Observability is not about the data you collect, but about the questions you can answer with that data."
 
-## Business Impact
+## ⭐ Business Impact
 
 Organizations implementing comprehensive observability report significant benefits:
 
@@ -45,7 +45,7 @@ Advanced observability enables the progression through four maturity stages:
 
 ![Agentic DevOps Workflow](./images/agentic-devops-workflow.svg)
 
-## Workshop Structure
+## 📋 Workshop Structure
 
 The workshop is organized into progressive modules, allowing you to choose the depth of coverage based on your time and experience:
 
@@ -115,43 +115,24 @@ The workshop is organized into progressive modules, allowing you to choose the d
 - Basic understanding of cloud services
 - Familiarity with Azure fundamentals
 
-##  Getting Started
+## 🛠️ Getting Started
 
-###  Quick Start (Recommended)
 **Want to start learning immediately?** Use our complete automation:
 
 ```bash
-# 1. Fork and Clone this Repository
+1. **Fork and Clone this Repository**
 git clone https://github.com/YourUsername/Agentic-Ops-Dev.git
 cd Agentic-Ops-Dev
 
-# 2. Deploy Everything Automatically (10-15 minutes)
+2. **Deploy Everything Automatically (10-15 minutes)**
 cd resources
 ./quick-start.sh deploy YOUR_AZURE_SUBSCRIPTION_ID
 
-# 3. Start Learning with Full Environment
+3. **Start Learning with Full Environment**
 ./quick-start.sh start
 ```
 
-### 📚 Manual Learning Path
-For step-by-step understanding:
-
-1. **Register for Workshop Access**
-   - Visit [https://agentic-ops.dev](https://agentic-ops.dev) to register
-   - Complete the Azure SRE Agent preview registration
-
-2. **Follow the Workshop Structure**
-   - Start with [Introduction to Observability](./docs/observability_introduction.md)
-   - Progress through the modules based on your experience level
-   - Use the [Troubleshooting Guide](./docs/observability_troubleshooting_guide.md) if needed
-
-3. **Leverage Automation Resources**
-   - All scripts, templates, and automation tools are in `/resources/`
-   - Use individual components: `./resources/scripts/deploy-infrastructure.sh`
-   - Access pre-built applications: `./resources/applications/`
-   - Deploy with Terraform: `./resources/terraform/`
-
-##  Key Features
+## 🌟 Key Features
 
 - **🤖 Complete Automation**: One-command deployment with `/resources/quick-start.sh`
 - **🏗️ Infrastructure as Code**: Production-ready Terraform configurations in `/resources/terraform/`
