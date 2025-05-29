@@ -139,7 +139,7 @@ Complete workshop for leveraging AI tools like GitHub Copilot to optimize and im
 ### [Secure Code AI Development](https://github.com/paulasilvatech/Secure-Code-AI-Dev)
 Comprehensive workshop for implementing secure coding practices using AI-powered tools, GitHub Advanced Security, and modern DevSecOps workflows. Learn to shift-left security, reduce vulnerabilities significantly, and achieve enterprise-grade security compliance with AI assistance.
 
-### [Agentic Operations & Observability](https://github.com/paulasilvatech/Agentic-Ops-Dev)
+### [Agentic Operations & Observability](https://github.com/paulasilvatech/Agentic-Ops-Dev) *(This Workshop)*
 Hands-on workshop for implementing comprehensive observability solutions using Azure Monitor, Application Insights, and AI-powered tools. Learn to build modern monitoring systems, implement AI-enhanced observability, and create intelligent DevOps practices for cloud applications.
 
 ### [Design-to-Code Development](https://github.com/paulasilvatech/Design-to-Code-Dev)
