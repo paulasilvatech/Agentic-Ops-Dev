@@ -147,14 +147,20 @@ cd resources
 
 ## 🔗 Related Repositories
 
-### [Design-to-Code](https://github.com/paulasilvatech/Design-to-Code-Dev)
-A comprehensive guide for transforming Figma designs into production-ready code. This playbook provides a structured approach to converting design assets into high-quality, accessible, and maintainable code with practical workflows, code examples, and hands-on exercises using modern tools like VS Code, GitHub Copilot, and Azure AI.
-
 ### [AI Code Development](https://github.com/paulasilvatech/Code-AI-Dev)
-A complete guide for leveraging AI tools like GitHub Copilot to optimize and improve code quality in enterprise environments. This repository covers advanced AI-assisted workflows, refactoring techniques, code optimization strategies, and best practices for integrating AI tools into your development process.
+Complete workshop for leveraging AI tools like GitHub Copilot to optimize and improve code quality in enterprise environments. Learn advanced AI-assisted workflows, refactoring techniques, and best practices for integrating AI tools into development processes.
+
+### [Secure Code AI Development](https://github.com/paulasilvatech/Secure-Code-AI-Dev)
+Comprehensive workshop for implementing secure coding practices using AI-powered tools, GitHub Advanced Security, and modern DevSecOps workflows. Learn to shift-left security, reduce vulnerabilities significantly, and achieve enterprise-grade security compliance with AI assistance.
 
 ### [Agentic Operations & Observability](https://github.com/paulasilvatech/Agentic-Ops-Dev)
-A hands-on workshop for implementing comprehensive observability solutions for cloud applications using Azure Monitor, Application Insights, and AI-powered tools like Azure SRE Agent. This repository guides you through the journey from traditional monitoring to AI-enhanced observability, covering the three pillars (metrics, logs, traces), multi-cloud integration, and agentic DevOps practices.
+Hands-on workshop for implementing comprehensive observability solutions using Azure Monitor, Application Insights, and AI-powered tools. Learn to build modern monitoring systems, implement AI-enhanced observability, and create intelligent DevOps practices for cloud applications.
+
+### [Design-to-Code Development](https://github.com/paulasilvatech/Design-to-Code-Dev)
+Comprehensive workshop for implementing design-to-code workflows using AI-powered tools, Figma integration, and modern development practices. Learn to bridge the gap between design and development, creating consistent and maintainable user interfaces with intelligent automation.
+
+### [Figma-to-Code Development](https://github.com/paulasilvatech/Figma-to-Code-Dev)
+Hands-on workshop for transforming Figma designs into production-ready code using GitHub Copilot Agent Mode and AI-powered tools. Learn to convert sophisticated designs into fully functional applications, achieving significant time reduction in development cycles with enterprise-grade features.
 
 ## 👤 Credits
 
